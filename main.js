@@ -36,6 +36,11 @@ if (!client.commands.has(commandName)) message.channel.send('The entered command
 
 const command = client.commands.get(commandName);
 
+if (command.guildOnly && message.channel.type === 'dm')
+{
+    return message.reply('The specified command is not meant to be used in DMS');
+}
+
 if (command.args && !args.length)
 {
     let reply = `You didn't provide any arguements, ${message.author}`;
