@@ -22,7 +22,18 @@ client.on('message', message =>
 {
 
 const args = message.content.slice(prefix.length).trim().split(/ +/);
-const command = args.shift().toLowerCase();
+const commandName = args.shift().toLowerCase();
+
+if (!client.commands.has(commandName)) message.channel.send('The entered command does not exist');
+
+const command = client.commands.get(commandName);
+   
+try{
+    command.execute(message, args);
+} catch (commandError) {
+    console.error(commandError);
+    message.reply('There was an error executing the specified command');
+}
 
 });
 
