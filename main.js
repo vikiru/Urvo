@@ -1,10 +1,10 @@
 const fs = require('fs');
-const Discord = require('discord.js');
+const {Collection, Client, Guild} = require('discord.js');
 const {token, prefix} = require('./config.json');
 
-const client = new Discord.Client();
-var guild = new Discord.Guild();
-client.commands = new Discord.Collection();
+const client = new Client();
+var guild = new Guild();
+client.commands = new Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 
@@ -12,8 +12,6 @@ const commandFolders = fs.readdirSync('./commands');
 for (const folder of commandFolders)
 {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
-    console.log(folder);
-    console.log(commandFiles);
 
     for (const file of commandFiles)
     {
@@ -22,12 +20,6 @@ for (const folder of commandFolders)
     }
 
 }
-
-
-client.on('ready', () =>
-{
-    console.log(`${client.user.tag} has logged into Discord.`);
-});
 
 client.on('message', message =>
 {
@@ -61,7 +53,12 @@ try{
     console.error(commandError);
     message.reply('There was an error executing the specified command');
 }
+});
 
 client.login(token);
-
-});
+client.on ('ready', () =>
+{
+    console.log(`${client.user.id} has logged in`);
+    client.user.setUsername('Zigor');
+    client.setPrescence({activity: {name: 'Evolving...'}, status: 'online' });
+})
