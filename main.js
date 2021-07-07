@@ -3,10 +3,12 @@ const Discord = require('discord.js');
 const {token, prefix} = require('./config.json');
 
 const client = new Discord.Client();
+var guild = new Discord.Guild();
 client.commands = new Discord.Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 
+// Accessing the commands
 for (const folder of commandFolders)
 {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
@@ -21,7 +23,8 @@ for (const folder of commandFolders)
 
 }
 
-client.once('ready', () =>
+
+client.on('ready', () =>
 {
     console.log(`${client.user.tag} has logged into Discord.`);
 });
@@ -58,5 +61,7 @@ try{
     console.error(commandError);
     message.reply('There was an error executing the specified command');
 }
+
+client.login(token);
 
 });

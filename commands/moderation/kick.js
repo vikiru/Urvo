@@ -5,6 +5,7 @@ module.exports =
     guildOnly: true,
     execute(message, args)
     {
-
+        const user = message.mentions.members.first();
+        guild.kick(user);
     }
 };
