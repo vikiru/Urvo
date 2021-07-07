@@ -5,7 +5,19 @@ const {token, prefix} = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFolders = fs.readdirSync('./commands');
+
+for (const folder of commandFolders)
+{
+    const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+
+    for (const file of commandFiles)
+    {
+        const command = require(`./commands/${folder}/${file}`);
+        client.commands.set(command.name, command);
+    }
+
+}
 
 for (const file of commandFiles)
 {
@@ -27,7 +39,12 @@ const commandName = args.shift().toLowerCase();
 if (!client.commands.has(commandName)) message.channel.send('The entered command does not exist');
 
 const command = client.commands.get(commandName);
-   
+
+if (command.args && !args.length)
+{
+    return message.channel.send(`You didn't provide any arguements, ${message.author}`);
+}
+
 try{
     command.execute(message, args);
 } catch (commandError) {
