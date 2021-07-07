@@ -10,6 +10,8 @@ const commandFolders = fs.readdirSync('./commands');
 for (const folder of commandFolders)
 {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+    console.log(folder);
+    console.log(commandFiles);
 
     for (const file of commandFiles)
     {
@@ -17,12 +19,6 @@ for (const folder of commandFolders)
         client.commands.set(command.name, command);
     }
 
-}
-
-for (const file of commandFiles)
-{
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.name, command);
 }
 
 client.once('ready', () =>
@@ -42,7 +38,13 @@ const command = client.commands.get(commandName);
 
 if (command.args && !args.length)
 {
-    return message.channel.send(`You didn't provide any arguements, ${message.author}`);
+    let reply = `You didn't provide any arguements, ${message.author}`;
+    if (command.usage)
+    {
+        reply+= `\nThe proper way to use the command is:\ ${prefix}${command.name} ${command.usage}`;
+    }
+
+    return message.channel.send(reply);
 }
 
 try{
@@ -53,7 +55,3 @@ try{
 }
 
 });
-
-
-
-console.log(token);
