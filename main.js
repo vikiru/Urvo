@@ -58,7 +58,6 @@ try{
 client.login(token);
 client.on ('ready', () =>
 {
-    console.log(`${client.user.id} has logged in`);
+    console.log(`${client.user.tag} has logged in`);
     client.user.setUsername('Zigor');
-    client.setPrescence({activity: {name: 'Evolving...'}, status: 'online' });
 })
