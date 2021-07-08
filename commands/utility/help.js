@@ -12,9 +12,9 @@ module.exports =
         .setTitle('List of Commands')
         .setDescription('All the possible commands that can be used')
         .addFields(
-            {name: 'fun' , value: 'test'},
+            {name: 'fun' , value: 'joke'},
             {name: 'moderation', value: 'ban, create-channel, delete-channel, kick, unban'},
-            {name: 'utility', value: 'args-info, help, prune'}
+            {name: 'utility', value: 'help, prune'}
             )
         .setTimestamp()
         .setFooter('Thanks!');
