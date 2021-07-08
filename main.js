@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {Collection, Client, Guild} = require('discord.js');
+const {Collection, Client} = require('discord.js');
 const {token, prefix} = require('./config.json');
 
 const client = new Client();
@@ -21,14 +21,13 @@ for (const folder of commandFolders)
 
 }
 
+// Commands activated on message
 client.on('message', message =>
 {
 if (message.author.bot === true) return;
 
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const commandName = args.shift().toLowerCase();
-
-if (!client.commands.has(commandName)) message.channel.send('The entered command does not exist');
 
 const command = client.commands.get(commandName);
 
@@ -38,23 +37,27 @@ if (command.guildOnly && message.channel.type === 'dm')
     return message.reply('The specified command is not meant to be used in DMS');
 }*/
 
+/*
 
-if (command.args && !args.length)
-{
-    let reply = `You didn't provide any arguements, ${message.author}`;
-    if (command.usage)
-    {
-        reply+= `\nThe proper way to use the command is:\ ${prefix}${command.name} ${command.usage}`;
-    }
-
-    return message.channel.send(reply);
-}
+*/
 
 try{
-    command.execute(message, args);
+    if (command.name != 'help') command.execute(message, args);
+    else command.execute(message);
 } catch (commandError) {
     console.error(commandError);
-    message.reply('There was an error executing the specified command');
+    if (!client.commands.has(commandName)) message.reply('The entered command does not exist');
+    else if (command != undefined && command.args && !args.length)
+    {
+        let reply = `You didn't provide any arguments, ${message.author}`;
+        if (command.usage)
+        {
+            reply+= `\nThe proper way to use the command is:\ ${prefix}${command.name} ${command.usage}`;
+        }
+    
+    return message.channel.send(reply);
+    }
+    else message.reply('There was an error executing the specified command');
 }
 });
 
