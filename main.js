@@ -21,7 +21,7 @@ for (const folder of commandFolders)
 
 }
 
-// Commands activated on message
+// Handling Commands
 client.on('message', message =>
 {
 if (message.author.bot === true) return;
@@ -31,15 +31,10 @@ const commandName = args.shift().toLowerCase();
 
 const command = client.commands.get(commandName);
 
-/*
-if (command.guildOnly && message.channel.type === 'dm')
+if (command != undefined && command.guildOnly && message.channel.type === 'dm')
 {
     return message.reply('The specified command is not meant to be used in DMS');
-}*/
-
-/*
-
-*/
+}
 
 try{
     if (command.name != 'help') command.execute(message, args);
