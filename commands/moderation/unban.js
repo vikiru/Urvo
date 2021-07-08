@@ -6,6 +6,6 @@ module.exports =
     execute(message, args)
     {
         const user = message.mentions.users.first();
-        guild.members.unban(user);        
+        message.guild.unban(user);        
     }
 };
