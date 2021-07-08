@@ -3,7 +3,7 @@ const {Collection, Client, Guild} = require('discord.js');
 const {token, prefix} = require('./config.json');
 
 const client = new Client();
-var guild = new Guild();
+
 client.commands = new Collection();
 
 const commandFolders = fs.readdirSync('./commands');
@@ -23,6 +23,7 @@ for (const folder of commandFolders)
 
 client.on('message', message =>
 {
+if (message.author.bot === true) return;
 
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const commandName = args.shift().toLowerCase();
@@ -31,10 +32,12 @@ if (!client.commands.has(commandName)) message.channel.send('The entered command
 
 const command = client.commands.get(commandName);
 
+/*
 if (command.guildOnly && message.channel.type === 'dm')
 {
     return message.reply('The specified command is not meant to be used in DMS');
-}
+}*/
+
 
 if (command.args && !args.length)
 {
@@ -59,5 +62,5 @@ client.login(token);
 client.on ('ready', () =>
 {
     console.log(`${client.user.tag} has logged in`);
-    client.user.setUsername('Zigor');
+    client.user.setPresence({activity: {name: 'Evolving...'}, status: 'online'});
 })

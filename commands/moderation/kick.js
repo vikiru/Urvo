@@ -6,6 +6,7 @@ module.exports =
     execute(message, args)
     {
         const user = message.mentions.members.first();
-        guild.kick(user);
+        if (user.id == message.author.id) message.reply(`You can't kick yourself`);
+        //else if (user != undefined && user.kickable) user.kick();
     }
 };
