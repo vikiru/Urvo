@@ -5,6 +5,6 @@ module.exports =
     args: true,
     execute (message, args)
     {
-        message.channel.send(`Arguements: ${args}\nArguements length: ${args.length}`);
+        message.channel.send(`Arguments: ${args}\nArguments length: ${args.length}`);
     }
 };
