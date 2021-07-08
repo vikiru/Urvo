@@ -10,6 +10,6 @@ module.exports =
     {
         const user = message.mentions.members.first();
         if (user.id == message.author.id) message.reply(`You can't kick yourself`);
-        //else if (user != undefined && user.kickable) user.kick();
+        else user.kick();
     }
 };
