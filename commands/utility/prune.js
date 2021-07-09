@@ -5,6 +5,6 @@ module.exports =
     guildOnly: true,
     execute(message, args)
     {
-        if (args[0] >= 2 && args[0] <= 100) message.channel.bulkDelete(args[0] + 1);
+        message.channel.bulkDelete(args[0] + 1);
     }
 }
