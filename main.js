@@ -1,6 +1,7 @@
 const fs = require('fs');
 const {Collection, Client, MessageEmbed} = require('discord.js');
 const {token, prefix} = require('./config.json');
+const { default: fetch } = require('node-fetch');
 
 const client = new Client();
 
@@ -8,7 +9,6 @@ client.commands = new Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 
-const fetch = require('node-fetch');
 
 // Accessing the commands
 for (const folder of commandFolders)
@@ -29,6 +29,8 @@ client.on('message', async message =>
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     
+    const command = client.commands.get(commandName);
+
     const querystring = require ('querystring');
     const query = querystring.stringify({query: args.join(' ')});
     //const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str); 
@@ -37,10 +39,13 @@ client.on('message', async message =>
     {
         const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
         message.channel.send(file);
+
     }
-
-    if (commandName === 'dog'){}
-
+    if (commandName === 'dog')
+    {
+        const { url } = await fetch('https://random.dog/woof.json').then(response => response.json());
+        message.channel.send({files: [url]});
+    }
     if (commandName === 'anime')
     {
         const { results } = await fetch(`https://api.jikan.moe/v3/search/${commandName}?q=${query}`).then(response => response.json());;
@@ -59,6 +64,20 @@ client.on('message', async message =>
             {name: 'Start Date', value: animeInfo.start_date = animeInfo.start_date.split('T')[0], inline: true},
             {name: 'End Date', value: animeInfo.end_date = animeInfo.end_date.split('T')[0], inline: true},
             {name: 'Description', value: animeInfo.synopsis}
+        );
+        message.channel.send(embed);
+    }
+    if (commandName === 'joke')
+    {
+        const jokes = await fetch('https://official-joke-api.appspot.com/jokes/ten').then(response => response.json());
+        
+        const embed = new MessageEmbed()
+        .setColor('#EFFF00')
+        .setTitle('Random Joke!')
+        .setThumbnail('https://logos.textgiraffe.com/logos/logo-name/Joke-designstyle-summer-m.png')
+        .addFields( 
+            {name: 'Setup', value: jokes[0].setup},
+            {name: 'Punchline', value: jokes[0].punchline}
         );
         message.channel.send(embed);
     }
