@@ -81,7 +81,11 @@ client.on('message', async message =>
         );
         message.channel.send(embed);
     }
-    if ()
+    if (commandName === 'fox')
+    {
+        const { image } = await fetch('https://randomfox.ca/floof/').then(response => response.json());
+        message.channel.send({files: [image]});
+    }
 });
 
 // Handling Commands
