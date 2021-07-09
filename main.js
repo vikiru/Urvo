@@ -31,7 +31,7 @@ client.on('message', async message =>
     
     const querystring = require ('querystring');
     const query = querystring.stringify({query: args.join(' ')});
-    //const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str); 
+    const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str); 
 
     if (commandName === 'bird')
     {
@@ -104,6 +104,23 @@ client.on('message', async message =>
         const { link } = await fetch('https://some-random-api.ml/img/kangaroo').then(response => response.json());
         message.channel.send({files: [link]});
     }
+    if (commandName === 'meal')
+    {
+        const { meals } = await fetch('https://www.themealdb.com/api/json/v1/1/random.php').then(response => response.json());
+                
+        const embed = new MessageEmbed()
+        .setTitle(meals[0].strMeal)
+        .setColor('#EFFF00')
+        .setThumbnail(meals[0].strMealThumb)
+        .setURL(meals[0].strSource)
+        .addFields(
+            {name: 'Category', value: meals[0].strCategory, inline: true},
+            {name: 'Area', value: trim(meals[0].strArea, 1024), inline: true},
+            {name: 'Instructions', value: meals[0].strInstructions}
+        );
+        message.channel.send(embed);
+
+    }
 
 });
 
@@ -128,7 +145,7 @@ try{
     if (command.name != 'help') command.execute(message, args);
     else command.execute(message);
 } catch (commandError) {
-    console.error(commandError);
+    //console.error(commandError);
     if (command != undefined && command.args && !args.length)
     {
         let reply = `You didn't provide any arguments, ${message.author}`;
