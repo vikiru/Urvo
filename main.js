@@ -29,8 +29,6 @@ client.on('message', async message =>
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
     
-    const command = client.commands.get(commandName);
-
     const querystring = require ('querystring');
     const query = querystring.stringify({query: args.join(' ')});
     //const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str); 
@@ -101,6 +99,12 @@ client.on('message', async message =>
         const { link } = await fetch('https://some-random-api.ml/img/koala').then(response => response.json());
         message.channel.send({files: [link]});
     }
+    if (commandName === 'kangaroo')
+    {
+        const { link } = await fetch('https://some-random-api.ml/img/kangaroo').then(response => response.json());
+        message.channel.send({files: [link]});
+    }
+
 });
 
 // Handling Commands
