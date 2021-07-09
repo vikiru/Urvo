@@ -81,6 +81,11 @@ client.on('message', async message =>
         );
         message.channel.send(embed);
     }
+    if (commandName === 'panda')
+    {
+        const { link } = await fetch('https://some-random-api.ml/img/panda').then(response => response.json());
+        message.channel.send({files: [link]});
+    }
     if (commandName === 'fox')
     {
         const { image } = await fetch('https://randomfox.ca/floof/').then(response => response.json());
