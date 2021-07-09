@@ -5,6 +5,5 @@ module.exports =
     guildOnly: true,
     execute(message, args)
     {
-        message.reply ('Not yet implemented');
     }
 }
