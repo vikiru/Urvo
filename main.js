@@ -81,6 +81,7 @@ client.on('message', async message =>
         );
         message.channel.send(embed);
     }
+    if ()
 });
 
 // Handling Commands
@@ -119,8 +120,6 @@ try{
 }
 }
 else message.reply('The entered command does not exist');
-
-
 });
 
 client.login(token);
