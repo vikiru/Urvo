@@ -121,6 +121,22 @@ client.on('message', async message =>
         message.channel.send(embed);
 
     }
+    if (commandName === 'quote')
+    {
+        const quote = await fetch('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json').then(response => response.json());
+        console.log(quote.quoteText);
+        console.log(quote.quoteAuthor);
+        
+        const embed = new MessageEmbed()
+        .setTitle('Random Quote!')
+        .setColor('#EFFF00')
+        .setURL(quote.quoteLink)
+        .addFields(
+            {name: 'Quote', value: quote.quoteText},
+            {name: 'Author', value: quote.quoteAuthor}
+        );
+        message.channel.send(embed);
+    }
 
 });
 
