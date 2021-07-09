@@ -35,6 +35,11 @@ client.on('message', async message =>
     const query = querystring.stringify({query: args.join(' ')});
     //const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str); 
 
+    if (commandName === 'bird')
+    {
+        const { link } = await fetch('https://some-random-api.ml/img/birb').then(response => response.json());
+        message.channel.send({files: [link]});
+    }
     if (commandName === 'cat')
     {
         const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
@@ -90,6 +95,11 @@ client.on('message', async message =>
     {
         const { image } = await fetch('https://randomfox.ca/floof/').then(response => response.json());
         message.channel.send({files: [image]});
+    }
+    if (commandName === 'koala')
+    {
+        const { link } = await fetch('https://some-random-api.ml/img/koala').then(response => response.json());
+        message.channel.send({files: [link]});
     }
 });
 
