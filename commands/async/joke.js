@@ -29,5 +29,6 @@ module.exports =
     guildOnly: true,
     execute(message, args)
     {
+        randomJoke(message, args);
     }
 }
