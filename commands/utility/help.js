@@ -8,11 +8,12 @@ module.exports =
     execute(message, args)
     {
         const helpEmbed = new MessageEmbed()
-        .setColor('#0099ff')
+        .setColor('#EFFF00')
+        .setThumbnail('http://www.clker.com/cliparts/P/t/7/o/9/W/help-hi.png')
         .setTitle('List of Commands')
         .setDescription('All the possible commands that can be used')
         .addFields(
-            {name: 'fun' , value: 'joke'},
+            {name: 'fun' , value: 'bird, cat, dog, fox, joke, kangaroo, koala, meal, panda, quote'},
             {name: 'moderation', value: 'ban, create-channel, delete-channel, kick, unban'},
             {name: 'utility', value: 'help, prune'}
             )

@@ -9,7 +9,6 @@ client.commands = new Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 
-
 // Accessing the commands
 for (const folder of commandFolders)
 {
@@ -131,7 +130,7 @@ client.on('message', async message =>
     if (commandName === 'kangaroo')
     {
         const { link } = await fetch('https://some-random-api.ml/img/kangaroo').then(response => response.json());
-        
+
         const embed = new MessageEmbed()
         .setTitle('Random Kangaroo!')
         .setColor('#EFFF00')
@@ -193,7 +192,7 @@ try{
     if (command.name != 'help') command.execute(message, args);
     else command.execute(message);
 } catch (commandError) {
-    //console.error(commandError);
+    console.error(commandError);
     if (command != undefined && command.args && !args.length)
     {
         let reply = `You didn't provide any arguments, ${message.author}`;
@@ -210,6 +209,7 @@ try{
 else message.reply('The entered command does not exist');
 });
 
+// Bot Login & Setup
 client.login(token);
 client.on ('ready', () =>
 {
