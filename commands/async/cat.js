@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js'); 
+
 async function randomCat(message, args)
 {
     try
@@ -22,6 +23,6 @@ module.exports =
     guildOnly: true,
     execute(message, args)
     {
-        randomCat(message,args);
+        randomCat(message, args);
     }
 }
