@@ -36,18 +36,32 @@ client.on('message', async message =>
     if (commandName === 'bird')
     {
         const { link } = await fetch('https://some-random-api.ml/img/birb').then(response => response.json());
-        message.channel.send({files: [link]});
+        
+        const embed = new MessageEmbed()
+        .setTitle('Random Bird!')
+        .setColor('#EFFF00')
+        .setImage(link);
+        message.channel.send(embed);
     }
     if (commandName === 'cat')
     {
         const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
-        message.channel.send(file);
-
+        
+        const embed = new MessageEmbed()
+        .setTitle('Random Cat!')
+        .setColor('#EFFF00')
+        .setImage(file);
+        message.channel.send(embed);
     }
     if (commandName === 'dog')
     {
         const { url } = await fetch('https://random.dog/woof.json').then(response => response.json());
-        message.channel.send({files: [url]});
+        
+        const embed = new MessageEmbed()
+        .setTitle('Random Dog!')
+        .setColor('#EFFF00')
+        .setImage(url);
+        message.channel.send(embed);
     }
     if (commandName === 'anime')
     {
@@ -55,8 +69,8 @@ client.on('message', async message =>
         const animeInfo = results[0];
         
         const embed = new MessageEmbed()
-        .setColor('#EFFF00')
         .setTitle(animeInfo.title)
+        .setColor('#EFFF00')
         .setURL(animeInfo.url)
         .setThumbnail(animeInfo.image_url)
         .addFields (
@@ -87,22 +101,42 @@ client.on('message', async message =>
     if (commandName === 'panda')
     {
         const { link } = await fetch('https://some-random-api.ml/img/panda').then(response => response.json());
-        message.channel.send({files: [link]});
+    
+        const embed = new MessageEmbed()
+        .setTitle('Random Panda!')
+        .setColor('#EFFF00')
+        .setImage(link);
+        message.channel.send(embed);
     }
     if (commandName === 'fox')
     {
         const { image } = await fetch('https://randomfox.ca/floof/').then(response => response.json());
-        message.channel.send({files: [image]});
+
+        const embed = new MessageEmbed()
+        .setTitle('Random Fox!')
+        .setColor('#EFFF00')
+        .setImage(image);
+        message.channel.send(embed);
     }
     if (commandName === 'koala')
     {
         const { link } = await fetch('https://some-random-api.ml/img/koala').then(response => response.json());
-        message.channel.send({files: [link]});
+    
+        const embed = new MessageEmbed()
+        .setTitle('Random Koala!')
+        .setColor('#EFFF00')
+        .setImage(link);
+        message.channel.send(embed);
     }
     if (commandName === 'kangaroo')
     {
         const { link } = await fetch('https://some-random-api.ml/img/kangaroo').then(response => response.json());
-        message.channel.send({files: [link]});
+        
+        const embed = new MessageEmbed()
+        .setTitle('Random Kangaroo!')
+        .setColor('#EFFF00')
+        .setImage(link);
+        message.channel.send(embed);
     }
     if (commandName === 'meal')
     {
@@ -124,9 +158,7 @@ client.on('message', async message =>
     if (commandName === 'quote')
     {
         const quote = await fetch('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json').then(response => response.json());
-        console.log(quote.quoteText);
-        console.log(quote.quoteAuthor);
-        
+
         const embed = new MessageEmbed()
         .setTitle('Random Quote!')
         .setColor('#EFFF00')

@@ -5,6 +5,6 @@ module.exports =
     guildOnly: true,
     execute(message, args)
     {
-        message.channel.bulkDelete(args[0] + 1);
+        message.channel.bulkDelete(args[0]);
     }
 }
