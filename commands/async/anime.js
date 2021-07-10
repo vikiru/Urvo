@@ -34,7 +34,7 @@ module.exports =
     name: 'anime',
     description: 'Sends the user information about a queried anime, obtained from MAL',
     guildOnly: true,
-    exectute(message, args)
+    execute(message, args)
     {
         retrieveAnime(message, args);
     }
