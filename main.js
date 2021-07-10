@@ -186,6 +186,15 @@ if (command != undefined && command.guildOnly && message.channel.type === 'dm')
     return message.reply('The specified command is not meant to be used in DMS');
 }
 
+if (command != undefined && command.args && !args.length)
+{
+    let reply = `You didn't provide any arguments, ${message.author}`;
+    if (command.usage)
+    {
+        reply+= `\nThe proper way to use the command is:\ ${prefix}${command.name} ${command.usage}`;
+    }
+}
+
 if (args && command != undefined)
 {
 try{
@@ -193,18 +202,10 @@ try{
     else command.execute(message);
 } catch (commandError) {
     console.error(commandError);
-    if (command != undefined && command.args && !args.length)
-    {
-        let reply = `You didn't provide any arguments, ${message.author}`;
-        if (command.usage)
-        {
-            reply+= `\nThe proper way to use the command is:\ ${prefix}${command.name} ${command.usage}`;
-        }
-    
+
     return message.channel.send(reply);
     }
-    else message.reply('There was an error executing the specified command');
-}
+    //else message.reply('There was an error executing the specified command');
 }
 else message.reply('The entered command does not exist');
 });
@@ -214,6 +215,5 @@ client.login(token);
 client.on ('ready', () =>
 {
     console.log(`${client.user.tag} has logged in`);
-    //client.user.setAvatar('https://image.winudf.com/v2/image/Y29tLmNvb2xib3lhbmltZS5zeW1waG9ueV9zY3JlZW5fM18xNTI4MDc4Mjg4XzAwMw/screen-3.jpg?fakeurl=1&type=.jpg');
     client.user.setPresence({activity: {name: 'Evolving...'}, status: 'online'});
 })
