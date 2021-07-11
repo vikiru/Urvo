@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 
+// Fetch a random joke and send into the chat via an embed
 async function randomJoke(message, args)
 {
     try
@@ -15,8 +16,7 @@ async function randomJoke(message, args)
             {name: 'Punchline', value: jokes[0].punchline}
         );
         message.channel.send(embed);
-    }
-    catch (error)
+    } catch (error)
     {
         console.log(error);
     }

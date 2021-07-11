@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 
+// Fetch a random meal and send into the chat via an embed
 async function randomMeal(message, args)
 {
     try
@@ -19,8 +20,7 @@ async function randomMeal(message, args)
             {name: 'Instructions', value: trim(meals[0].strInstructions, 1024)}
         );
         message.channel.send(embed);
-    }
-    catch (error)
+    } catch (error)
     {
         console.log(error);
     }

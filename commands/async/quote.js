@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 
+// Fetch a random quote and send into the chat via an embed
 async function randomQuote(message, args)
 {
     try
@@ -15,8 +16,7 @@ async function randomQuote(message, args)
             {name: 'Author', value: quote.quoteAuthor}
         );
         message.channel.send(embed);
-    }
-    catch (error)
+    } catch (error)
     {
         console.log(error);
     }

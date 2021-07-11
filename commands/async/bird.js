@@ -1,9 +1,11 @@
 const { MessageEmbed } = require('discord.js'); 
 
+// Fetch a random bird and send into the chat via an embed
 async function randomBird(message, args)
 {
     try 
     {
+    
     const { link } = await fetch('https://some-random-api.ml/img/birb').then(response => response.json());
         
     const embed = new MessageEmbed()

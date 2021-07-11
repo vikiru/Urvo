@@ -1,10 +1,15 @@
 const { MessageEmbed } = require('discord.js');
+const queryString = require('querystring');
 
+// Fetch the MAL listing of an anime given by the user's args 
+// and display its respective info
 async function retrieveAnime(message, args)
 {
     try
     {
-        const { results } = await fetch(`https://api.jikan.moe/v3/search/${commandName}?q=${query}`).then(response => response.json());;
+        const query = queryString.stringify({query: args.join(' ')});
+
+        const { results } = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`).then(response => response.json());;
         const animeInfo = results[0];
         
         const embed = new MessageEmbed()
@@ -22,8 +27,7 @@ async function retrieveAnime(message, args)
             {name: 'Description', value: animeInfo.synopsis}
         );
         message.channel.send(embed);
-    }
-    catch (error)
+    } catch (error)
     {
         console.log(error);
     }

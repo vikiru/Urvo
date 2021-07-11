@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 
+// Fetch a random kangaroo and send into the chat via an embed
 async function randomKangaroo(message, args)
 {
     try

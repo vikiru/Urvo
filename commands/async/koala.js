@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 
+// Fetch a random koala and send into the chat via an embed
 async function randomKoala(message, args)
 {
     try
@@ -11,8 +12,7 @@ async function randomKoala(message, args)
         .setColor('#EFFF00')
         .setImage(link);
         message.channel.send(embed);
-    }
-    catch (error)
+    } catch (error)
     {
         console.log(error);
     }

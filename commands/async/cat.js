@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js'); 
 
+// Fetch a random cat and send into the chat via an embed
 async function randomCat(message, args)
 {
     try

@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 
+// Fetch a random fox and send into the chat via an embed
 async function randomFox(message, args)
 {
     try
@@ -11,8 +12,7 @@ async function randomFox(message, args)
         .setColor('#EFFF00')
         .setImage(image);
         message.channel.send(embed);
-    }
-    catch (error)
+    } catch (error)
     {
         console.log(error);
     }
