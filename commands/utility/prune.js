@@ -5,6 +5,7 @@ module.exports =
     guildOnly: true,
     execute(message, args)
     {
-        message.channel.bulkDelete(args[0]);
+        if (args < 2 || args > 100) message.reply('\nSorry, you entered an invalid number of messages to delete.\n The range of messages that can be deleted is 2 - 100');
+        else message.channel.bulkDelete(args[0]);
     }
 }
