@@ -1,6 +1,6 @@
 const fs = require('fs');
-const {Collection, Client} = require('discord.js');
-const {token, prefix} = require('./config.json');
+const { Collection, Client } = require('discord.js');
+const { token, prefix } = require('./config.json');
 const { cpuUsage } = require('process');
 
 global.fetch = require('node-fetch');

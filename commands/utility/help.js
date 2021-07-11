@@ -13,7 +13,7 @@ module.exports =
         .setTitle('List of Commands')
         .setDescription('All of the possible commands that can be used')
         .addFields(
-            {name: 'fun' , value: 'bird, cat, dog, fox, joke, kangaroo, koala, meal, panda, quote'},
+            {name: 'fun' , value: 'anime, bird, cat, dog, fox, joke, kangaroo, koala, meal, panda, quote'},
             {name: 'moderation', value: 'ban, create-channel, delete-channel, kick, unban'},
             {name: 'utility', value: 'help, prune'}
             )
