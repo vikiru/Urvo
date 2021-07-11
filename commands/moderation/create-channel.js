@@ -1,3 +1,5 @@
+const { CategoryChannel, Collection } = require("discord.js");
+
 module.exports =
 {
     name: 'create-channel',
@@ -14,15 +16,32 @@ module.exports =
             })
             .then((channel) =>
             {
-                const textID = '851621332587905085';
-                const voiceID = '851621332587905086';
+                const channels = message.guild.channels.cache;
+                const categories = new Collection();
+
+                // Add all the categories of the server into the categories collection
+                for (c of channels)
+                {
+                    if (c[1].type === 'category')
+                    {
+                        categories.set(c[1].name, c[1].id);
+                    }
+                }
+
+                // Assign the newly created channel to Text Channels or Voice Channels 
+                // depending on the type, if either category does not exist 
+                // then add channel to the first category
                 switch (args[1])
                 {
                     case 'text':
-                        channel.setParent(textID);
+                        const textID = categories.get('Text Channels');
+                        if (textID === undefined ) channel.setParent(categories.first());
+                        else channel.setParent(textID);
                     break;
                     case 'voice':
-                        channel.setParent(voiceID);
+                        const voiceID = categories.get('Voice Channels');
+                        if (voiceID === undefined ) channel.setParent(categories.first());
+                        else channel.setParent(voiceID);
                     break;
                 }
             })
