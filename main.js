@@ -5,13 +5,12 @@ const { cpuUsage } = require('process');
 
 global.fetch = require('node-fetch');
 
-const client = new Client();
+global.client = new Client();
 
 const asyncCommands = new Collection();
 client.commands = new Collection();
 
 const commandFolders = fs.readdirSync('./commands');
-
 
 // Accessing the commands
 for (const folder of commandFolders)
@@ -36,7 +35,9 @@ client.on('message', async message =>
     if(asyncCommands.get(commandName))
     { 
         command = asyncCommands.get(commandName);
+        message.channel.startTyping();
         command.execute(message, args);
+        message.channel.stopTyping();
     }
     else return; 
 });
@@ -64,7 +65,9 @@ client.on('message', message =>
     if (client.commands.get(commandName))
     {
         try {
+            message.channel.startTyping();
             command.execute(message, args);
+            message.channel.stopTyping();
         } catch (error)
         {
             console.log(error);
