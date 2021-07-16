@@ -7,7 +7,7 @@ global.fetch = require('node-fetch');
 
 global.client = new Client();
 
-const asyncCommands = new Collection();
+client.asyncCommands = new Collection();
 client.commands = new Collection();
 
 const commandFolders = fs.readdirSync('./commands');
@@ -21,7 +21,7 @@ for (const folder of commandFolders)
     {
         const command = require(`./commands/${folder}/${file}`);
         if (folder != 'async') client.commands.set(command.name, command);
-        else if (folder === 'async') asyncCommands.set(command.name, command);
+        else if (folder === 'async') client.asyncCommands.set(command.name, command);
     }
 
 }
@@ -72,6 +72,7 @@ client.on('message', message =>
         {
             console.log(error);
             message.reply('There was an error executing the command.');
+            message.channel.stopTyping();
         }
     }
     else return;
