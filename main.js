@@ -7,6 +7,11 @@ global.fetch = require('node-fetch');
 
 global.client = new Client();
 
+
+client.minigames = new Collection();
+client.moderation = new Collection();
+client.utility = new Collection();
+
 client.asyncCommands = new Collection();
 client.commands = new Collection();
 
@@ -32,9 +37,9 @@ client.on('message', async message =>
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
 
-    if(asyncCommands.get(commandName))
+    if(client.asyncCommands.get(commandName))
     { 
-        command = asyncCommands.get(commandName);
+        command = client.asyncCommands.get(commandName);
         message.channel.startTyping();
         command.execute(message, args);
         message.channel.stopTyping();
@@ -50,7 +55,7 @@ client.on('message', message =>
     
     command = client.commands.get(commandName);
 
-    if (message.author.bot === true) return;
+    if (message.author.bot === true || !message.content.startsWith(prefix)) return;
 
     if (command != undefined && command.args && !args.length)
     {
@@ -75,7 +80,11 @@ client.on('message', message =>
             message.channel.stopTyping();
         }
     }
-    else return;
+    else
+    {
+        if (!client.asyncCommands.get(commandName)) message.reply('That command does not exist!');
+        return;
+    }
 });
 
 // Bot Login & Setup
