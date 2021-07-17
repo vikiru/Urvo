@@ -16,6 +16,7 @@ client.asyncCommands = new Collection();
 client.commands = new Collection();
 
 const commandFolders = fs.readdirSync('./commands');
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 // Accessing the commands
 for (const folder of commandFolders)
@@ -31,66 +32,19 @@ for (const folder of commandFolders)
 
 }
 
-// Handling async commands
-client.on('message', async message =>
+// Accessing and handling the events
+for (const file of eventFiles)
 {
-    const args = message.content.slice(prefix.length).trim().split(/ +/);
-    const commandName = args.shift().toLowerCase();
-
-    if(client.asyncCommands.get(commandName))
-    { 
-        command = client.asyncCommands.get(commandName);
-        message.channel.startTyping();
-        command.execute(message, args);
-        message.channel.stopTyping();
-    }
-    else return; 
-});
-
-// Handling non-async commands
-client.on('message', message => 
-{
-    const args = message.content.slice(prefix.length).trim().split(/ +/);
-    const commandName = args.shift().toLowerCase();
-    
-    command = client.commands.get(commandName);
-
-    if (message.author.bot === true || !message.content.startsWith(prefix)) return;
-
-    if (command != undefined && command.args && !args.length)
+    const event = require(`./events/${file}`);
+    if (event.once)
     {
-        let reply = `You didn't provide any arguments, ${message.author}`;
-        if (command.usage)
-        {
-            reply+= `\nThe proper way to use the command is:\ ${prefix}${command.name} ${command.usage}`;
-        }
-        return message.channel.send(reply);
+        client.once(event.name, (...args) => event.execute(...args, client));
     }
-    
-    if (client.commands.get(commandName))
+    else 
     {
-        try {
-            message.channel.startTyping();
-            command.execute(message, args);
-            message.channel.stopTyping();
-        } catch (error)
-        {
-            console.log(error);
-            message.reply('There was an error executing the command.');
-            message.channel.stopTyping();
-        }
+        client.on(event.name, (...args) => event.execute(...args, client));
     }
-    else
-    {
-        if (!client.asyncCommands.get(commandName)) message.reply('That command does not exist!');
-        return;
-    }
-});
+}
 
 // Bot Login & Setup
 client.login(token);
-client.on ('ready', () =>
-{
-    console.log(`${client.user.tag} has logged in`);
-    client.user.setPresence({activity: {name: 'Evolving...'}, status: 'online'});
-})
