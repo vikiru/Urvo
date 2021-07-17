@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js");
+
 async function rps(message, args)
 {
     const user = message.mentions.members.first();
@@ -17,12 +19,8 @@ async function rps(message, args)
             .then(result => 
                 {
                     const bot_choice = options[Math.floor(Math.random() * options.length)];
-                    message.channel.send(`<@${client.user.id}> chose ${bot_choice}!`);
-
+                    
                     var outcome = "";
-
-                    console.log(result.first().content);
-                    //console.log(bot_choice);
 
                     // Paper beating rock
                     if (result.first().content === 'paper' && bot_choice === 'rock' || bot_choice === 'paper' && result.first().content === 'rock')
@@ -33,7 +31,7 @@ async function rps(message, args)
                         }
                         else 
                         {
-                            var outcome = `<@${message.author.id} has won the game`;
+                            var outcome = `<@${message.author.id}> has won the game`;
                         }
                     }
 
@@ -42,11 +40,11 @@ async function rps(message, args)
                     {
                         if (result.first().content === 'rock') 
                         {
-                            var outcome = `<@${message.author.id} has won the game`;
+                            var outcome = `<@${message.author.id}> has won the game`;
                         }
                         else 
                         {
-                            var outcome = `<@${client.user.id} has won the game`;
+                            var outcome = `<@${client.user.id}> has won the game`;
                         }
                     }
 
@@ -55,11 +53,11 @@ async function rps(message, args)
                     {
                         if (result.first().content === 'scissors') 
                         {
-                            var outcome = `<@${message.author.id} has won the game`;
+                            var outcome = `<@${message.author.id}> has won the game`;
                         }
                         else 
                         {
-                            var outcome = `<@${client.user.id} has won the game`;
+                            var outcome = `<@${client.user.id}> has won the game`;
                         }
                     }
 
@@ -69,11 +67,22 @@ async function rps(message, args)
                         var outcome = 'Tie!';
                     }
 
-                    // Send the outcome in the channel
-                    message.channel.send(outcome);
+                    // Create the result embed
+                    const resultEmbed = new MessageEmbed()
+                    .setTitle(`Rock-Paper-Scissors Match between ${message.author.username} and ${client.user.username}`)
+                    .setColor('#EFFF00')
+                    .setThumbnail('https://ausm.org.uk/wp-content/uploads/2015/02/rock-paper-scissors-hands.jpg')
+                    .addFields (
+                        {name: `${message.author.username}'s Choice: `, value: result.first().content, inline: true},
+                        {name: `${client.user.username}'s Choice: `, value: bot_choice, inline: true},
+                        {name: 'Outcome', value: outcome}
+                    )
+                    .setTimestamp();
+
+                    // Send the embed
+                    message.channel.send(resultEmbed);
                 })
         });
-    
 
     }
 }
