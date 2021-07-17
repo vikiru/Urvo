@@ -26,7 +26,13 @@ for (const folder of commandFolders)
     for (const file of commandFiles)
     {
         const command = require(`./commands/${folder}/${file}`);
-        if (folder != 'async') client.commands.set(command.name, command);
+        if (folder != 'async') 
+        {
+            client.commands.set(command.name, command);
+            if (folder === 'minigames') client.minigames.set(command.name, command);
+            if (folder === 'moderation') client.moderation.set(command.name, command);
+            if (folder === 'utility') client.utility.set(command.name, command);
+        }
         else if (folder === 'async') client.asyncCommands.set(command.name, command);
     }
 
