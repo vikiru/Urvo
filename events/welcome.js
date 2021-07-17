@@ -27,7 +27,7 @@ async function welcome(member)
     context.drawImage(avatar, 25, 25, 200, 200);
 
     const attachment = new MessageAttachment(canvas.toBuffer(), 'welcome.png');    
-    channel.send(attachment);
+    channel.send(`Welcome to the server!, ${member.displayName}`, attachment);
 }
 
 module.exports = 
