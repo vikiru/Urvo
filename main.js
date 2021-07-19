@@ -1,44 +1,48 @@
 const fs = require('fs');
 const { Collection, Client } = require('discord.js');
 const { token, prefix } = require('./config.json');
+const { fips } = require('crypto');
 
 global.fetch = require('node-fetch');
 
 global.client = new Client();
 
-client.image = new Collection();
-client.minigames = new Collection();
-client.moderation = new Collection();
-client.utility = new Collection();
-
-client.asyncCommands = new Collection();
 client.commands = new Collection();
+
+client.commands.fun = new Collection();
+client.commands.image = new Collection();
+client.commands.minigames = new Collection();
+client.commands.moderation = new Collection();
+client.commands.utility = new Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 const eventFiles = fs.readdirSync('./events').filter((file) => file.endsWith('.js'));
 
-// Accessing the commands
+// Accessing and loading the commands
 for (const folder of commandFolders) {
 	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
 
 	for (const file of commandFiles) {
 		const command = require(`./commands/${folder}/${file}`);
-		if (folder != 'async') {
-			client.commands.set(command.name, command);
-			if (folder === 'minigames') {
-				client.minigames.set(command.name, command);
-			}
-			if (folder === 'moderation') {
-				client.moderation.set(command.name, command);
-			}
-			if (folder === 'utility') {
-				client.utility.set(command.name, command);
-			}
-		} else if (folder === 'async') {
-			client.asyncCommands.set(command.name, command);
-			if (folder === 'image') {
-				client.image.set(command.name, command);
-			}
+
+		client.commands.set(command.name, command);
+
+		switch (folder) {
+			case 'fun':
+				client.commands.fun.set(command.name, command);
+				break;
+			case 'image':
+				client.commands.image.set(command.name, command);
+				break;
+			case 'minigames':
+				client.commands.minigames.set(command.name, command);
+				break;
+			case 'moderation':
+				client.commands.moderation.set(command.name, command);
+				break;
+			case 'utility':
+				client.commands.utility.set(command.name, command);
+				break;
 		}
 	}
 }
