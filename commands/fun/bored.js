@@ -4,9 +4,6 @@ async function randomActivity(message, args) {
 	try {
 		const activity = await fetch('https://www.boredapi.com/api/activity').then((response) => response.json());
 
-		console.log(activity);
-		console.log(activity[0]);
-
 		const activityEmbed = new MessageEmbed()
 			.setTitle('Random Activity Suggestion!')
 			.setColor('#EFFF00')
