@@ -5,8 +5,6 @@ function help(message, args) {
 	const data = [];
 	const { fun, image, minigames, moderation, utility } = message.client.commands;
 
-	console.log(fun);
-
 	const f = [];
 	const img = [];
 	const mg = [];
@@ -28,11 +26,11 @@ function help(message, args) {
 			.setThumbnail('http://www.clker.com/cliparts/P/t/7/o/9/W/help-hi.png')
 			.setDescription('All of the possible commands that can be used')
 			.addFields(
-				{ name: 'Fun', value: f },
-				{ name: 'Image', value: img },
-				{ name: 'Minigames', value: mg },
-				{ name: 'Moderation', value: mod },
-				{ name: 'Utility', value: util },
+				{ name: 'Fun', value: '`' + f + '`' },
+				{ name: 'Image', value: '`' + img + '`' },
+				{ name: 'Minigames', value: '`' + mg + '`' },
+				{ name: 'Moderation', value: '`' + mod + '`' },
+				{ name: 'Utility', value: '`' + util + '`' },
 				{ name: '\u200b', value: data },
 			)
 			.setTimestamp()
