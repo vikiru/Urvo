@@ -12,11 +12,11 @@ function help(message, args) {
 	const util = [];
 
 	if (!args.length) {
-		f.push(fun.map((command) => command.name).join(', '));
-		img.push(image.map((command) => command.name).join(', '));
-		mg.push(minigames.map((command) => command.name).join(', '));
-		mod.push(moderation.map((command) => command.name).join(', '));
-		util.push(utility.map((command) => command.name).join(', '));
+		f.push(fun.map((command) => '`' + command.name + '`').join(', '));
+		img.push(image.map((command) => '`' + command.name + '`').join(', '));
+		mg.push(minigames.map((command) => '`' + command.name + '`').join(', '));
+		mod.push(moderation.map((command) => '`' + command.name + '`').join(', '));
+		util.push(utility.map((command) => '`' + command.name + '`').join(', '));
 
 		data.push(`\nYou can send ${prefix}help [command name] to retrieve all of the info on the specific command`);
 
@@ -26,11 +26,11 @@ function help(message, args) {
 			.setThumbnail('http://www.clker.com/cliparts/P/t/7/o/9/W/help-hi.png')
 			.setDescription('All of the possible commands that can be used')
 			.addFields(
-				{ name: 'Fun', value: '`' + f + '`' },
-				{ name: 'Image', value: '`' + img + '`' },
-				{ name: 'Minigames', value: '`' + mg + '`' },
-				{ name: 'Moderation', value: '`' + mod + '`' },
-				{ name: 'Utility', value: '`' + util + '`' },
+				{ name: 'Fun', value: f },
+				{ name: 'Image', value: img },
+				{ name: 'Minigames', value: mg },
+				{ name: 'Moderation', value: mod },
+				{ name: 'Utility', value: util },
 				{ name: '\u200b', value: data },
 			)
 			.setTimestamp()
