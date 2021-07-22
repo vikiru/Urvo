@@ -3,12 +3,13 @@ const { prefix } = require('../../config.json');
 
 function help(message, args) {
 	const data = [];
-	const { fun, image, minigames, moderation, utility } = message.client.commands;
+	const { fun, image, minigames, moderation, music, utility } = message.client.commands;
 
 	const f = [];
 	const img = [];
 	const mg = [];
 	const mod = [];
+	const mu = [];
 	const util = [];
 
 	if (!args.length) {
@@ -16,6 +17,7 @@ function help(message, args) {
 		img.push(image.map((command) => '`' + command.name + '`').join(', '));
 		mg.push(minigames.map((command) => '`' + command.name + '`').join(', '));
 		mod.push(moderation.map((command) => '`' + command.name + '`').join(', '));
+		mu.push(music.map((command) => '`' + command.name + '`').join(', '));
 		util.push(utility.map((command) => '`' + command.name + '`').join(', '));
 
 		data.push(`\nYou can send ${prefix}help [command name] to retrieve all of the info on the specific command`);
@@ -30,6 +32,7 @@ function help(message, args) {
 				{ name: 'Image', value: img },
 				{ name: 'Minigames', value: mg },
 				{ name: 'Moderation', value: mod },
+				{ name: 'Music', value: mu },
 				{ name: 'Utility', value: util },
 				{ name: '\u200b', value: data },
 			)
