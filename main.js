@@ -5,8 +5,9 @@ const { token, prefix } = require('./config.json');
 global.fetch = require('node-fetch');
 
 global.client = new Client();
-const queue = new Map();
+global.queue = new Map();
 
+client.prefix = prefix;
 client.commands = new Collection();
 //-----------------------------------------//
 client.commands.fun = new Collection();
