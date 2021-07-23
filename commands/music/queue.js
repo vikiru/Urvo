@@ -53,7 +53,12 @@ async function queueAndPlay(message, args) {
 		}
 	} else {
 		serverQ.songs.push(song);
-		return textChannel.send('`' + `${song.title}` + '`' + 'added to queue!');
+
+		const queueEmbed = new MessageEmbed()
+			.setTitle('🎶 **Added to Queue** 🎶')
+			.setColor('#EFFF00')
+			.setDescription('`' + `${song.title}` + '`');
+		return textChannel.send(queueEmbed);
 	}
 }
 
@@ -64,7 +69,10 @@ async function videoPlayer(guild, song) {
 	if (!song) {
 		serverQ.voiceChannel.leave();
 		queue.delete(guild.id);
-		textChannel.send(`${client.user.username} has left the voice channel due to no songs left in the queue`);
+		const leaveEmbed = new MessageEmbed()
+			.setColor('#EFFF00')
+			.setDescription('**I left the voice channel because there are no songs left in the queue!**');
+		textChannel.send(leaveEmbed);
 		return;
 	} else {
 		const stream = await ytdl(song.url, { filter: 'audioonly' });
@@ -73,7 +81,11 @@ async function videoPlayer(guild, song) {
 			videoPlayer(guild, serverQ.songs[0]);
 		});
 
-		await serverQ.textChannel.send('🎶' + '**Now playing:**' + '`' + `${song.title}` + '`' + '!' + '🎶');
+		const playingEmbed = new MessageEmbed()
+			.setTitle('🎶 **Now Playing** 🎶')
+			.setColor('#EFFF00')
+			.setDescription('`' + `${song.title}` + '`');
+		await serverQ.textChannel.send(playingEmbed);
 	}
 }
 
@@ -103,6 +115,7 @@ function queueEmbed(message, guild) {
 }
 
 module.exports = {
+	videoPlayer: videoPlayer,
 	name: 'queue',
 	guildOnly: true,
 	permissions: ['CONNECT', 'SPEAK'],
