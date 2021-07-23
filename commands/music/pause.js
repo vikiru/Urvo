@@ -1,13 +1,13 @@
+const { MessageEmbed } = require('discord.js');
 async function pauseQueue(message, args) {
 	const guild = message.guild;
 	const serverQ = queue.get(guild.id);
 
-	if (!serverQ.songs) {
-		serverQ.textChannel.send('There are no songs in the queue!');
+	if (typeof serverQ === 'undefined') {
+		const emptyQueue = new MessageEmbed().setColor('#EFFF00').setDescription('**The queue is currently empty!**');
+		message.channel.send(emptyQueue);
 		return;
-	}
-
-	if (serverQ.songs.length != 0) {
+	} else {
 		const connection = serverQ.connection;
 		const dispatcher = connection.dispatcher;
 		dispatcher.pause();
