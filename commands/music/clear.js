@@ -12,7 +12,6 @@ function clearQueue(message, guild) {
 		for (song of serverQ.songs) {
 			serverQ.songs.pop();
 		}
-		serverQ.voiceChannel.leave();
 
 		const clearedQueue = new MessageEmbed().setColor('#EFFF00').setDescription('**The queue has been cleared!**');
 		message.channel.send(clearedQueue);
@@ -20,6 +19,7 @@ function clearQueue(message, guild) {
 }
 
 module.exports = {
+	clearQueue: clearQueue,
 	name: 'clear',
 	guildOnly: true,
 	execute(message, args) {
