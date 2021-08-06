@@ -7,7 +7,7 @@ async function findVideos(query) {
 	return videoResults.videos.length > 1 ? videoResults.videos[0] : null;
 }
 
-async function queueAndPlay(message, args) {
+async function queueSong(message, args) {
 	const guild = message.guild;
 	const textChannel = message.channel;
 	const voiceChannel = message.member.voice.channel;
@@ -42,23 +42,28 @@ async function queueAndPlay(message, args) {
 
 		queue.set(guild.id, queueConstruct);
 		queueConstruct.songs.push(song);
-
-		try {
-			const connection = await voiceChannel.join();
-			queueConstruct.connection = connection;
-			videoPlayer(guild, queueConstruct.songs[0]);
-		} catch (error) {
-			queue.delete(guild.id);
-			textChannel.send('There was an error trying to join voice channel');
-		}
 	} else {
 		serverQ.songs.push(song);
 
 		const queueEmbed = new MessageEmbed()
 			.setTitle('🎶 **Added to Queue** 🎶')
 			.setColor('#EFFF00')
-			.setDescription('`' + `${song.title}` + '`');
+			.setDescription(`[${song.title}](${song.url})`);
 		return textChannel.send(queueEmbed);
+	}
+
+	playSong(queue, guild);
+}
+
+async function playSong(queue, guild) {
+	const serverQ = queue.get(guild.id);
+	try {
+		const connection = await serverQ.voiceChannel.join();
+		serverQ.connection = connection;
+		videoPlayer(guild, serverQ.songs[0]);
+	} catch (error) {
+		queue.delete(guild.id);
+		serverQ.textChannel.send('There was an error trying to join voice channel');
 	}
 }
 
@@ -84,7 +89,7 @@ async function videoPlayer(guild, song) {
 		const playingEmbed = new MessageEmbed()
 			.setTitle('🎶 **Now Playing** 🎶')
 			.setColor('#EFFF00')
-			.setDescription('`' + `${song.title}` + '`');
+			.setDescription(`[${song.title}](${song.url})`);
 		await serverQ.textChannel.send(playingEmbed);
 	}
 }
@@ -123,7 +128,7 @@ module.exports = {
 		if (message.content === `${client.prefix}${this.name}`) {
 			queueEmbed(message, message.guild);
 		} else {
-			queueAndPlay(message, args);
+			queueSong(message, args);
 		}
 	},
 };
