@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 async function randomActivity(message, args) {
 	try {
@@ -14,10 +15,10 @@ async function randomActivity(message, args) {
 			.addFields(
 				{ name: 'Activity', value: activity.activity, inline: true },
 				{ name: 'Type', value: activity.type, inline: true },
-				{ name: 'Participants', value: activity.participants, inline: true },
+				{ name: 'Participants', value: activity.participants.toString(), inline: true },
 			);
 
-		message.channel.send(activityEmbed);
+		message.channel.send({ embeds: [activityEmbed] });
 	} catch (error) {
 		console.log(error);
 	}
