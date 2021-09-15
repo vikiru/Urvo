@@ -1,10 +1,14 @@
+const { MessageEmbed } = require('discord.js');
+
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+
+// Fetches a random word, then sends the word along with its definition and pronunciation
+// in an embed
 async function randomWord(message, args) {
 	try {
-		const { MessageEmbed } = require('discord.js');
-
 		const word = await fetch('https://random-words-api.vercel.app/word').then((response) => response.json());
 
-		wordEmbed = new MessageEmbed()
+		const wordEmbed = new MessageEmbed()
 			.setTitle('Random Word!')
 			.setColor('#EFFF00')
 			.setThumbnail('https://live.staticflickr.com/1431/739173692_70720e47f5_b.jpg')
@@ -14,7 +18,7 @@ async function randomWord(message, args) {
 				{ name: 'Definition', value: word[0].definition },
 			);
 
-		message.channel.send(wordEmbed);
+		message.channel.send({ embeds: wordEmbed });
 	} catch (error) {
 		console.log(error);
 	}
@@ -23,6 +27,7 @@ async function randomWord(message, args) {
 module.exports = {
 	name: 'word',
 	guildOnly: true,
+	description: 'Sends a random word along with its definition and pronunciation in the chat',
 	execute(message, args) {
 		randomWord(message, args);
 	},
