@@ -28,18 +28,18 @@ function help(message, args) {
 			.setThumbnail('http://www.clker.com/cliparts/P/t/7/o/9/W/help-hi.png')
 			.setDescription('All of the possible commands that can be used')
 			.addFields(
-				{ name: 'Fun', value: f },
-				{ name: 'Image', value: img },
-				{ name: 'Minigames', value: mg },
-				{ name: 'Moderation', value: mod },
-				{ name: 'Music', value: mu },
-				{ name: 'Utility', value: util },
-				{ name: '\u200b', value: data },
+				{ name: 'Fun', value: f.toString() },
+				{ name: 'Image', value: img.toString() },
+				{ name: 'Minigames', value: mg.toString() },
+				{ name: 'Moderation', value: mod.toString() },
+				{ name: 'Music', value: mu.toString() },
+				{ name: 'Utility', value: util.toString() },
+				{ name: '\u200B', value: data.toString() },
 			)
 			.setTimestamp()
 			.setFooter(`Prefix: ${prefix}`);
 
-		message.channel.send(helpEmbed);
+		message.channel.send({ embeds: [helpEmbed] });
 	}
 }
 
