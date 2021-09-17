@@ -1,17 +1,57 @@
 const ytdl = require('ytdl-core-discord');
 const ytSearch = require('yt-search');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageCollector } = require('discord.js');
+const {
+	joinVoiceChannel,
+	createAudioPlayer,
+	createAudioResource,
+	entersState,
+	StreamType,
+	AudioPlayerStatus,
+	VoiceConnectionStatus,
+	NoSubscriberBehavior,
+} = require('@discordjs/voice');
 
-async function findVideos(query) {
-	const videoResults = await ytSearch(query);
-	return videoResults.videos.length > 1 ? videoResults.videos[0] : null;
+const player = createAudioPlayer({
+	behaviors: {
+		noSubscriber: NoSubscriberBehavior.Pause,
+		maxMissedFrames: Math.round(5000 / 20),
+	},
+});
+
+player.on(AudioPlayerStatus.Playing, () => {
+	console.log('The audio player has started playing!');
+});
+
+// Connects the bot to the specified voice channel
+async function connectToVoice(voiceChannel) {
+	const connection = joinVoiceChannel({
+		channelId: voiceChannel.id,
+		guildId: voiceChannel.guild.id,
+		adapterCreator: voiceChannel.guild.voiceAdapterCreator,
+	});
+
+	console.log('The bot has connected to the voice channel!');
+
+	try {
+		await entersState(connection, VoiceConnectionStatus.Ready, 5e3);
+		return connection;
+	} catch (error) {
+		connection.destroy;
+		console.log(error);
+	}
 }
 
+// Adds a song to the queue
 async function queueSong(message, args) {
 	const guild = message.guild;
 	const textChannel = message.channel;
 	const voiceChannel = message.member.voice.channel;
-	const serverQ = queue.get(guild.id);
+	var serverQ = queue.get(guild.id);
+
+	if (voiceChannel === null) {
+		textChannel.reply('Please join a voice channel!');
+	}
 
 	if (!args) {
 		queueEmbed(guild);
@@ -27,79 +67,120 @@ async function queueSong(message, args) {
 	} else {
 		const videoInfo = await findVideos(args.join(' '));
 		if (videoInfo != undefined) {
-			song = { title: videoInfo.title, url: videoInfo.url };
-		} else textChannel.send('Unable to retrieve video');
+			song = {
+				url: videoInfo.url,
+				title: videoInfo.title,
+				thumbnail: videoInfo.thumbnail,
+				time: videoInfo.timestamp,
+				requestedBy: message.author,
+			};
+		} else {
+			textChannel.send('Unable to find any videos for the given query!');
+		}
 	}
-
 	if (!serverQ) {
-		const queueConstruct = {
-			voiceChannel: voiceChannel,
-			textChannel: textChannel,
+		const queueConst = {
 			connection: null,
+			player: player,
+			playingEmbed: null,
+			subscription: null,
 			songs: [],
-			options: { seek: 0, volume: 0.5, type: 'opus', highWatermark: 50 },
+			textChannel: textChannel,
+			voiceChannel: voiceChannel,
 		};
 
-		queue.set(guild.id, queueConstruct);
-		queueConstruct.songs.push(song);
+		queue.set(guild.id, queueConst);
+		queueConst.songs.push(song);
+		serverQ = queue.get(guild.id);
+		console.log('Song has been pushed into the queue!');
 	} else {
 		serverQ.songs.push(song);
-
 		const queueEmbed = new MessageEmbed()
 			.setTitle('🎶 **Added to Queue** 🎶')
 			.setColor('#EFFF00')
-			.setDescription(`[${song.title}](${song.url})`);
-		return textChannel.send(queueEmbed);
+			.setThumbnail(song.thumbnail)
+			.setDescription(`[${song.title}](${song.url})`)
+			.setTimestamp()
+			.setFooter(`Requested by ${song.requestedBy.username}`);
+		textChannel.send({ embeds: [queueEmbed] });
 	}
+	console.log(player);
 
-	playSong(queue, guild);
+	if (serverQ.player._state.status === 'idle') songPlayer(message, args, song);
 }
 
-async function playSong(queue, guild) {
-	const serverQ = queue.get(guild.id);
-	try {
-		const connection = await serverQ.voiceChannel.join();
-		serverQ.connection = connection;
-		videoPlayer(guild, serverQ.songs[0]);
-	} catch (error) {
-		queue.delete(guild.id);
-		serverQ.textChannel.send('There was an error trying to join voice channel');
-	}
-}
-
-async function videoPlayer(guild, song) {
-	const serverQ = queue.get(guild.id);
-	const textChannel = serverQ.textChannel;
+// Play the queued song and if there are no songs left in queue, leave the voice channel
+async function songPlayer(message, args, song) {
+	const serverQ = queue.get(message.guild.id);
 
 	if (!song) {
-		serverQ.voiceChannel.leave();
+		const userRequest = await MessageCollector.asyncQuestion({
+			botMessage:
+				'The bot is waiting for new song requests, if no song is requested within 5 minutes, the bot will leave the voice channel.',
+			user: message.author.id,
+			collectorOptions: { time: 300000 },
+		}).catch(() => {
+			serverQ.voiceChannel.leave();
+			serverQ.textChannel.send('I have left the voice channel due to inactivity');
+		});
 		queue.delete(guild.id);
 		const leaveEmbed = new MessageEmbed()
 			.setColor('#EFFF00')
 			.setDescription('**I left the voice channel because there are no songs left in the queue!**');
-		textChannel.send(leaveEmbed);
+		textChannel.send({ embeds: [leaveEmbed] });
 		return;
 	} else {
-		const stream = await ytdl(song.url, { filter: 'audioonly' });
-		serverQ.connection.play(stream, serverQ.options).on('finish', () => {
-			serverQ.songs.shift();
-			videoPlayer(guild, serverQ.songs[0]);
+		const connection = await connectToVoice(serverQ.voiceChannel);
+		serverQ.connection = connection;
+
+		const songInfo = await ytdl.getInfo(serverQ.songs[0].url);
+		try {
+			var stream = await ytdl.downloadFromInfo(songInfo);
+			console.log('Song has been downloaded!');
+		} catch (error) {
+			console.log(error);
+		}
+		const resource = createAudioResource(stream, { inputType: StreamType.Arbitrary, inlineVolume: true });
+
+		serverQ.player.play(resource);
+		await entersState(serverQ.player, AudioPlayerStatus.Playing, 5e3);
+
+		serverQ.subscription = serverQ.connection.subscribe(player);
+
+		//TODO: add buttons to playingEmbed (pause / unpause and also show a progress bar)
+		player.on('subscribe', async () => {
+			serverQ.playingEmbed = new MessageEmbed()
+				.setTitle('🎶 **Now Playing** 🎶')
+				.setColor('#EFFF00')
+				.setThumbnail(song.thumbnail)
+				.setDescription(`[${song.title}](${song.url}) [${song.time}]`)
+				.setTimestamp()
+				.setFooter(`Requested by ${song.requestedBy.username}`);
+			await serverQ.textChannel.send({ embeds: [serverQ.playingEmbed] });
 		});
 
-		const playingEmbed = new MessageEmbed()
-			.setTitle('🎶 **Now Playing** 🎶')
-			.setColor('#EFFF00')
-			.setDescription(`[${song.title}](${song.url})`);
-		await serverQ.textChannel.send(playingEmbed);
+		player.on('end', () => {
+			serverQ.songs.shift();
+			songPlayer(message, args, serverQ.songs[0]);
+		});
 	}
 }
 
+// Helper function to search for videos based on a query
+async function findVideos(query) {
+	const videoResults = await ytSearch(query);
+	return videoResults.videos.length > 1 ? videoResults.videos[0] : null;
+}
+
+//TODO: Format the queueEmbed text display
+// Displays the list of songs in the queue as an embed,
+// or returns a message saying the queue is empty, if there are no songs
 function queueEmbed(message, guild) {
 	const serverQ = queue.get(guild.id);
 
 	if (typeof serverQ === `undefined`) {
 		const emptyQueue = new MessageEmbed().setColor('#EFFF00').setDescription('**The queue is currently empty!**');
-		message.channel.send(emptyQueue);
+		message.channel.send({ embeds: [emptyQueue] });
 	} else {
 		const data = [];
 
@@ -107,20 +188,22 @@ function queueEmbed(message, guild) {
 
 		for (song of serverQ.songs) {
 			i++;
-			data.push('`' + `${i})` + `\t` + `${song.title}` + '`');
+			data.push('`' + `${i})` + `\t` + `${song.title}` + ` [${song.time}] ` + '`');
 		}
+
+		const songList = data.toString().replace(',', '\n');
 
 		const queueEmbed = new MessageEmbed()
 			.setTitle('Songs in Queue')
 			.setColor('#EFFF00')
-			.addFields({ name: '\u200b', value: data });
+			.addFields({ name: '\u200B', value: songList });
 
-		message.channel.send(queueEmbed);
+		message.channel.send({ embeds: [queueEmbed] });
 	}
 }
 
 module.exports = {
-	videoPlayer: videoPlayer,
+	songPlayer: songPlayer,
 	name: 'queue',
 	guildOnly: true,
 	permissions: ['CONNECT', 'SPEAK'],
