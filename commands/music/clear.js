@@ -1,7 +1,8 @@
 const { MessageEmbed } = require('discord.js');
+const { pauseQueue } = require('./pause');
 
 // Clears all the songs in the queue
-function clearQueue(message, guild) {
+function clearQueue(message, args, guild) {
 	const serverQ = queue.get(guild.id);
 
 	// No songs in queue
@@ -13,7 +14,7 @@ function clearQueue(message, guild) {
 	// Songs exist in queue
 	else {
 		if (typeof serverQ != undefined && serverQ.connection) {
-			serverQ.player.pause();
+			pauseQueue(message, args);
 		}
 
 		for (song of serverQ.songs) {
@@ -30,6 +31,6 @@ module.exports = {
 	name: 'clear',
 	guildOnly: true,
 	execute(message, args) {
-		clearQueue(message, message.guild);
+		clearQueue(message, args, message.guild);
 	},
 };
