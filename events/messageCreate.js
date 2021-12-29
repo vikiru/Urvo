@@ -6,7 +6,9 @@ module.exports = {
 		const args = message.content.slice(prefix.length).trim().split(/ +/);
 		const commandName = args.shift().toLowerCase();
 
-		command = client.commands.get(commandName);
+		command =
+			client.commands.get(commandName) ||
+			client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
 		// Handling commands
 
@@ -20,7 +22,7 @@ module.exports = {
 			return message.channel.send(reply);
 		}
 
-		if (client.commands.get(commandName)) {
+		if (command) {
 			try {
 				//message.channel.startTyping();
 				command.execute(message, args);
