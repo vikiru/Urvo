@@ -1,17 +1,19 @@
 const { MessageEmbed } = require('discord.js');
 
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+
 // Fetch a random joke and send into the chat via an embed
 async function randomJoke(message, args) {
 	try {
-		const jokes = await fetch('https://official-joke-api.appspot.com/jokes/ten').then((response) => response.json());
+		// TODO (NEED TO UPDATE API / API ERROR): const jokes = await fetch('https://official-joke-api.appspot.com/jokes/ten').then((response) => response.json());
 
-		const embed = new MessageEmbed()
+		const jokeEmbed = new MessageEmbed()
 			.setTitle('Random Joke!')
 			.setColor('#EFFF00')
 			.setThumbnail('https://logos.textgiraffe.com/logos/logo-name/Joke-designstyle-summer-m.png')
 			.addFields({ name: 'Setup', value: jokes[0].setup }, { name: 'Punchline', value: jokes[0].punchline });
 
-		message.channel.send(embed);
+		message.channel.send({ embeds: [jokeEmbed] });
 	} catch (error) {
 		console.log(error);
 	}
