@@ -1,5 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+
 async function getComic(message, args) {
 	const currComic = await fetch('https://xkcd.com/info.0.json').then((response) => response.json());
 	const maxNum = currComic.num;
@@ -13,7 +15,7 @@ async function getComic(message, args) {
 		.setColor('#EFFF00')
 		.setImage(retrievedComic.img);
 
-	message.channel.send(comicEmbed);
+	message.channel.send({ embeds: [comicEmbed] });
 }
 
 module.exports = {

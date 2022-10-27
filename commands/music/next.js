@@ -1,25 +1,38 @@
-const { videoPlayer } = require('./queue');
+const { songPlayer } = require('./queue');
+const { pauseQueue } = require('./pause');
+const { MessageEmbed } = require('discord.js');
 
-function nextSong(message, guild) {
+// Skips to the next song in the queue
+async function nextSong(message, args, guild) {
 	const serverQ = queue.get(guild.id);
 
+	// There are no songs in the queue
 	if (typeof serverQ === 'undefined') {
 		const emptyQueue = new MessageEmbed().setColor('#EFFF00').setDescription('**The queue is currently empty!**');
-		message.channel.send(emptyQueue);
+		serverQ.textChannel.send({ embeds: [emptyQueue] });
 	}
+
+	// There is only one song in the queue
 	if (serverQ.songs.length === 1) {
 		const noNext = new MessageEmbed().setColor('#EFFF00').setDescription('**There is no next song!**');
-		message.channel.send(noNext);
-	} else if (serverQ.songs.length > 1) {
+		serverQ.textChannel.send({ embeds: [noNext] });
+	}
+
+	// There is more than one song in the queue
+	else if (serverQ.songs.length > 1) {
+		pauseQueue(message, args);
+		serverQ.subscription.unsubscribe();
+		serverQ.playMessage.delete(serverQ.currentEmbed);
 		serverQ.songs.shift();
-		videoPlayer(guild, serverQ.songs[0]);
+		songPlayer(message, args, serverQ.songs[0]);
 	}
 }
 
 module.exports = {
 	name: 'next',
+	aliases: ['n'],
 	guildOnly: true,
 	execute(message, args) {
-		nextSong(message, message.guild);
+		nextSong(message, args, message.guild);
 	},
 };

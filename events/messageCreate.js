@@ -1,12 +1,14 @@
 const { prefix } = require('../config.json');
 
 module.exports = {
-	name: 'message',
+	name: 'messageCreate',
 	execute(message) {
 		const args = message.content.slice(prefix.length).trim().split(/ +/);
 		const commandName = args.shift().toLowerCase();
 
-		command = client.commands.get(commandName);
+		command =
+			client.commands.get(commandName) ||
+			client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
 		// Handling commands
 
@@ -20,15 +22,15 @@ module.exports = {
 			return message.channel.send(reply);
 		}
 
-		if (client.commands.get(commandName)) {
+		if (command) {
 			try {
-				message.channel.startTyping();
+				//message.channel.startTyping();
 				command.execute(message, args);
-				message.channel.stopTyping();
+				//message.channel.stopTyping();
 			} catch (error) {
 				console.log(error);
 				message.reply('There was an error executing the command.');
-				message.channel.stopTyping();
+				//message.channel.stopTyping();
 			}
 		} else {
 			message.reply('That command does not exist!');
