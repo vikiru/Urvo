@@ -1,41 +1,27 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 const { URLSearchParams } = require('url');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 // Fetch a random anime quote, then use the anime name from the random quote
 // to search for the MAL anime listing
-async function randomAnimeQuote(message, args) {
-	try {
-		const animeQuote = await fetch('https://animechan.vercel.app/api/random').then((response) => response.json());
-		const anime = animeQuote.anime; // the name of the anime from the random quote
-
-		const query = new URLSearchParams({ query: anime });
-
-		const { results } = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`).then((response) =>
-			response.json(),
-		);
-
-		const animeInfo = results[0];
-
-		const quoteEmbed = new MessageEmbed()
-			.setTitle(`Random Quote from ${animeInfo.title}`)
-			.setColor('#EFFF00')
-			.setURL(animeInfo.url)
-			.setThumbnail(animeInfo.image_url)
-			.addFields({ name: 'Quote', value: animeQuote.quote }, { name: 'Character', value: animeQuote.character });
-
-		message.channel.send({ embeds: [quoteEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
-}
 
 module.exports = {
-	name: 'anime-quote',
-	description: 'Sends the user a random quote from an anime',
+	data: new SlashCommandBuilder().setName('anime-quote').setDescription('Send a random quote from an anime'),
 	guildOnly: true,
-	execute(message, args) {
-		randomAnimeQuote(message, args);
+	async execute(interaction) {
+		try {
+			const quoteData = await fetch('https://animechan.vercel.app/api/random').then((response) => response.json());
+			const animeQuote = '"' + quoteData.quote + '"';
+
+			const quoteEmbed = new EmbedBuilder()
+				.setColor('#EFFF00')
+				.setTitle(`Random Quote from ${quoteData.anime}`)
+				.setTimestamp()
+				.addFields({ name: 'Quote', value: animeQuote }, { name: 'Character', value: quoteData.character });
+			interaction.reply({ embeds: [quoteEmbed] });
+		} catch (error) {
+			interaction.reply({ content: 'An error occured executing the command.', ephemeral: true });
+		}
 	},
 };
