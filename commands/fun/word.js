@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
@@ -25,9 +25,10 @@ async function randomWord(message, args) {
 }
 
 module.exports = {
-	name: 'word',
+	data: new SlashCommandBuilder()
+		.setName('word')
+		.setDescription('Sends a random word along with its definition and pronunciation in the chat'),
 	guildOnly: true,
-	description: 'Sends a random word along with its definition and pronunciation in the chat',
 	execute(message, args) {
 		randomWord(message, args);
 	},

@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
 
 function serverInfo(message, args) {
 	const roles = message.guild.roles.cache.map((role) => role);
@@ -17,7 +17,7 @@ function serverInfo(message, args) {
 			{ name: 'Region', value: message.guild.region, inline: true },
 			{ name: 'Member Count', value: message.guild.memberCount, inline: true },
 			{
-				name: 'Roles',	
+				name: 'Roles',
 				value: allRoles,
 				inline: true,
 			},
@@ -28,7 +28,7 @@ function serverInfo(message, args) {
 }
 
 module.exports = {
-	name: 'server',
+	data: new SlashCommandBuilder().setName('server-info').setDescription('Retrieve information about the server'),
 	guildOnly: true,
 	execute(message, args) {
 		serverInfo(message, args);

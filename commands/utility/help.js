@@ -1,5 +1,6 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const { prefix } = require('../../config.json');
+const { SlashCommandBuilder } = require('discord.js');
 
 function help(message, args) {
 	const data = [];
@@ -44,10 +45,11 @@ function help(message, args) {
 }
 
 module.exports = {
-	name: 'help',
-	description: 'Sends an embed containing all of the possible commands',
-	guildOnly: true,
+	data: new SlashCommandBuilder()
+		.setName('help')
+		.setDescription('Access a list of help commands relevant to this bot.'),
 	execute(message, args) {
 		help(message, args);
 	},
+	guildOnly: true,
 };

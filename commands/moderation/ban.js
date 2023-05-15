@@ -1,6 +1,7 @@
+const { SlashCommandBuilder } = require('discord.js');
+
 module.exports = {
-	name: 'ban',
-	description: 'Bans the mentioned user from the server',
+	data: new SlashCommandBuilder().setName('ban').setDescription('Bans the mentioned user from the server'),
 	args: true,
 	usage: `<user>`,
 	permissions: 'BAN_MEMBERS',

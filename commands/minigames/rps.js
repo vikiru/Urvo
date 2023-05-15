@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
 
 async function rps(message, args) {
 	const user = message.mentions.members.first();
@@ -84,8 +84,7 @@ async function rps(message, args) {
 }
 
 module.exports = {
-	name: 'rps',
-	description: 'Play Rock-Paper-Scissors with the mentioned user',
+	data: new SlashCommandBuilder().setName('rps').setDescription('Play Rock-Paper-Scissors with the bot'),
 	args: true,
 	usage: '<user>',
 	guildOnly: true,

@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
 const { URLSearchParams } = require('url');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
@@ -44,8 +44,9 @@ async function retrieveAnime(message, args) {
 }
 
 module.exports = {
-	name: 'anime',
-	description: 'Sends the user information about a queried anime, obtained from MAL',
+	data: new SlashCommandBuilder()
+		.setName('anime')
+		.setDescription('Sends the user information about a queried anime, obtained from MA'),
 	guildOnly: true,
 	execute(message, args) {
 		retrieveAnime(message, args);

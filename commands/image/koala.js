@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
@@ -15,8 +15,7 @@ async function randomKoala(message, args) {
 }
 
 module.exports = {
-	name: 'koala',
-	description: 'Sends the user a random picture of a koala',
+	data: new SlashCommandBuilder().setName('koala').setDescription('Send a random image of a koala'),
 	guildOnly: true,
 	execute(message, args) {
 		randomKoala(message, args);

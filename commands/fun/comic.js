@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
@@ -19,9 +19,8 @@ async function getComic(message, args) {
 }
 
 module.exports = {
-	name: 'comic',
+	data: new SlashCommandBuilder().setName('comic').setDescription('Sends a random xkcd comic in the channe'),
 	guildOnly: true,
-	description: 'Sends a random xkcd comic in the channel',
 	execute(message, args) {
 		getComic(message, args);
 	},

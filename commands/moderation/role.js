@@ -1,6 +1,9 @@
+const { SlashCommandBuilder } = require('discord.js');
+
 module.exports = {
-	name: 'role',
-	description: 'Creates a new role based on inputted name and colour',
+	data: new SlashCommandBuilder()
+		.setName('role')
+		.setDescription('Creates a new role based on the inputted name and colour'),
 	args: true,
 	usage: '<role name> <colour>',
 	guildOnly: true,

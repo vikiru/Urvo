@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
@@ -14,15 +14,14 @@ async function randomQuote(message, args) {
 			.setColor('#EFFF00')
 			.setURL(quote.quoteLink)
 			.addFields({ name: 'Quote', value: quote.quoteText }, { name: 'Author', value: quote.quoteAuthor });
-    message.channel.send({embeds:[quoteEmbed]});
+		message.channel.send({ embeds: [quoteEmbed] });
 	} catch (error) {
 		console.log(error);
 	}
 }
 
 module.exports = {
-	name: 'quote',
-	description: 'Sends the user a random quote',
+	data: new SlashCommandBuilder().setName('quote').setDescription('Send a random quote'),
 	guildOnly: true,
 	execute(message, args) {
 		randomQuote(message, args);

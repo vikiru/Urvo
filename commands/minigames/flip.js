@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
 
 function coinFlip(message, args) {
 	const options = ['heads', 'tails'];
@@ -34,9 +34,9 @@ function coinFlip(message, args) {
 }
 
 module.exports = {
-	name: 'flip',
+	data: new SlashCommandBuilder().setName('flip').setDescription('Flip a coin and guess the outcome'),
 	guildOnly: true,
-	execute(message, args) {
+	async execute(interaction) {
 		coinFlip(message, args);
 	},
 };
