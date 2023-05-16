@@ -13,7 +13,7 @@ module.exports = {
 		const randomCat = await fetch('https://some-random-api.com/animal/cat').then((response) => response.json());
 
 		const catEmbed = new EmbedBuilder()
-			.setTitle('🐈 Random Cat!')
+			.setTitle('🙀 Random Cat!')
 			.setDescription(quote(randomCat.fact))
 			.setColor('#b35843')
 			.setTimestamp()
