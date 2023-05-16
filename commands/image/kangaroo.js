@@ -1,22 +1,26 @@
-const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-// Fetch a random kangaroo and send into the chat via an embed
-async function randomKangaroo(message, args) {
-	try {
-		const { link } = await fetch('https://some-random-api.ml/img/kangaroo').then((response) => response.json());
-
-		const kangarooEmbed = new MessageEmbed().setTitle('Random Kangaroo!').setColor('#EFFF00').setImage(link);
-		message.channel.send({ embeds: [kangarooEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
-}
 module.exports = {
 	data: new SlashCommandBuilder().setName('kangaroo').setDescription('Send a random picture of a kangaroo'),
 	guildOnly: true,
-	execute(message, args) {
-		randomKangaroo(message, args);
+	/**
+	 * Fetch a random kangaroo and send into the chat via an embed
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const randomKangaroo = await fetch('https://some-random-api.com/animal/kangaroo').then((response) =>
+			response.json(),
+		);
+
+		const kangarooEmbed = new EmbedBuilder()
+			.setTitle('🦘Random Kangaroo!')
+			.setDescription(quote(randomKangaroo.fact))
+			.setColor('#b35843')
+			.setTimestamp()
+			.setImage(randomKangaroo.image)
+			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		interaction.reply({ embeds: [kangarooEmbed] });
 	},
 };
