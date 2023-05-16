@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
 const { URLSearchParams } = require('url');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
@@ -10,18 +10,14 @@ module.exports = {
 	data: new SlashCommandBuilder().setName('anime-quote').setDescription('Send a random quote from an anime'),
 	guildOnly: true,
 	async execute(interaction) {
-		try {
-			const quoteData = await fetch('https://animechan.vercel.app/api/random').then((response) => response.json());
-			const animeQuote = '"' + quoteData.quote + '"';
+		const quoteData = await fetch('https://animechan.vercel.app/api/random').then((response) => response.json());
+		const animeQuote = quote('"' + quoteData.quote + '"');
 
-			const quoteEmbed = new EmbedBuilder()
-				.setColor('#EFFF00')
-				.setTitle(`Random Quote from ${quoteData.anime}`)
-				.setTimestamp()
-				.addFields({ name: 'Quote', value: animeQuote }, { name: 'Character', value: quoteData.character });
-			interaction.reply({ embeds: [quoteEmbed] });
-		} catch (error) {
-			interaction.reply({ content: 'An error occured executing the command.', ephemeral: true });
-		}
+		const quoteEmbed = new EmbedBuilder()
+			.setColor('#EFFF00')
+			.setTitle(`Random Quote from ${quoteData.anime}`)
+			.setTimestamp()
+			.addFields({ name: 'Quote', value: animeQuote }, { name: 'Character', value: quoteData.character });
+		interaction.reply({ embeds: [quoteEmbed] });
 	},
 };
