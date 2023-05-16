@@ -13,7 +13,7 @@ module.exports = {
 		const randomKoala = await fetch('https://some-random-api.com/animal/koala').then((response) => response.json());
 
 		const koalaEmbed = new EmbedBuilder()
-			.setTitle('🐨 Random Kangaroo!')
+			.setTitle('🐨 Random Koala!')
 			.setDescription(quote(randomKoala.fact))
 			.setColor('#b35843')
 			.setTimestamp()
