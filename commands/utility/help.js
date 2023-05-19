@@ -41,6 +41,6 @@ module.exports = {
 				{ name: 'Utility', value: util.toString() },
 			)
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
-		interaction.channel.send({ embeds: [helpEmbed] });
+		interaction.reply({ embeds: [helpEmbed] });
 	},
 };
