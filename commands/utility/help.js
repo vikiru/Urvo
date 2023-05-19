@@ -27,12 +27,6 @@ module.exports = {
 		//mu.push(music.map((command) => '`' + command.name + '`').join(', '));
 		util.push(utility.map((command) => '`' + command.data.name + '`').join(', '));
 
-		console.log(f.toString());
-		console.log(img.toString());
-		console.log(mg.toString());
-		console.log(mod.toString());
-		console.log(util.toString());
-
 		const helpEmbed = new EmbedBuilder()
 			.setTitle('List of Commands')
 			.setColor('#b35843')
