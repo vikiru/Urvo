@@ -15,6 +15,8 @@ module.exports = {
 		const allRoles = [];
 		allRoles.push(roles);
 
+		const date = new Date(interaction.guild.createdAt);
+
 		const serverEmbed = new EmbedBuilder()
 			.setTitle('Server Info!')
 			.setColor('#b35843')
@@ -23,6 +25,7 @@ module.exports = {
 			.addFields(
 				{ name: 'Server Name', value: interaction.guild.name, inline: true },
 				{ name: 'Server Owner', value: `<@${interaction.guild.ownerId}>`, inline: true },
+				{ name: 'Date Created', value: date.toLocaleDateString(), inline: true },
 				{ name: 'Member Count', value: interaction.guild.memberCount.toString(), inline: true },
 				{
 					name: 'Roles',
