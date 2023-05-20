@@ -35,9 +35,11 @@ module.exports = {
 			components: [row],
 		});
 		const filter = (i) => i.user.id === interaction.user.id;
+		
 		try {
 			const confirmation = await response.awaitMessageComponent({ filter: filter, time: 60_000 });
 			const confirmId = confirmation.customId;
+			
 			if (confirmId === 'confirm') {
 				await interaction.guild.members.kick(targetUser.id);
 				await interaction.editReply({
@@ -50,6 +52,7 @@ module.exports = {
 					components: [],
 				});
 			}
+
 		} catch (error) {
 			await interaction.editReply({
 				content: `Confirmation to kick <@${targetUser.id}> was not received within 1 minute. Aborting command execution.`,
