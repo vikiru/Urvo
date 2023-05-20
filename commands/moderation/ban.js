@@ -18,6 +18,10 @@ module.exports = {
 		)
 		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
 	guildOnly: true,
+	/**
+	 * Allows a user with the right permissions to ban a user from the server permanently.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const targetUser = interaction.options.getUser('user');
 		const reason = interaction.options.getString('reason') ?? 'No reason provided';
