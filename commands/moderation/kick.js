@@ -5,6 +5,7 @@ const {
 	ActionRowBuilder,
 	ButtonBuilder,
 } = require('discord.js');
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('kick')
@@ -17,6 +18,10 @@ module.exports = {
 		)
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 	guildOnly: true,
+	/**
+	 * Allows a user with the right permissions to kick another user from the guild.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const targetUser = interaction.options.getUser('user');
 		const reason = interaction.options.getString('reason') ?? 'No reason provided';
