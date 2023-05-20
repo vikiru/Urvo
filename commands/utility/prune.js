@@ -21,7 +21,7 @@ module.exports = {
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
 	guildOnly: true,
 	async execute(interaction) {
-		const messageCount = interaction.options.getInteger('messages');
+		const messageCount = interaction.options.getInteger('amount');
 
 		const confirmDelete = new ButtonBuilder()
 			.setCustomId('confirm')
@@ -43,7 +43,7 @@ module.exports = {
 			if (confirmId === 'confirm') {
 				await interaction.channel.bulkDelete(messageCount);
 				await interaction.channel.send({
-					content: `Successfully deleted ${messageCount} messages. As requested by ${interaction.user.username}`,
+					content: `Successfully deleted ${messageCount} messages. As requested by <@${interaction.user.id}>`,
 					components: [],
 				});
 			} else if (confirmId === 'cancel') {
