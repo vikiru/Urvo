@@ -12,13 +12,7 @@
 	"author": "vikiru",
 	"license": "MIT",
 	"dependencies": {
-		"@discordjs/opus": "^0.9.0",
-		"@discordjs/voice": "^0.16.0",
-		"canvas": "^2.11.2",
 		"discord.js": "^14.11.0",
-		"dotenv": "^16.0.3",
-		"ffmpeg-static": "^5.1.0",
-		"libsodium-wrappers": "^0.7.11",
 		"node-fetch": "^3.3.1"
 	}
 }
