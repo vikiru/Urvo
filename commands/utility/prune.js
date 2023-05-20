@@ -20,6 +20,10 @@ module.exports = {
 		)
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
 	guildOnly: true,
+	/**
+	 * Allows a user with the right permissions to delete a specified number of messages from the guild.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const messageCount = interaction.options.getInteger('amount');
 
