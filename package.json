@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"deploy": "node deploy.js",
-		"start": "node ./main.js"
+		"start": "node ."
 	},
 	"keywords": [],
 	"author": "vikiru",
