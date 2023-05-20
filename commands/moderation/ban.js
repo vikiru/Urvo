@@ -37,7 +37,7 @@ module.exports = {
 			if (confirmId === 'confirm') {
 				await interaction.guild.bans.create(targetUser.id);
 				await interaction.editReply({
-					content: `Successfully banned <@${targetUser.id}> for ${reason}. As requested by ${interaction.user.username}`,
+					content: `Successfully banned <@${targetUser.id}> for ${reason}. As requested by <@${interaction.user.id}>`,
 					components: [],
 				});
 			} else if (confirmId === 'cancel') {
