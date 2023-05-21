@@ -17,14 +17,12 @@ module.exports = {
 		const img = [];
 		const mg = [];
 		const mod = [];
-		const mu = [];
 		const util = [];
 
 		f.push(fun.map((command) => '`' + command.data.name + '`').join(', '));
 		img.push(image.map((command) => '`' + command.data.name + '`').join(', '));
 		mg.push(minigames.map((command) => '`' + command.data.name + '`').join(', '));
 		mod.push(moderation.map((command) => '`' + command.data.name + '`').join(', '));
-		//mu.push(music.map((command) => '`' + command.name + '`').join(', '));
 		util.push(utility.map((command) => '`' + command.data.name + '`').join(', '));
 
 		const helpEmbed = new EmbedBuilder()
