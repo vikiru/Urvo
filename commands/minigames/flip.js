@@ -38,7 +38,9 @@ module.exports = {
 				{ name: `${interaction.user.username}'s Choice`, value: choice, inline: true },
 				{ name: 'Result', value: outcome.charAt(0).toUpperCase(), inline: true },
 				{ name: 'Outcome', value: outcome },
-			);
+			)
+			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+
 		interaction.reply({ embeds: [resultEmbed] });
 	},
 };
