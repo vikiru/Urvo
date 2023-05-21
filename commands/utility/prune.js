@@ -45,6 +45,7 @@ module.exports = {
 			const confirmId = confirmation.customId;
 
 			if (confirmId === 'confirm') {
+				await response.delete();
 				await interaction.channel.bulkDelete(messageCount);
 				await interaction.channel.send({
 					content: `Successfully deleted ${messageCount} messages. As requested by <@${interaction.user.id}>`,
