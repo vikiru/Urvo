@@ -1,24 +1,24 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-// Fetch a random koala and send into the chat via an embed
-async function randomKoala(message, args) {
-	try {
-		const { link } = await fetch('https://some-random-api.ml/img/koala').then((response) => response.json());
-
-		const koalaEmbed = new MessageEmbed().setTitle('Random Koala!').setColor('#EFFF00').setImage(link);
-		message.channel.send({ embeds: [koalaEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
-}
-
 module.exports = {
-	name: 'koala',
-	description: 'Sends the user a random picture of a koala',
+	data: new SlashCommandBuilder().setName('koala').setDescription('Send a random image of a koala'),
 	guildOnly: true,
-	execute(message, args) {
-		randomKoala(message, args);
+	/**
+	 * Fetch a random koala and send into the chat via an embed
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const randomKoala = await fetch('https://some-random-api.com/animal/koala').then((response) => response.json());
+
+		const koalaEmbed = new EmbedBuilder()
+			.setTitle('🐨 Random Koala!')
+			.setDescription(quote(randomKoala.fact))
+			.setColor('#b35843')
+			.setTimestamp()
+			.setImage(randomKoala.image)
+			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		interaction.reply({ embeds: [koalaEmbed] });
 	},
 };

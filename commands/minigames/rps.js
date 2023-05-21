@@ -1,95 +1,98 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
-async function rps(message, args) {
-	const user = message.mentions.members.first();
-	if (user.id === message.author.id) message.reply(`You can't play rps with yourself!`);
-	else {
-		const options = ['rock', 'paper', 'scissors'];
-		const filter = (response) => {
-			return options.some((o) => o.toLowerCase() === response.content.toLowerCase());
-		};
+/**
+ * Create a map which will allow for easy comparison of moves made in Rock-Paper-Scissors
+ * @returns A map which ranks potential moves in Rock-Paper-Scissors for easy determination of outcome
+ */
+function returnChoicesMap() {
+	const rockMap = new Map();
+	rockMap.set('scissors', 0);
+	rockMap.set('rock', 1);
+	rockMap.set('paper', 2);
 
-		message.channel.send(`Please enter your choice: 'rock', 'paper', 'scissors'`).then(() => {
-			message.channel.awaitMessages(filter, { max: 1, time: 30000 }).then((result) => {
-				const bot_choice = options[Math.floor(Math.random() * options.length)];
+	const paperMap = new Map();
+	paperMap.set('rock', 0);
+	paperMap.set('paper', 1);
+	paperMap.set('scissors', 2);
 
-				var outcome = '';
+	const scissorMap = new Map();
+	scissorMap.set('paper', 0);
+	scissorMap.set('scissors', 1);
+	scissorMap.set('rock', 2);
 
-				// Paper beating rock
-				if (
-					(result.first().content === 'paper' && bot_choice === 'rock') ||
-					(bot_choice === 'paper' && result.first().content === 'rock')
-				) {
-					if (result.first().content === 'rock') {
-						var outcome = `<@${client.user.id}> has won the game`;
-					} else {
-						var outcome = `<@${message.author.id}> has won the game`;
-					}
-				}
+	const choicesMap = new Map();
+	choicesMap.set('rock', rockMap);
+	choicesMap.set('paper', paperMap);
+	choicesMap.set('scissors', scissorMap);
+	return choicesMap;
+}
 
-				// Rock beating scissors
-				if (
-					(result.first().content === 'rock' && bot_choice === 'scissors') ||
-					(bot_choice === 'rock' && result.first().content === 'scissors')
-				) {
-					if (result.first().content === 'rock') {
-						var outcome = `<@${message.author.id}> has won the game`;
-					} else {
-						var outcome = `<@${client.user.id}> has won the game`;
-					}
-				}
-
-				// Scissors beating paper
-				if (
-					(result.first().content === 'scissors' && bot_choice === 'paper') ||
-					(bot_choice === 'scissors' && result.first().content === 'paper')
-				) {
-					if (result.first().content === 'scissors') {
-						var outcome = `<@${message.author.id}> has won the game`;
-					} else {
-						var outcome = `<@${client.user.id}> has won the game`;
-					}
-				}
-
-				// Tie game
-				if (result.first().content === bot_choice) {
-					var outcome = 'Tie!';
-				}
-
-				// Create the result embed
-				const resultEmbed = new MessageEmbed()
-					.setTitle(`Rock-Paper-Scissors Match between ${message.author.username} and ${client.user.username}`)
-					.setColor('#EFFF00')
-					.setThumbnail('https://ausm.org.uk/wp-content/uploads/2015/02/rock-paper-scissors-hands.jpg')
-					.addFields(
-						{
-							name: `${message.author.username}'s Choice: `,
-							value: result.first().content,
-							inline: true,
-						},
-						{
-							name: `${client.user.username}'s Choice: `,
-							value: bot_choice,
-							inline: true,
-						},
-						{ name: 'Outcome', value: outcome },
-					)
-					.setTimestamp();
-
-				// Send the embed
-				message.channel.send(resultEmbed);
-			});
-		});
+/**
+ * Determine the outcome of the Rock-Paper-Scissors match
+ * @param {*} playerChoice
+ * @param {*} botChoice
+ * @returns The outcome as a string
+ */
+function determineOutcome(playerChoice, botChoice) {
+	const choicesMap = returnChoicesMap();
+	if (playerChoice === botChoice) {
+		return 'Tie';
+	} else {
+		const playerRank = choicesMap.get(playerChoice).get(playerChoice);
+		const botRank = choicesMap.get(playerChoice).get(botChoice);
+		return playerRank > botRank ? 'You win!' : 'You lose!';
 	}
 }
 
 module.exports = {
-	name: 'rps',
-	description: 'Play Rock-Paper-Scissors with the mentioned user',
-	args: true,
-	usage: '<user>',
+	data: new SlashCommandBuilder()
+		.setName('rps')
+		.setDescription('Play Rock-Paper-Scissors with the bot')
+		.addStringOption((option) =>
+			option
+				.setName('choice')
+				.setDescription('The move you would like to play (rock, paper, scissors)')
+				.setRequired(true)
+				.addChoices(
+					{ name: 'Paper', value: 'paper' },
+					{
+						name: 'Rock',
+						value: 'rock',
+					},
+					{ name: 'Scissors', value: 'scissors' },
+				),
+		),
 	guildOnly: true,
-	execute(message, args) {
-		rps(message, args);
+	/**
+	 * Allows a user to play Rock-Paper-Scissors with the bot, sends the outcome of the match into the chat via an embed.
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const options = ['rock', 'paper', 'scissors'];
+		const botChoice = options[Math.floor(Math.random() * options.length)];
+		const playerChoice = interaction.options.getString('choice');
+
+		const outcome = determineOutcome(playerChoice, botChoice);
+		const resultEmbed = new EmbedBuilder()
+			.setTitle(`Rock-Paper-Scissors Match between ${interaction.user.username} and ${client.user.username}`)
+			.setColor('#b35843')
+			.setTimestamp()
+			.setThumbnail('https://ausm.org.uk/wp-content/uploads/2015/02/rock-paper-scissors-hands.jpg')
+			.addFields(
+				{
+					name: `${interaction.user.username}'s Choice: `,
+					value: result.first().content,
+					inline: true,
+				},
+				{
+					name: `${client.user.username}'s Choice: `,
+					value: botChoice,
+					inline: true,
+				},
+				{ name: 'Outcome', value: outcome },
+			)
+			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+
+		interaction.reply({ embeds: [resultEmbed] });
 	},
 };

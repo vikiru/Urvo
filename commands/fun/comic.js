@@ -1,28 +1,29 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-async function getComic(message, args) {
-	const currComic = await fetch('https://xkcd.com/info.0.json').then((response) => response.json());
-	const maxNum = currComic.num;
-
-	const random = Math.floor(Math.random() * maxNum);
-
-	const retrievedComic = await fetch(`https://xkcd.com/${random}/info.0.json`).then((response) => response.json());
-
-	const comicEmbed = new MessageEmbed()
-		.setTitle(`Random Comic : ${retrievedComic.safe_title} `)
-		.setColor('#EFFF00')
-		.setImage(retrievedComic.img);
-
-	message.channel.send({ embeds: [comicEmbed] });
-}
-
 module.exports = {
-	name: 'comic',
+	data: new SlashCommandBuilder().setName('comic').setDescription('Sends a random xkcd comic in the channe'),
 	guildOnly: true,
-	description: 'Sends a random xkcd comic in the channel',
-	execute(message, args) {
-		getComic(message, args);
+	/**
+	 * Fetch the current xkcd comic and then fetch a random comic and send it into the chat via an embed.
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const currComic = await fetch('https://xkcd.com/info.0.json').then((response) => response.json());
+		const maxNum = currComic.num;
+		const random = Math.floor(Math.random() * maxNum);
+
+		const randomComic = await fetch(`https://xkcd.com/${random}/info.0.json`).then((response) => response.json());
+
+		const comicEmbed = new EmbedBuilder()
+			.setTitle(`${randomComic.safe_title}`)
+			.setColor('#b35843')
+			.setTimestamp()
+			.setImage(randomComic.img)
+			.setURL(`https://xkcd.com/${random}`)
+			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+
+		interaction.reply({ embeds: [comicEmbed] });
 	},
 };

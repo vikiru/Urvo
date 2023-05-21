@@ -1,42 +1,46 @@
-const { MessageEmbed } = require('discord.js');
-
-function coinFlip(message, args) {
-	const options = ['heads', 'tails'];
-
-	const filter = (response) => {
-		return options.some((o) => o.toLowerCase() === response.content.toLowerCase());
-	};
-
-	message.channel.send("Choose an option: 'heads' or 'tails'");
-	message.channel.awaitMessages(filter, { max: 1, time: 30000 }).then((response) => {
-		const outcome = options[Math.floor(Math.random() * options.length)];
-
-		var result = '';
-		if (response.first().content === outcome) {
-			var result = 'You win!';
-		} else {
-			var result = 'You lose!';
-		}
-
-		const flipEmbed = new MessageEmbed()
-			.setTitle('Coin Flip!')
-			.setColor('#EFFF00')
-			.setThumbnail('https://karenstrunks.com/wp-content/uploads/2014/06/HEADS-TAILS.jpg')
-			.addFields(
-				{ name: `${message.author.username}'s Choice:`, value: response.first().content, inline: true },
-				{ name: 'Result:', value: outcome, inline: true },
-				{ name: '\u200b', value: result },
-			)
-			.setTimestamp();
-
-		message.channel.send(flipEmbed);
-	});
-}
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
-	name: 'flip',
+	data: new SlashCommandBuilder()
+		.setName('flip')
+		.setDescription('Flip a coin and guess the outcome')
+		.addStringOption((option) =>
+			option
+				.setName('choice')
+				.setDescription('The outcome of the coin flip (heads or tails)')
+				.setRequired(true)
+				.addChoices(
+					{ name: 'Heads', value: 'heads' },
+					{
+						name: 'Tails',
+						value: 'tails',
+					},
+				),
+		),
 	guildOnly: true,
-	execute(message, args) {
-		coinFlip(message, args);
+	/**
+	 * Allows the user to flip a coin and guess the outcome, sending the result of the coin flip into the chat via an embed.
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const options = ['heads', 'tails'];
+		const result = options[Math.floor(Math.random() * options.length)];
+
+		const choice = interaction.options.getString('choice');
+		const outcome = result === choice ? 'You win!' : 'You lose!';
+
+		const resultEmbed = new EmbedBuilder()
+			.setTitle('Coin Flip!')
+			.setColor('#b35843')
+			.setTimestamp()
+			.setThumbnail('https://karenstrunks.com/wp-content/uploads/2014/06/HEADS-TAILS.jpg')
+			.addFields(
+				{ name: `${interaction.user.username}'s Choice`, value: choice, inline: true },
+				{ name: 'Result', value: outcome.charAt(0).toUpperCase(), inline: true },
+				{ name: 'Outcome', value: outcome },
+			)
+			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+
+		interaction.reply({ embeds: [resultEmbed] });
 	},
 };

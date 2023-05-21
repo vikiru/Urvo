@@ -1,53 +1,62 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
 const { URLSearchParams } = require('url');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-
-// Fetch the MAL listing of an anime given by the user's args
-// and display its respective info
-async function retrieveAnime(message, args) {
-	try {
-		const query = new URLSearchParams({ query: args.join(' ') });
-
-		const { results } = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`).then((response) =>
-			response.json(),
-		);
-		const animeInfo = results[0];
-
-		const animeEmbed = new MessageEmbed()
-			.setTitle(animeInfo.title)
-			.setColor('#EFFF00')
-			.setURL(animeInfo.url)
-			.setThumbnail(animeInfo.image_url)
-			.addFields(
-				{ name: 'Rating', value: animeInfo.rated, inline: true },
-				{ name: 'Type', value: animeInfo.type, inline: true },
-				{ name: 'Score', value: animeInfo.score.toString(), inline: true },
-				{ name: 'Episodes', value: animeInfo.episodes.toString(), inline: true },
-				{
-					name: 'Start Date',
-					value: animeInfo.start_date.split('T')[0],
-					inline: true,
-				},
-				{
-					name: 'End Date',
-					value: animeInfo.end_date.split('T')[0],
-					inline: true,
-				},
-				{ name: 'Description', value: animeInfo.synopsis },
-			);
-
-		message.channel.send({ embeds: [animeEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
-}
+const trim = (str, max) => (str.length > max ? `${str.slice(0, max - 3)}...` : str);
 
 module.exports = {
-	name: 'anime',
-	description: 'Sends the user information about a queried anime, obtained from MAL',
+	data: new SlashCommandBuilder()
+		.setName('anime')
+		.setDescription('Sends the user information about a queried anime, obtained from MAL')
+		.addStringOption((option) =>
+			option.setName('query').setDescription('The name of the anime you wish to search for').setRequired(true),
+		),
 	guildOnly: true,
-	execute(message, args) {
-		retrieveAnime(message, args);
+	/**
+	 * Fetch information pertaining to a queried anime and send the response back as an embed.
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const desiredAnime = interaction.options.getString('query');
+		const query = new URLSearchParams({ query: desiredAnime });
+
+		const animeSearch = await fetch(`https://api.jikan.moe/v4/anime?q=${query}`).then((response) => response.json());
+		if (!animeSearch.data.length) {
+			interaction.reply('Sorry, this anime does not seem to exist or it was incorrectly typed. Please try again.');
+		} else {
+			const animeResult =
+				animeSearch.data.find(
+					(anime) => anime.title.toLowerCase() === desiredAnime || anime.title.toLowerCase().includes(desiredAnime),
+				) ?? animeSearch.data[0];
+
+			const imageUrl = animeResult.images.jpg.image_url;
+
+			let episodeCount = 'N/A';
+			if (animeResult.episodes) {
+				episodeCount = animeResult.episodes.toString();
+			}
+
+			let score = '0';
+			if (animeResult.score) {
+				score = animeResult.score.toString();
+			}
+			const trimmedSynopsis = trim(animeResult.synopsis, 1024).toString();
+
+			const animeEmbed = new EmbedBuilder()
+				.setTitle(animeResult.title)
+				.setColor('#b35843')
+				.setTimestamp()
+				.setURL(animeResult.url)
+				.setThumbnail(imageUrl)
+				.addFields(
+					{ name: 'Episode Count', value: episodeCount, inline: true },
+					{ name: 'Type', value: animeResult.type ?? 'N/A', inline: true },
+					{ name: 'Score', value: score, inline: true },
+					{ name: 'Synopsis', value: trimmedSynopsis, inline: false },
+				)
+				.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+
+			interaction.reply({ embeds: [animeEmbed] });
+		}
 	},
 };

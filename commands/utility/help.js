@@ -1,30 +1,34 @@
-const { MessageEmbed } = require('discord.js');
-const { prefix } = require('../../config.json');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
-function help(message, args) {
-	const data = [];
-	const { fun, image, minigames, moderation, music, utility } = message.client.commands;
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('help')
+		.setDescription('Access a list of help commands relevant to this bot.'),
+	guildOnly: true,
+	/**
+	 * Send an embed with information about all the commands that the bot is able to execute.
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const data = [];
+		const { fun, image, minigames, moderation, utility } = client.commands;
 
-	const f = [];
-	const img = [];
-	const mg = [];
-	const mod = [];
-	const mu = [];
-	const util = [];
+		const f = [];
+		const img = [];
+		const mg = [];
+		const mod = [];
+		const util = [];
 
-	if (!args.length) {
-		f.push(fun.map((command) => '`' + command.name + '`').join(', '));
-		img.push(image.map((command) => '`' + command.name + '`').join(', '));
-		mg.push(minigames.map((command) => '`' + command.name + '`').join(', '));
-		mod.push(moderation.map((command) => '`' + command.name + '`').join(', '));
-		mu.push(music.map((command) => '`' + command.name + '`').join(', '));
-		util.push(utility.map((command) => '`' + command.name + '`').join(', '));
+		f.push(fun.map((command) => '`' + command.data.name + '`').join(', '));
+		img.push(image.map((command) => '`' + command.data.name + '`').join(', '));
+		mg.push(minigames.map((command) => '`' + command.data.name + '`').join(', '));
+		mod.push(moderation.map((command) => '`' + command.data.name + '`').join(', '));
+		util.push(utility.map((command) => '`' + command.data.name + '`').join(', '));
 
-		data.push(`\nYou can send ${prefix}help [command name] to retrieve all of the info on the specific command`);
-
-		const helpEmbed = new MessageEmbed()
+		const helpEmbed = new EmbedBuilder()
 			.setTitle('List of Commands')
-			.setColor('#EFFF00')
+			.setColor('#b35843')
+			.setTimestamp()
 			.setThumbnail('http://www.clker.com/cliparts/P/t/7/o/9/W/help-hi.png')
 			.setDescription('All of the possible commands that can be used')
 			.addFields(
@@ -32,22 +36,9 @@ function help(message, args) {
 				{ name: 'Image', value: img.toString() },
 				{ name: 'Minigames', value: mg.toString() },
 				{ name: 'Moderation', value: mod.toString() },
-				{ name: 'Music', value: mu.toString() },
 				{ name: 'Utility', value: util.toString() },
-				{ name: '\u200B', value: data.toString() },
 			)
-			.setTimestamp()
-			.setFooter(`Prefix: ${prefix}`);
-
-		message.channel.send({ embeds: [helpEmbed] });
-	}
-}
-
-module.exports = {
-	name: 'help',
-	description: 'Sends an embed containing all of the possible commands',
-	guildOnly: true,
-	execute(message, args) {
-		help(message, args);
+			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		interaction.reply({ embeds: [helpEmbed] });
 	},
 };

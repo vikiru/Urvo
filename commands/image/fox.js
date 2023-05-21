@@ -1,24 +1,24 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-// Fetch a random fox and send into the chat via an embed
-async function randomFox(message, args) {
-	try {
-		const { image } = await fetch('https://randomfox.ca/floof/').then((response) => response.json());
-
-		const foxEmbed = new MessageEmbed().setTitle('Random Fox!').setColor('#EFFF00').setImage(image);
-		message.channel.send({ embeds: [foxEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
-}
-
 module.exports = {
-	name: 'fox',
-	description: 'Sends the user a random picture of a fox',
+	data: new SlashCommandBuilder().setName('fox').setDescription('Send a random picture of a fox'),
 	guildOnly: true,
-	execute(message, args) {
-		randomFox(message, args);
+	/**
+	 * Fetch a random fox and send into the chat via an embed
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const randomFox = await fetch('https://some-random-api.com/animal/fox').then((response) => response.json());
+
+		const foxEmbed = new EmbedBuilder()
+			.setTitle('🦊 Random Fox!')
+			.setDescription(quote(randomFox.fact))
+			.setColor('#b35843')
+			.setTimestamp()
+			.setImage(randomFox.image)
+			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		interaction.reply({ embeds: [foxEmbed] });
 	},
 };
