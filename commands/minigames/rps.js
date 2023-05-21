@@ -93,5 +93,6 @@ module.exports = {
 				{ name: 'Outcome', value: outcome },
 			)
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		interaction.reply({ embeds: [resultEmbed] });
 	},
 };
