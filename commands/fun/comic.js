@@ -3,7 +3,7 @@ const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 module.exports = {
-	data: new SlashCommandBuilder().setName('comic').setDescription('Sends a random xkcd comic in the channe'),
+	data: new SlashCommandBuilder().setName('comic').setDescription('Sends a random xkcd comic in the channel'),
 	guildOnly: true,
 	/**
 	 * Fetch the current xkcd comic and then fetch a random comic and send it into the chat via an embed.
