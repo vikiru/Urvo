@@ -10,11 +10,9 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomQuote = await fetch('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json').then(
-			(response) => response.json(),
-		);
+		const randomQuote = await fetch('https://dummyjson.com/quotes/random').then((response) => response.json());
 
-		const quoteMsg = quote(randomQuote.quoteText) + '\n' + `~${randomQuote.quoteAuthor}`;
+		const quoteMsg = quote(`"${randomQuote.quote}"`);
 
 		const quoteEmbed = new EmbedBuilder()
 			.setTitle('Random Quote!')
@@ -22,6 +20,7 @@ module.exports = {
 			.setColor('#b35843')
 			.setTimestamp()
 			.setURL(quote.quoteLink)
+			.addFields({ name: 'Author', value: randomQuote.author })
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
 		interaction.reply({ embeds: [quoteEmbed] });
 	},
