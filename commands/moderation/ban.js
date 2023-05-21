@@ -39,7 +39,7 @@ module.exports = {
 		try {
 			const confirmation = await response.awaitMessageComponent({ filter: filter, time: 60_000 });
 			const confirmId = confirmation.customId;
-			
+
 			if (confirmId === 'confirm') {
 				await interaction.guild.bans.create(targetUser.id);
 				await interaction.editReply({
@@ -52,7 +52,6 @@ module.exports = {
 					components: [],
 				});
 			}
-
 		} catch (error) {
 			await interaction.editReply({
 				content: `Confirmation to ban <@${targetUser.id}> was not received within 1 minute. Aborting command execution.`,
