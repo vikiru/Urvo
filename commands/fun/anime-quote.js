@@ -19,7 +19,7 @@ module.exports = {
 
 		const quoteEmbed = new EmbedBuilder()
 			.setColor('#b35843')
-			.setTitle(`Random Quote from ${quoteData.anime}`)
+			.setTitle(`💬 Random Quote from ${quoteData.anime}`)
 			.setTimestamp()
 			.addFields({ name: 'Quote', value: animeQuote }, { name: 'Character', value: quoteData.character })
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });

@@ -15,7 +15,7 @@ module.exports = {
 		const quoteMsg = quote(`"${randomQuote.quote}"`);
 
 		const quoteEmbed = new EmbedBuilder()
-			.setTitle('Random Quote!')
+			.setTitle('💬 Random Quote!')
 			.setDescription(quoteMsg)
 			.setColor('#b35843')
 			.setTimestamp()
