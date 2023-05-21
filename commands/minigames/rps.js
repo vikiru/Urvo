@@ -1,5 +1,4 @@
-const { EmbedBuilder } = require('discord.js');
-const { MessageEmbed, SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
 /**
  * Create a map which will allow for easy comparison of moves made in Rock-Paper-Scissors
@@ -93,6 +92,7 @@ module.exports = {
 				{ name: 'Outcome', value: outcome },
 			)
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+
 		interaction.reply({ embeds: [resultEmbed] });
 	},
 };
