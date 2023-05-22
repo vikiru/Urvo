@@ -74,12 +74,3 @@ for (const file of eventFiles) {
 
 // Bot Login & Setup
 client.login(token);
-
-/**
- * Helper function to make the first character of a string uppercase
- * @param {*} str
- */
-function properCase(str) {
-	str = str.charAt(0).toUpperCase() + str.slice(1);
-	return str;
-}
