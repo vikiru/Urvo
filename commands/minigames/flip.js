@@ -45,7 +45,7 @@ module.exports = {
 			.setThumbnail('https://karenstrunks.com/wp-content/uploads/2014/06/HEADS-TAILS.jpg')
 			.addFields(
 				{ name: `${interaction.user.username}'s Choice`, value: properCase(choice), inline: true },
-				{ name: 'Result', value: properCase(outcome), inline: true },
+				{ name: 'Result', value: properCase(result), inline: true },
 				{ name: 'Outcome', value: outcome },
 			)
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
