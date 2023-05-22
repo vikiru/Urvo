@@ -14,7 +14,7 @@ function properCase(str) {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('guess_user')
-		.setDescription('Determine the ageResult, genderResult, and nationality of a user based on their name')
+		.setDescription('Determine the age, gender, and nationality of a user based on their name')
 		.addStringOption((option) =>
 			option.setName('name').setDescription('The name that you wish to provide').setRequired(true),
 		),
@@ -30,8 +30,6 @@ module.exports = {
 		const genderResult = await fetch(`https://api.genderize.io?name=${name}`).then((response) => response.json());
 		const nationality = await fetch(`https://api.nationalize.io?name=${name}`).then((response) => response.json());
 
-		console.log(genderResult);
-		console.log(ageResult);
 		const userEmbed = new EmbedBuilder()
 			.setTitle(`Who are you, ${properCase(name)}?`)
 			.setColor('#b35843')
