@@ -1,5 +1,14 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
+/**
+ * Helper function to make the first character of a string uppercase
+ * @param {*} str
+ */
+function properCase(str) {
+	str = str.charAt(0).toUpperCase() + str.slice(1);
+	return str;
+}
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('flip')
@@ -35,8 +44,8 @@ module.exports = {
 			.setTimestamp()
 			.setThumbnail('https://karenstrunks.com/wp-content/uploads/2014/06/HEADS-TAILS.jpg')
 			.addFields(
-				{ name: `${interaction.user.username}'s Choice`, value: choice, inline: true },
-				{ name: 'Result', value: outcome.charAt(0).toUpperCase(), inline: true },
+				{ name: `${interaction.user.username}'s Choice`, value: properCase(choice), inline: true },
+				{ name: 'Result', value: properCase(outcome), inline: true },
 				{ name: 'Outcome', value: outcome },
 			)
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
