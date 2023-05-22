@@ -14,10 +14,10 @@ module.exports = {
 
 		const affirmationEmbed = new EmbedBuilder()
 			.setTitle(`☀️ Random Affirmation!`)
+			.setDescription(randomAffirmation.affirmation)
 			.setColor('#b35843')
 			.setImage('https://cdn.pixabay.com/photo/2014/04/21/07/00/field-328962_1280.jpg')
 			.setTimestamp()
-			.addFields({ name: 'Lines', value: randomAffirmation.affirmation })
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
 
 		interaction.reply({ embeds: [affirmationEmbed] });
