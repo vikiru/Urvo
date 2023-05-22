@@ -18,6 +18,7 @@ global.queue = new Map();
 global.embedColor = `#EFFF00`;
 
 client.prefix = prefix;
+client.embedColor = '#b35843';
 client.commands = new Collection();
 client.commands.fun = new Collection();
 client.commands.image = new Collection();
@@ -73,3 +74,12 @@ for (const file of eventFiles) {
 
 // Bot Login & Setup
 client.login(token);
+
+/**
+ * Helper function to make the first character of a string uppercase
+ * @param {*} str
+ */
+function properCase(str) {
+	str = str.charAt(0).toUpperCase() + str.slice(1);
+	return str;
+}
