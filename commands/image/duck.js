@@ -16,7 +16,7 @@ module.exports = {
 			.setTitle('🦆 Random Duck!')
 			.setColor('#b35843')
 			.setTimestamp()
-			.setImage(randomDuck.image)
+			.setImage(randomDuck.url)
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
 		interaction.reply({ embeds: [duckEmbed] });
 	},

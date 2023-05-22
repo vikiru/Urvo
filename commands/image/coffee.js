@@ -13,7 +13,7 @@ module.exports = {
 		const randomCoffee = await fetch('https://coffee.alexflipnote.dev/random.json').then((response) => response.json());
 
 		const coffeeEmbed = new EmbedBuilder()
-			.setTitle('☕ Random Duck!')
+			.setTitle('☕ Random Coffee!')
 			.setColor('#b35843')
 			.setTimestamp()
 			.setImage(randomCoffee.file)
