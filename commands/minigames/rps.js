@@ -1,6 +1,15 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
 /**
+ * Helper function to make the first character of a string uppercase
+ * @param {*} str
+ */
+function properCase(str) {
+	str = str.charAt(0).toUpperCase() + str.slice(1);
+	return str;
+}
+
+/**
  * Create a map which will allow for easy comparison of moves made in Rock-Paper-Scissors
  * @returns A map which ranks potential moves in Rock-Paper-Scissors for easy determination of outcome
  */
@@ -81,12 +90,12 @@ module.exports = {
 			.addFields(
 				{
 					name: `${interaction.user.username}'s Choice: `,
-					value: result.first().content,
+					value: properCase(playerChoice),
 					inline: true,
 				},
 				{
 					name: `${client.user.username}'s Choice: `,
-					value: botChoice,
+					value: properCase(botChoice),
 					inline: true,
 				},
 				{ name: 'Outcome', value: outcome },
