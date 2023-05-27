@@ -15,7 +15,7 @@ module.exports = {
 		).then((response) => response.json());
 
 		const programmingJokeEmbed = new EmbedBuilder()
-			.setTitle(`Random Programming Joke!`)
+			.setTitle(`🖥️ Random Programming Joke!`)
 			.setDescription(randomJoke.joke)
 			.setColor('#b35843')
 			.setTimestamp()
