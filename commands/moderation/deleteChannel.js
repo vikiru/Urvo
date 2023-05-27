@@ -8,7 +8,7 @@ const {
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('delete-channel')
+		.setName('delete_channel')
 		.setDescription('Deletes a mentioned channel')
 		.addChannelOption((option) => option.setName('channel').setDescription('The channel to delete').setRequired(true))
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
