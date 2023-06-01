@@ -15,7 +15,7 @@ module.exports = {
         ),
     guildOnly: true,
     /**
-     * Sends a Tuxedo Winnie the Pooh meme with the specified text
+     * Sends a One Does Not Simply Walk Into Mordor meme with the specified text
      * @param {*} interaction
      */
     async execute(interaction) {
@@ -23,7 +23,7 @@ module.exports = {
         const bottomText = interaction.options.getString('bottom_text');
 
         const mordorEmbed = new EmbedBuilder()
-            .setTitle('Tuxedo Winnie the Pooh Meme')
+            .setTitle('One Does Not Simply Walk Into Mordor Meme')
             .setDescription(`Here is your requested meme! \n\n[Generated via Memegen.link](https://memegen.link/)`)
             .setColor('#b35843')
             .setTimestamp()
