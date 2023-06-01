@@ -27,7 +27,7 @@ module.exports = {
     async execute(interaction) {
         const topText = interaction.options.getString('top_text');
         const bottomText = interaction.options.getString('bottom_text');
-        const memeFormat = interaction.options.getString('format');
+        const format = interaction.options.getString('format');
 
         const buzzEmbed = new EmbedBuilder()
             .setTitle('Buzz Lightyear Everywhere Meme')
