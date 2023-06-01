@@ -23,7 +23,7 @@ module.exports = {
         const bottomText = interaction.options.getString('bottom_text');
 
         const raptorEmbed = new EmbedBuilder()
-            .setTitle('Tuxedo Winnie the Pooh Meme')
+            .setTitle('Philosoraptor Meme')
             .setDescription(`Here is your requested meme! \n\n[Generated via Memegen.link](https://memegen.link/)`)
             .setColor('#b35843')
             .setTimestamp()
