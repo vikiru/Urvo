@@ -15,14 +15,14 @@ module.exports = {
         ),
     guildOnly: true,
     /**
-     * Sends a Philosoraptor meme with the specified text
+     * Sends a Daily Struggle meme with the specified text
      * @param {*} interaction
      */
     async execute(interaction) {
         const leftButton = interaction.options.getString('left_button_text');
         const rightButton = interaction.options.getString('right_button_text');
 
-        const raptorEmbed = new EmbedBuilder()
+        const struggleEmbed = new EmbedBuilder()
             .setTitle('Daily Struggle Meme')
             .setDescription(`Here is your requested meme! \n\n[Generated via Memegen.link](https://memegen.link/)`)
             .setColor('#b35843')
@@ -30,6 +30,6 @@ module.exports = {
             .setImage(`https://api.memegen.link/images/ds/${leftButton}/${rightButton}`)
             .setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
 
-        interaction.reply({ embeds: [raptorEmbed] });
+        interaction.reply({ embeds: [struggleEmbed] });
     },
 };
