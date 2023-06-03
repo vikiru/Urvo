@@ -25,7 +25,7 @@ module.exports = {
 			.setDescription(`Here is your requested meme! \n\n[Generated via Memegen.link](https://memegen.link/)`)
 			.setColor(client.embedColour)
 			.setTimestamp()
-			.setImage(`https://api.memegen.link/images/cmm/${topText}/${bottomText}`)
+			.setImage(`https://api.memegen.link/images/cmm/${topText}/${bottomText}.png`)
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
 
 		interaction.reply({ embeds: [mindEmbed] });
