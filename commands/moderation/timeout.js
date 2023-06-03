@@ -46,7 +46,7 @@ module.exports = {
         const targetUser = interaction.options.getUser('user');
         const duration = interaction.options.getNumber('duration');
         const units = interaction.options.getString('units');
-        const reason = interaction.options.getString('reason') ? ? 'No reason provided';
+        const reason = interaction.options.getString('reason') ?? 'No reason provided';
 
         const miliDuration = returnTimeVal(duration, units);
 
@@ -61,7 +61,7 @@ module.exports = {
         const filter = (i) => i.user.id === interaction.user.id;
 
         try {
-            const confirmation = await response.awaitMessageComponent({ filter: filter, time: 60 _000 });
+            const confirmation = await response.awaitMessageComponent({ filter: filter, time: 60_000 });
             const confirmId = confirmation.customId;
 
             if (confirmId === 'confirm') {
