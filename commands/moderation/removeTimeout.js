@@ -24,7 +24,7 @@ module.exports = {
      */
     async execute(interaction) {
         const targetUser = interaction.options.getUser('user');
-        const reason = interaction.options.getString('reason') ? ? 'No reason provided';
+        const reason = interaction.options.getString('reason') ?? 'No reason provided';
 
         const confirm = new ButtonBuilder().setCustomId('confirm').setLabel('Confirm').setStyle(ButtonStyle.Danger);
         const cancel = new ButtonBuilder().setCustomId('cancel').setLabel('Cancel').setStyle(ButtonStyle.Secondary);
@@ -37,7 +37,7 @@ module.exports = {
         const filter = (i) => i.user.id === interaction.user.id;
 
         try {
-            const confirmation = await response.awaitMessageComponent({ filter: filter, time: 60 _000 });
+            const confirmation = await response.awaitMessageComponent({ filter: filter, time: 60_000 });
             const confirmId = confirmation.customId;
 
             if (confirmId === 'confirm') {
