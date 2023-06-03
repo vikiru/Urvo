@@ -3,7 +3,7 @@ const path = require('node:path');
 
 const { token, prefix } = require('./config.json');
 
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
 global.client = new Client({
 	intents: [
@@ -14,11 +14,8 @@ global.client = new Client({
 	],
 });
 
-global.queue = new Map();
-global.embedColor = `#EFFF00`;
-
 client.prefix = prefix;
-client.embedColor = '#b35843';
+client.embedColour = '#b35843';
 client.commands = new Collection();
 client.commands.fun = new Collection();
 client.commands.image = new Collection();
@@ -27,10 +24,10 @@ client.commands.moderation = new Collection();
 client.commands.music = new Collection();
 client.commands.utility = new Collection();
 
+// Accessing and loading the commands
 const commandFolders = fs.readdirSync('./commands');
 const eventFiles = fs.readdirSync('./events').filter((file) => file.endsWith('.js'));
 
-// Accessing and loading the commands
 for (const folder of commandFolders) {
 	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
 
