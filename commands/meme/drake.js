@@ -1,6 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder, quote, Client } = require('discord.js');
-
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const memeParser = require('../../utils/memeParser');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -18,15 +17,15 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const topText = interaction.options.getString('top_text');
-		const bottomText = interaction.options.getString('bottom_text');
+		const topText = memeParser.parseText(interaction.options.getString('top_text'));
+		const bottomText = memeParser.parseText(interaction.options.getString('bottom_text'));
 
 		const drakeEmbed = new EmbedBuilder()
 			.setTitle('Drake Hotline Bling Meme')
 			.setDescription(`Here is your requested meme! \n\n[Generated via Memegen.link](https://memegen.link/)`)
-			.setColor('#b35843')
+			.setColor(client.embedColour)
 			.setTimestamp()
-			.setImage(`https://api.memegen.link/images/drake/${topText}/${bottomText}`)
+			.setImage(`https://api.memegen.link/images/drake/${topText}/${bottomText}.png`)
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
 
 		interaction.reply({ embeds: [drakeEmbed] });
