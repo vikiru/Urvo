@@ -16,7 +16,6 @@ module.exports = {
 		const searchResult = await fetch(`https://api.disneyapi.dev/character?${query}`).then((response) =>
 			response.json(),
 		);
-		console.log(searchResult);
 
 		let disneyCharacter = {};
 		if (searchResult.info.count === 1) {
