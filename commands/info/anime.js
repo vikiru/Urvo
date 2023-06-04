@@ -1,6 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
 const { URLSearchParams } = require('url');
-
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const trim = (str, max) => (str.length > max ? `${str.slice(0, max - 3)}...` : str);
 
@@ -40,8 +39,10 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		const desiredAnime = interaction.options.getString('query');
-		const query = new URLSearchParams({ q: desiredAnime });
-		query.append('type', 'tv');
+		const query = new URLSearchParams([
+			['q', `${desiredAnime}`],
+			['type', 'tv'],
+		]);
 
 		const animeSearch = await fetch(`https://api.jikan.moe/v4/anime?${query}`).then((response) => response.json());
 
@@ -49,9 +50,9 @@ module.exports = {
 			interaction.reply('Sorry, this anime does not seem to exist or it was incorrectly typed. Please try again.');
 		} else {
 			const animeResult = findAnime(animeSearch.data, desiredAnime) ?? animeSearch.data[0];
-			
+
 			const imageUrl = animeResult.images.jpg.image_url;
-			
+
 			let episodeCount = 'N/A';
 			if (animeResult.episodes) {
 				episodeCount = animeResult.episodes.toString();
