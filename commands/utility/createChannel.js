@@ -9,7 +9,7 @@ const {
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('create-channel')
+		.setName('create_channel')
 		.setDescription('Create a new channel of the specified type')
 		.addStringOption((option) =>
 			option.setName('channel_name').setDescription('The name of the new channel').setRequired(true),

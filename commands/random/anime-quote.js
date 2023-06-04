@@ -3,8 +3,6 @@ const { URLSearchParams } = require('url');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-//
-
 module.exports = {
 	data: new SlashCommandBuilder().setName('anime-quote').setDescription('Send a random quote from an anime'),
 	guildOnly: true,
@@ -18,8 +16,9 @@ module.exports = {
 		const animeQuote = quote('"' + quoteData.quote + '"');
 
 		const quoteEmbed = new EmbedBuilder()
-			.setColor('#b35843')
 			.setTitle(`💬 Random Quote from ${quoteData.anime}`)
+
+			.setColor('#b35843')
 			.setTimestamp()
 			.addFields({ name: 'Quote', value: animeQuote }, { name: 'Character', value: quoteData.character })
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
