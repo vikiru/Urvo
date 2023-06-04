@@ -1,7 +1,6 @@
 const { EmbedBuilder, SlashCommandBuilder, codeBlock, inlineCode, hyperlink } = require('discord.js');
 const { URLSearchParams } = require('url');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-const trim = (str, max) => (str.length > max ? `${str.slice(0, max - 3)}...` : str);
 
 function formatAnime(data) {
 	const title = data.title.replaceAll('"', '');
