@@ -46,7 +46,7 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const quoteData = fetchData();
+		const quoteData = await fetchData();
 
 		const quoteEmbed = createEmbed(interaction, quoteData);
 
