@@ -1,4 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -9,19 +10,25 @@ module.exports = {
 		),
 	guildOnly: true,
 	async execute(interaction) {
-		const disneyCharacter = interaction.options.getString('disney');
-		const query = new URLSearchParams([['name', disneyCharacter]]);
+		const desiredCharacter = interaction.options.getString('name');
+		const query = new URLSearchParams([['name', desiredCharacter]]);
 
 		const searchResult = await fetch(`https://api.disneyapi.dev/character?${query}`).then((response) =>
 			response.json(),
 		);
+		console.log(searchResult);
 
-		const disneyCharacter = searchResult[0];
+		let disneyCharacter = {};
+		if (searchResult.info.count === 1) {
+			disneyCharacter = searchResult.data;
+		} else {
+			disneyCharacter = searchResult.data[0];
+		}
 
 		const name = disneyCharacter.name;
 		const films = disneyCharacter.films;
 		const shows = disneyCharacter.tvShows;
-		const games = disneyCharacter.games;
+		const games = disneyCharacter.videoGames;
 		const attractions = disneyCharacter.parkAttractions;
 		const sourceUrl = disneyCharacter.sourceUrl;
 		const image = disneyCharacter.imageUrl;
