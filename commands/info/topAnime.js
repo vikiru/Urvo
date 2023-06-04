@@ -68,7 +68,7 @@ module.exports = {
 				{ name: '7.', value: formatAnime(topAnime[6]), inline: true },
 				{ name: '8.', value: formatAnime(topAnime[7]), inline: true },
 				{ name: '9.', value: formatAnime(topAnime[8]), inline: true },
-				{ name: '10.', value: formatAnime(topAnime[8]), inline: true },
+				{ name: '10.', value: formatAnime(topAnime[9]), inline: true },
 			)
 			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
 		interaction.reply({ embeds: [topAnimeEmbed] });
