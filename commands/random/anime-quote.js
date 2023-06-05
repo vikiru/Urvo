@@ -2,19 +2,6 @@ const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 /**
- * Fetch data from the anime quote API and return the quote data object
- * @returns An object containing quote information
- */
-async function fetchData() {
-	try {
-		const quoteData = await fetch('https://animechan.vercel.app/api/random').then((response) => response.json());
-		return quoteData;
-	} catch (error) {
-		console.log(error);
-	}
-}
-
-/**
  * Create the anime quote embed
  * @param {*} interaction
  * @param {*} quoteData
