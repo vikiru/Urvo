@@ -1,18 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-
-/**
- * Fetch data from the advice API and return the data as an object
- * @returns An object containing advice data
- */
-async function fetchData() {
-	try {
-		const randomAdvice = await fetch('https://api.adviceslip.com/advice').then((response) => response.json());
-		return randomAdvice;
-	} catch (error) {
-		console.log(error);
-	}
-}
+const { fetchData } = require('../../utils/fetchData');
 
 /**
  * Create the embed containing information about the random advice
@@ -49,7 +36,7 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomAdvice = await fetchData();
+		const randomAdvice = await fetchData('https://api.adviceslip.com/advice');
 
 		const adviceEmbed = createEmbed(interaction, randomAdvice);
 
