@@ -1,3 +1,5 @@
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+
 /**
  * Fetch a given URL and return the response data as an object.
  * @param {*} URL
