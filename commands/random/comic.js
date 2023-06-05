@@ -1,6 +1,45 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Generate a random number which will be used to fetch a random xkcd comic
+ * @returns A random number
+ */
+async function generateRandom() {
+	try {
+		const currComic = await fetchData('https://xkcd.com/info.0.json');
+		const maxNum = currComic.num;
+		const random = Math.floor(Math.random() * maxNum);
+		return random;
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+/**
+ * Create the embed containing all the information about the random comic
+ * @param {*} interaction
+ * @param {*} randomComic
+ * @returns An embed containing all the information about the random comic
+ */
+function createEmbed(interaction, randomComic) {
+	const title = randomComic.safe_title;
+	const image = randomComic.img;
+	const num = randomComic.num;
+	const url = `https://xkcd.com/${num}`;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
+
+	const comicEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setURL(url)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return comicEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('comic').setDescription('Sends a random xkcd comic in the channel'),
@@ -10,19 +49,10 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const currComic = await fetch('https://xkcd.com/info.0.json').then((response) => response.json());
-		const maxNum = currComic.num;
-		const random = Math.floor(Math.random() * maxNum);
+		const random = await generateRandom();
+		const randomComic = await fetchData(`https://xkcd.com/${random}/info.0.json`);
 
-		const randomComic = await fetch(`https://xkcd.com/${random}/info.0.json`).then((response) => response.json());
-
-		const comicEmbed = new EmbedBuilder()
-			.setTitle(`${randomComic.safe_title}`)
-			.setColor('#b35843')
-			.setTimestamp()
-			.setImage(randomComic.img)
-			.setURL(`https://xkcd.com/${random}`)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const comicEmbed = createEmbed(interaction, randomComic);
 
 		interaction.reply({ embeds: [comicEmbed] });
 	},

@@ -1,5 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const { fetchData } = require('../../utils/fetchData');
 
 /**
  * Create the anime quote embed
