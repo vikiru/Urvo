@@ -1,6 +1,28 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create the embed containing information about the random affirmation
+ * @param {*} interaction
+ * @param {*} randomAffirmation
+ * @returns An embed containing information about the random affirmation
+ */
+function createEmbed(interaction, randomAffirmation) {
+	const affirmation = randomAffirmation.affirmation;
+	const image = 'https://cdn.pixabay.com/photo/2014/04/21/07/00/field-328962_1280.jpg';
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
+
+	const affirmationEmbed = new EmbedBuilder()
+		.setTitle(`☀️ Random Affirmation!`)
+		.setDescription(affirmation)
+		.setColor(client.embedColour)
+		.setImage(image)
+		.setTimestamp()
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return affirmationEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('affirmation').setDescription('Send a random affirmation'),
@@ -10,15 +32,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomAffirmation = await fetch('https://www.affirmations.dev').then((response) => response.json());
-
-		const affirmationEmbed = new EmbedBuilder()
-			.setTitle(`☀️ Random Affirmation!`)
-			.setDescription(randomAffirmation.affirmation)
-			.setColor('#b35843')
-			.setImage('https://cdn.pixabay.com/photo/2014/04/21/07/00/field-328962_1280.jpg')
-			.setTimestamp()
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const randomAffirmation = await fetchData('https://www.affirmations.dev');
+		const affirmationEmbed = createEmbed(interaction, randomAffirmation);
 
 		interaction.reply({ embeds: [affirmationEmbed] });
 	},
