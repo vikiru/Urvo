@@ -1,6 +1,29 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about a random fact
+ * @param {*} interaction
+ * @param {*} randomFact
+ * @returns An embed containing information about the random fact
+ */
+function createEmbed(interaction, randomFact) {
+	const title = 'Random Fact!';
+	const description = randomFact.text;
+	const image = 'https://cdn.pixabay.com/photo/2019/11/09/06/00/question-4612922_1280.jpg';
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
+
+	const factEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setThumbnail(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return factEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('fact').setDescription('Send a random fact'),
@@ -10,17 +33,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomFact = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/random').then((response) =>
-			response.json(),
-		);
-
-		const factEmbed = new EmbedBuilder()
-			.setTitle(`Random Fact!`)
-			.setDescription(randomFact.text)
-			.setColor('#b35843')
-			.setTimestamp()
-			.setImage('https://cdn.pixabay.com/photo/2019/11/09/06/00/question-4612922_1280.jpg')
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const randomFact = await fetchData('https://uselessfacts.jsph.pl/api/v2/facts/random');
+		const factEmbed = createEmbed(interaction, randomFact);
 
 		interaction.reply({ embeds: [factEmbed] });
 	},
