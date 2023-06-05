@@ -9,7 +9,6 @@ const { fetchData } = require('../../utils/fetchData');
  */
 function createEmbed(interaction, randomAdvice) {
 	const title = 'Random Advice!';
-	console.log(randomAdvice);
 	const description = randomAdvice.slip.advice;
 
 	const image = 'https://cdn.pixabay.com/photo/2013/07/12/14/48/dialog-148815_1280.png';
