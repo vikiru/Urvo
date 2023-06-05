@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 const { fetchData } = require('../../utils/fetchData');
 
 /**
@@ -8,6 +8,7 @@ const { fetchData } = require('../../utils/fetchData');
  * @returns An embed containing information about the random affirmation
  */
 function createEmbed(interaction, randomAffirmation) {
+	const title = '☀️ Random Affirmation!';
 	const affirmation = randomAffirmation.affirmation;
 	const image = 'https://cdn.pixabay.com/photo/2014/04/21/07/00/field-328962_1280.jpg';
 
@@ -15,7 +16,7 @@ function createEmbed(interaction, randomAffirmation) {
 	const avatarURL = interaction.user.displayAvatarURL();
 
 	const affirmationEmbed = new EmbedBuilder()
-		.setTitle(`☀️ Random Affirmation!`)
+		.setTitle(title)
 		.setDescription(affirmation)
 		.setColor(client.embedColour)
 		.setImage(image)
