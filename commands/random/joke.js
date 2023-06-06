@@ -1,6 +1,30 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData.js');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about the random joke
+ * @param {*} interaction
+ * @param {*} randomJoke
+ * @returns An embed containing information about the random joke
+ */
+function createEmbed(interaction, randomJoke) {
+	const title = '😂 Random Joke!';
+	const image = 'https://logos.textgiraffe.com/logos/logo-name/Joke-designstyle-summer-m.png';
+
+	const text = randomJoke.setup + '\n' + randomJoke.punchline;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
+
+	const jokeEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setThumbnail(image)
+		.setDescription(text)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return jokeEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('joke').setDescription('Receive a random joke'),
@@ -10,19 +34,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomJoke = await fetch('https://official-joke-api.appspot.com/jokes/random').then((response) =>
-			response.json(),
-		);
-
-		const text = randomJoke.setup + '\n' + randomJoke.punchline;
-
-		const jokeEmbed = new EmbedBuilder()
-			.setTitle('Random Joke')
-			.setColor('#b35843')
-			.setTimestamp()
-			.setThumbnail('https://logos.textgiraffe.com/logos/logo-name/Joke-designstyle-summer-m.png')
-			.setDescription(text)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const randomJoke = await fetchData('https://official-joke-api.appspot.com/jokes/random');
+		const jokeEmbed = createEmbed(interaction, randomJoke);
 		interaction.reply({ embeds: [jokeEmbed] });
 	},
 };
