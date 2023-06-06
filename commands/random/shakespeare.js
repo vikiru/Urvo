@@ -1,7 +1,28 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData.js');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about the random sonnet
+ * @param {*} interaction
+ * @param {*} randomSonnet
+ * @returns An embed containing information about the random sonnet
+ */
+function createEmbed(interaction, randomSonnet) {
+	const sonnetTitle = randomSonnet[0].title;
+	const lines = randomSonnet[0].lines.join('\n');
 
+	const title = `✍️ ${sonnetTitle}`;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
+	const sonnetEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.addFields({ name: 'Lines', value: lines })
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return sonnetEmbed;
+}
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('shakespeare')
@@ -12,17 +33,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomSonnet = await fetch('https://poetrydb.org/author,title,random/Shakespeare;Sonnet;1').then((response) =>
-			response.json(),
-		);
-
-		const sonnetEmbed = new EmbedBuilder()
-			.setTitle(`✍️ ${randomSonnet[0].title}`)
-			.setColor('#b35843')
-			.setTimestamp()
-			.addFields({ name: 'Lines', value: randomSonnet[0].lines.join('\n') })
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
-		
+		const randomSonnet = await fetchData('https://poetrydb.org/author,title,random/Shakespeare;Sonnet;1');
+		const sonnetEmbed = createEmbed(interaction, randomSonnet);
 		interaction.reply({ embeds: [sonnetEmbed] });
 	},
 };
