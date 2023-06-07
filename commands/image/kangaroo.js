@@ -1,6 +1,29 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about a random kangaroo
+ * @param {*} interaction
+ * @param {*} randomKangaroo
+ * @returns An embed containing information about the random kangaroo
+ */
+function createEmbed(interaction, randomKangaroo) {
+	const title = '🦘Random Kangaroo!';
+	const description = quote(randomKangaroo.fact);
+	const image = randomKangaroo.image;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const kangarooEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return kangarooEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('kangaroo').setDescription('Send a random picture of a kangaroo'),
@@ -10,17 +33,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomKangaroo = await fetch('https://some-random-api.com/animal/kangaroo').then((response) =>
-			response.json(),
-		);
-
-		const kangarooEmbed = new EmbedBuilder()
-			.setTitle('🦘Random Kangaroo!')
-			.setDescription(quote(randomKangaroo.fact))
-			.setColor('#b35843')
-			.setTimestamp()
-			.setImage(randomKangaroo.image)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const randomKangaroo = await fetchData('https://some-random-api.com/animal/kangaroo');
+		const kangarooEmbed = createEmbed(interaction, randomKangaroo);
 		interaction.reply({ embeds: [kangarooEmbed] });
 	},
 };
