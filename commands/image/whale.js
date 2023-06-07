@@ -1,6 +1,27 @@
-const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about the random whale
+ * @param {*} interaction
+ * @param {*} randomWhale
+ * @returns An embed containing information about the random whale
+ */
+function createEmbed(interaction, randomWhale) {
+	const title = '🐋 Random Whale!';
+	const image = randomWhale.link;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const redPandaEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return redPandaEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('whale').setDescription('Send a random image of a whale'),
@@ -10,14 +31,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomWhale = await fetch('https://some-random-api.com/img/whale').then((response) => response.json());
-
-		const whaleEmbed = new EmbedBuilder()
-			.setTitle('🐋 Random Whale!')
-			.setColor('#b35843')
-			.setTimestamp()
-			.setImage(randomWhale.link)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const randomWhale = await fetchData('https://some-random-api.com/img/whale');
+		const whaleEmbed = createEmbed(interaction, randomWhale);
 		interaction.reply({ embeds: [whaleEmbed] });
 	},
 };
