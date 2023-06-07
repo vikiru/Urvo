@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 

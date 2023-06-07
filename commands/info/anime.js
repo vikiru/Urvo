@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 const { URLSearchParams } = require('url');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const trim = (str, max) => (str.length > max ? `${str.slice(0, max - 3)}...` : str);

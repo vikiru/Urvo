@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, quote, Client } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
 const { fetchData } = require('../../utils/fetchData.js');
 
 /**
