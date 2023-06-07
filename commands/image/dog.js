@@ -1,6 +1,30 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about a random dog
+ * @param {*} interaction
+ * @param {*} randomDog
+ * @returns An embed containing information about the random dog
+ */
+function createEmbed(interaction, randomDog) {
+	const title = '🐶 Random Dog!';
+
+	const description = quote(randomDog.fact);
+	const image = randomDog.image;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const dogEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return dogEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('dog').setDescription('Send a random image of a dog'),
@@ -10,15 +34,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomDog = await fetch('https://some-random-api.com/animal/dog').then((response) => response.json());
-
-		const dogEmbed = new EmbedBuilder()
-			.setTitle('🐶 Random Dog!')
-			.setDescription(quote(randomDog.fact))
-			.setColor('#b35843')
-			.setTimestamp()
-			.setImage(randomDog.image)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const randomDog = await fetchData('https://some-random-api.com/animal/dog');
+		const dogEmbed = createEmbed(interaction, randomDog);
 		interaction.reply({ embeds: [dogEmbed] });
 	},
 };
