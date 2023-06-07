@@ -1,4 +1,27 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
+
+/**
+ * Create an embed containing information about the queried digimon
+ * @param {*} interaction
+ * @param {*} digimonResult
+ * @returns An embed containing information about the queried digimon
+ */
+function createEmbed(interaction, digimonResult) {
+	const title = `${digimonResult.name} [${digimonResult.level}]`;
+	const image = digimonResult.img;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const digimonEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return digimonEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -14,9 +37,7 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		const name = interaction.options.getString('query');
-		const digiSearch = await fetch(`https://digimon-api.vercel.app/api/digimon/name/${name}`).then((response) =>
-			response.json(),
-		);
+		const digiSearch = await fetchData(`https://digimon-api.vercel.app/api/digimon/name/${name}`);
 		const digimonResult = digiSearch[0];
 
 		if (digimonResult.ErrorMsg) {
@@ -25,14 +46,7 @@ module.exports = {
 				ephemeral: true,
 			});
 		} else {
-			const titleText = `${digimonResult.name} [${digimonResult.level}]`;
-			const digimonEmbed = new EmbedBuilder()
-				.setTitle(titleText)
-				.setColor(client.embedColour)
-				.setTimestamp()
-				.setImage(digimonResult.img)
-				.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
-
+			const digimonEmbed = createEmbed(interaction, digimonResult);
 			interaction.reply({ embeds: [digimonEmbed] });
 		}
 	},
