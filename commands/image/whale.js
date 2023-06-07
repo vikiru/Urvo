@@ -14,13 +14,13 @@ function createEmbed(interaction, randomWhale) {
 	const username = interaction.user.username;
 	const avatarURL = interaction.user.displayAvatarUrl();
 
-	const redPandaEmbed = new EmbedBuilder()
+	const whaleEmbed = new EmbedBuilder()
 		.setTitle(title)
 		.setColor(client.embedColour)
 		.setTimestamp()
 		.setImage(image)
 		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
-	return redPandaEmbed;
+	return whaleEmbed;
 }
 
 module.exports = {
