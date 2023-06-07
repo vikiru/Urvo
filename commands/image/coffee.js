@@ -1,6 +1,27 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about a random coffee
+ * @param {*} interaction
+ * @param {*} randomCoffee
+ * @returns An embed containing information about a random coffee
+ */
+function createEmbed(interaction, randomCoffee) {
+	const title = '☕ Random Coffee!';
+	const file = randomCoffee.file;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const coffeeEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(file)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return coffeeEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('coffee').setDescription('Send a random image of coffee'),
@@ -10,14 +31,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomCoffee = await fetch('https://coffee.alexflipnote.dev/random.json').then((response) => response.json());
-
-		const coffeeEmbed = new EmbedBuilder()
-			.setTitle('☕ Random Coffee!')
-			.setColor('#b35843')
-			.setTimestamp()
-			.setImage(randomCoffee.file)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const randomCoffee = await fetchData('https://coffee.alexflipnote.dev/random.json');
+		const coffeeEmbed = createEmbed(interaction, randomCoffee);
 		interaction.reply({ embeds: [coffeeEmbed] });
 	},
 };
