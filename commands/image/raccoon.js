@@ -1,6 +1,29 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about the random raccoon
+ * @param {*} interaction
+ * @param {*} randomRaccoon
+ * @returns An embed containing information about the random raccoon
+ */
+function createEmbed(interaction, randomRaccoon) {
+	const title = '🦝 Random Raccoon!';
+	const description = quote(randomRaccoon.fact);
+	const image = randomRaccoon.image;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const raccoonEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return raccoonEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('raccoon').setDescription('Send a random image of a raccoon'),
@@ -10,15 +33,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomRaccoon = await fetch('https://some-random-api.com/animal/raccoon').then((response) => response.json());
-
-		const raccoonEmbed = new EmbedBuilder()
-			.setTitle('🦝 Random Raccoon!')
-			.setDescription(quote(randomRaccoon.fact))
-			.setColor('#b35843')
-			.setTimestamp()
-			.setImage(randomRaccoon.image)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const randomRaccoon = await fetchData('https://some-random-api.com/animal/raccoon');
+		const raccoonEmbed = createEmbed(interaction, randomRaccoon);
 		interaction.reply({ embeds: [raccoonEmbed] });
 	},
 };
