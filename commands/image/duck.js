@@ -1,6 +1,27 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about the random duck
+ * @param {*} interaction
+ * @param {*} randomDuck
+ * @returns An embed containing information about the random duck
+ */
+function createEmbed(interaction, randomDuck) {
+	const title = '🦆 Random Duck!';
+	const image = randomDuck.url;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const duckEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return duckEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder().setName('duck').setDescription('Send a random image of a duck'),
@@ -10,14 +31,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const randomDuck = await fetch('https://random-d.uk/api/v2/random').then((response) => response.json());
-
-		const duckEmbed = new EmbedBuilder()
-			.setTitle('🦆 Random Duck!')
-			.setColor('#b35843')
-			.setTimestamp()
-			.setImage(randomDuck.url)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const randomDuck = await fetchData('https://random-d.uk/api/v2/random');
+		const duckEmbed = createEmbed(interaction, randomDuck);
 		interaction.reply({ embeds: [duckEmbed] });
 	},
 };
