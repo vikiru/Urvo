@@ -1,5 +1,37 @@
-const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, hyperlink } = require('discord.js');
 const memeParser = require('../../utils/memeParser');
+
+/**
+ * Create an embed containing information about the Buzz Lightyear Meme
+ * @param {*} interaction
+ * @param {*} options
+ * @returns An embed containing information about the Buzz Lightyear Meme
+ */
+function createEmbed(interaction, options) {
+	const title = 'Buzz Lightyear Everywhere Meme';
+	const description =
+		'Here is your requested meme! \n\nGenerated via' +
+		hyperlink({ content: 'Memegen.link', url: 'https://memegen.link/' });
+
+	const topText = options.topText;
+	const bottomText = options.bottomText;
+	const format = options.format;
+
+	const image = `https://api.memegen.link/images/buzz/${topText}/${bottomText}${format}`;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const buzzEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+
+	return buzzEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -27,14 +59,8 @@ module.exports = {
 		const bottomText = memeParser.parseText(interaction.options.getString('bottom_text'));
 		const format = interaction.options.getString('format');
 
-		const buzzEmbed = new EmbedBuilder()
-			.setTitle('Buzz Lightyear Everywhere Meme')
-			.setDescription(`Here is your requested meme! \n\n[Generated via Memegen.link](https://memegen.link/)`)
-			.setColor(client.embedColour)
-			.setTimestamp()
-			.setImage(`https://api.memegen.link/images/buzz/${topText}/${bottomText}${format}`)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
-
+		const options = { topText: topText, bottomText: bottomText, format: format };
+		const buzzEmbed = createEmbed(interaction, options);
 		interaction.reply({ embeds: [buzzEmbed] });
 	},
 };
