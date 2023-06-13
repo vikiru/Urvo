@@ -1,8 +1,10 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const { fetchData } = require('../../utils/fetchData');
 
 /**
  * Iterate through the results of a given term and return the most voted answer.
+ * @param {*} results
+ * @returns The most voted answer
  */
 function returnMostVotedAnswer(results) {
 	let max = 0;
@@ -19,6 +21,48 @@ function returnMostVotedAnswer(results) {
 	return results[index];
 }
 
+/**
+ * Create an embed containing information about the requested term from Urban Dictionary
+ * @param {*} interaction
+ * @param {*} result
+ * @returns An embed containing information about the requested term from Urban Dictionary
+ */
+function createEmbed(interaction, result) {
+	const author = result.author;
+	const definition = result.definition;
+	const example = result.example;
+	const permalink = result.permalink;
+	const thumbsUp = result.thumbs_up.toString();
+	const thumbsDown = result.thumbs_down.toString();
+	const term = result.word;
+	const writtenOn = result.written_on.split('T')[0];
+
+	const title = `Definition for ${term}`;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const urbanEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setURL(permalink)
+		.setDescription(definition)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.addFields(
+			{ name: 'Example', value: example },
+			{ name: 'Author', value: author, inline: true },
+			{ name: 'Written On', value: writtenOn, inline: true },
+			{
+				name: 'Rating',
+				value: `👍${thumbsUp} 👎${thumbsDown}`,
+				inline: true,
+			},
+		)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+
+	return urbanEmbed;
+}
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('urban')
@@ -31,36 +75,15 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		const term = interaction.options.getString('term');
-
-		const termResults = await fetch(`https://api.urbandictionary.com/v0/define?term=${term}`).then((result) =>
-			result.json(),
-		);
+		const termResults = await fetchData(`https://api.urbandictionary.com/v0/define?term=${term}`);
 		if (termResults.list.length == 0) {
 			interaction.reply({
 				content: 'Sorry, there are no definitions for the provided term. Please try again with a different term',
 				ephemeral: true,
 			});
 		} else {
-			const definition = returnMostVotedAnswer(termResults.list);
-
-			const urbanEmbed = new EmbedBuilder()
-				.setTitle(`Definition for ${term}`)
-				.setURL(definition.permalink)
-				.setDescription(definition.definition)
-				.setColor('#b35843')
-				.setTimestamp()
-				.addFields(
-					{ name: 'Example', value: definition.example },
-					{ name: 'Author', value: definition.author, inline: true },
-					{ name: 'Written On', value: definition.written_on.split('T')[0], inline: true },
-					{
-						name: 'Rating',
-						value: `👍${definition.thumbs_up.toString()} 👎${definition.thumbs_down.toString()}`,
-						inline: true,
-					},
-				)
-				.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
-
+			const result = returnMostVotedAnswer(termResults.list);
+			const urbanEmbed = createEmbed(interaction, result);
 			interaction.reply({ embeds: [urbanEmbed] });
 		}
 	},
