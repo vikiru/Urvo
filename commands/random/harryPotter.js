@@ -1,14 +1,55 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
-
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const { fetchData } = require('../../utils/fetchData');
 
 /**
- * Helper function to make the first character of a string uppercase
- * @param {*} str
+ * Retrieve information about a random Harry Potter character
+ * @returns A JSON object containing information about the character
  */
-function properCase(str) {
-	str = str.charAt(0).toUpperCase() + str.slice(1);
-	return str;
+async function retrieveRandomPotter() {
+	const potterData = await fetchData('https://hp-api.onrender.com/api/characters');
+	const maxNum = potterData.length ?? 402;
+	const random = Math.floor(Math.random() * maxNum);
+	const randomPotter = potterData[random];
+	return randomPotter;
+}
+
+/**
+ * Create an embed containing information about the random Harry Potter character
+ * @param {*} interaction
+ * @param {*} randomPotter
+ * @returns An embed containing information about the random Harry Potter character
+ */
+function createEmbed(interaction, randomPotter) {
+	const title = randomPotter.name;
+	const defaultValue = 'N/A';
+
+	const ancestry = randomPotter.ancestry !== '' ? randomPotter.ancestry : defaultValue;
+	const gender = randomPotter.gender !== '' ? randomPotter.gender : defaultValue;
+	const house = randomPotter.house !== '' ? randomPotter.house : defaultValue;
+	const patronus = randomPotter.patronus !== '' ? randomPotter.patronus : defaultValue;
+	const species = randomPotter.species !== '' ? randomPotter.species : defaultValue;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const potterEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.addFields(
+			{ name: 'Species', value: species, inline: true },
+			{ name: 'Gender', value: gender, inline: true },
+			{ name: 'House', value: house, inline: true },
+			{ name: 'Ancestry', value: ancestry, inline: true },
+			{ name: 'Patronus', value: patronus, inline: true },
+		)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+
+	if (randomPotter.image) {
+		potterEmbed.setImage(randomPotter.image);
+	}
+
+	return potterEmbed;
 }
 
 module.exports = {
@@ -21,42 +62,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const potterData = await fetch('https://hp-api.onrender.com/api/characters').then((response) => response.json());
-		const maxNum = potterData.length ?? 402;
-		const random = Math.floor(Math.random() * maxNum);
-		const randomPotter = potterData[random];
-
-		let house = 'N/A';
-		if (randomPotter.house !== '') {
-			house = randomPotter.house;
-		}
-
-		let ancestry = 'N/A';
-		if (randomPotter.ancestry !== '') {
-			ancestry = randomPotter.ancestry;
-		}
-
-		let patronus = 'N/A';
-		if (randomPotter.patronus !== '') {
-			patronus = randomPotter.patronus;
-		}
-
-		const potterEmbed = new EmbedBuilder()
-			.setTitle(randomPotter.name)
-			.setColor('#b35843')
-			.setTimestamp()
-			.addFields(
-				{ name: 'Species', value: randomPotter.species, inline: true },
-				{ name: 'Gender', value: randomPotter.gender, inline: true },
-				{ name: 'House', value: house, inline: true },
-				{ name: 'Ancestry', value: ancestry, inline: true },
-				{ name: 'Patronus', value: patronus, inline: true },
-			)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
-
-		if (randomPotter.image) {
-			potterEmbed.setImage(randomPotter.image);
-		}
+		const randomPotter = await retrieveRandomPotter();
+		const potterEmbed = createEmbed(interaction, randomPotter);
 		interaction.reply({ embeds: [potterEmbed] });
 	},
 };
