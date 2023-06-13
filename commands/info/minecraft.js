@@ -1,5 +1,29 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
+/**
+ * Create an embed containing information about the requested Minecraft user
+ * @param {*} interaction
+ * @param {*} user
+ * @returns An embed containing information about the requested Minecraft user
+ */
+function createEmbed(interaction, user) {
+	const title = 'Minecraft Avatar!';
+	const description = `Here's your minecraft avatar as requested!`;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const minecraftEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(`https://minotar.net/body/${user}/200.png`)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+
+	return minecraftEmbed;
+}
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('minecraft')
@@ -10,14 +34,7 @@ module.exports = {
 	guildOnly: true,
 	async execute(interaction) {
 		const user = interaction.options.getString('user');
-
-		const minecraftEmbed = new EmbedBuilder()
-			.setTitle('Minecraft Avatar!')
-			.setDescription(`Here's your minecraft avatar as requested!`)
-			.setColor(client.embedColour)
-			.setTimestamp()
-			.setImage(`https://minotar.net/body/${user}/200.png`)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		const minecraftEmbed = createEmbed(interaction, user);
 		interaction.reply({ embeds: [minecraftEmbed] });
 	},
 };
