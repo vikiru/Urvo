@@ -29,7 +29,7 @@ function createEmbed(interaction, options) {
 		.setTimestamp()
 		.setImage(image)
 		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
-  
+
 	return winnieEmbed;
 }
 
@@ -51,7 +51,7 @@ module.exports = {
 	async execute(interaction) {
 		const topText = memeParser.parseText(interaction.options.getString('top_text'));
 		const bottomText = memeParser.parseText(interaction.options.getString('bottom_text'));
-		
+
 		const options = { topText: topText, bottomText: bottomText, format: '.png' };
 		const winnieEmbed = createEmbed(interaction, options);
 		interaction.reply({ embeds: [winnieEmbed] });
