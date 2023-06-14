@@ -1,5 +1,37 @@
-const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, hyperlink } = require('discord.js');
 const memeParser = require('../../utils/memeParser');
+
+/**
+ * Create an embed containing information about the Change My Mind Meme
+ * @param {*} interaction
+ * @param {*} options
+ * @returns An embed containing information about the Change My Mind Meme
+ */
+function createEmbed(interaction, options) {
+	const title = 'Change My Mind Meme';
+	const description =
+		'Here is your requested meme! \n\nGenerated via' +
+		hyperlink({ content: 'Memegen.link', url: 'https://memegen.link/' });
+
+	const topText = options.topText;
+	const bottomText = options.bottomText;
+	const format = options.format;
+
+	const image = `https://api.memegen.link/images/cmm/${topText}/${bottomText}${format}`;
+
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarUrl();
+
+	const mindEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+
+	return mindEmbed;
+}
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -20,14 +52,8 @@ module.exports = {
 		const topText = memeParser.parseText(interaction.options.getString('top_text'));
 		const bottomText = memeParser.parseText(interaction.options.getString('bottom_text'));
 
-		const mindEmbed = new EmbedBuilder()
-			.setTitle('Change My Mind Meme')
-			.setDescription(`Here is your requested meme! \n\n[Generated via Memegen.link](https://memegen.link/)`)
-			.setColor(client.embedColour)
-			.setTimestamp()
-			.setImage(`https://api.memegen.link/images/cmm/${topText}/${bottomText}.png`)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
-
+		const options = { topText: topText, bottomText: bottomText, format: '.png' };
+		const mindEmbed = createEmbed(interaction, options);
 		interaction.reply({ embeds: [mindEmbed] });
 	},
 };
