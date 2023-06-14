@@ -22,15 +22,15 @@ function createEmbed(interaction, options) {
 	const username = interaction.user.username;
 	const avatarURL = interaction.user.displayAvatarUrl();
 
-	const mindEmbed = new EmbedBuilder()
+	const winnieEmbed = new EmbedBuilder()
 		.setTitle(title)
 		.setDescription(description)
 		.setColor(client.embedColour)
 		.setTimestamp()
 		.setImage(image)
 		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
-
-	return mindEmbed;
+  
+	return winnieEmbed;
 }
 
 module.exports = {
