@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, quote, Client } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, hyperlink } = require('discord.js');
 const memeParser = require('../../utils/memeParser');
 
 /**
