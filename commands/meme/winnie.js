@@ -29,7 +29,7 @@ function createEmbed(interaction, options) {
 		.setTimestamp()
 		.setImage(image)
 		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
-
+  
 	return winnieEmbed;
 }
 
