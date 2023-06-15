@@ -40,7 +40,7 @@ function createEmbed(interaction, result) {
 	const title = `Definition for ${term}`;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const urbanEmbed = new EmbedBuilder()
 		.setTitle(title)

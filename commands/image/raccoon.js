@@ -13,7 +13,7 @@ function createEmbed(interaction, randomRaccoon) {
 	const image = randomRaccoon.image;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const raccoonEmbed = new EmbedBuilder()
 		.setTitle(title)

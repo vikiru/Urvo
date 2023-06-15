@@ -13,7 +13,7 @@ function createEmbed(interaction, randomFox) {
 	const image = randomFox.image;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const foxEmbed = new EmbedBuilder()
 		.setTitle(title)

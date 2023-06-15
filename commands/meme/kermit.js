@@ -10,8 +10,7 @@ const memeParser = require('../../utils/memeParser');
 function createEmbed(interaction, options) {
 	const title = "But That's None Of Your Business Kermit Meme";
 	const description =
-		'Here is your requested meme! \n\nGenerated via' +
-		hyperlink({ content: 'Memegen.link', url: 'https://memegen.link/' });
+		'Here is your requested meme! \n\nGenerated via ' + hyperlink('Memegen.link', 'https://memegen.link/');
 
 	const topText = options.topText;
 	const bottomText = options.bottomText;
@@ -20,7 +19,7 @@ function createEmbed(interaction, options) {
 	const image = `https://api.memegen.link/images/kermit/${topText}/${bottomText}${format}`;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const kermitEmbed = new EmbedBuilder()
 		.setTitle(title)

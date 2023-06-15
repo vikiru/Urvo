@@ -12,7 +12,7 @@ function createEmbed(interaction, randomCoffee) {
 	const file = randomCoffee.file;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const coffeeEmbed = new EmbedBuilder()
 		.setTitle(title)

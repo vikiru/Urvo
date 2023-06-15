@@ -10,8 +10,7 @@ const memeParser = require('../../utils/memeParser');
 function createEmbed(interaction, options) {
 	const title = 'Buzz Lightyear Everywhere Meme';
 	const description =
-		'Here is your requested meme! \n\nGenerated via' +
-		hyperlink({ content: 'Memegen.link', url: 'https://memegen.link/' });
+		'Here is your requested meme! \n\nGenerated via ' + hyperlink('Memegen.link', 'https://memegen.link/');
 
 	const topText = options.topText;
 	const bottomText = options.bottomText;
@@ -20,7 +19,7 @@ function createEmbed(interaction, options) {
 	const image = `https://api.memegen.link/images/buzz/${topText}/${bottomText}${format}`;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const buzzEmbed = new EmbedBuilder()
 		.setTitle(title)
@@ -57,7 +56,7 @@ module.exports = {
 	async execute(interaction) {
 		const topText = memeParser.parseText(interaction.options.getString('top_text'));
 		const bottomText = memeParser.parseText(interaction.options.getString('bottom_text'));
-		const format = interaction.options.getString('format');
+		const format = interaction.options.getString('format') ?? '.png';
 
 		const options = { topText: topText, bottomText: bottomText, format: format };
 		const buzzEmbed = createEmbed(interaction, options);

@@ -30,7 +30,7 @@ function createEmbed(interaction, randomPotter) {
 	const species = randomPotter.species !== '' ? randomPotter.species : defaultValue;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const potterEmbed = new EmbedBuilder()
 		.setTitle(title)
