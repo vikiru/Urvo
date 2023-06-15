@@ -10,8 +10,7 @@ const memeParser = require('../../utils/memeParser');
 function createEmbed(interaction, options) {
 	const title = 'Daily Struggle Meme';
 	const description =
-		'Here is your requested meme! \n\nGenerated via' +
-		hyperlink({ content: 'Memegen.link', url: 'https://memegen.link/' });
+		'Here is your requested meme! \n\nGenerated via ' + hyperlink('Memegen.link', 'https://memegen.link/');
 
 	const leftButton = options.leftButton;
 	const rightButton = options.rightButton;
@@ -20,7 +19,7 @@ function createEmbed(interaction, options) {
 	const image = `https://api.memegen.link/images/ds/${leftButton}/${rightButton}${format}`;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const struggleEmbed = new EmbedBuilder()
 		.setTitle(title)

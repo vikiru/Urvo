@@ -11,7 +11,7 @@ function createEmbed(interaction, user) {
 	const description = `Here's your minecraft avatar as requested!`;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const minecraftEmbed = new EmbedBuilder()
 		.setTitle(title)

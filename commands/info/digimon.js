@@ -12,7 +12,7 @@ function createEmbed(interaction, digimonResult) {
 	const image = digimonResult.img;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const digimonEmbed = new EmbedBuilder()
 		.setTitle(title)

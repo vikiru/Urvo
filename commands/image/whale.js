@@ -12,7 +12,7 @@ function createEmbed(interaction, randomWhale) {
 	const image = randomWhale.link;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const whaleEmbed = new EmbedBuilder()
 		.setTitle(title)

@@ -13,7 +13,7 @@ function createEmbed(interaction, randomPanda) {
 	const image = randomPanda.image;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const pandaEmbed = new EmbedBuilder()
 		.setTitle(title)

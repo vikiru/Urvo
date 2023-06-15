@@ -14,6 +14,9 @@ function parseText(text) {
 		'"': "''",
 	};
 	let resultingText = text.replace(/[_ ?#!%/\\<>"]/gm, (char) => textReplacement[char] ?? char);
+	if (!text.toLowerCase().includes('null')) {
+		resultingText = resultingText.replace(/[null]*\s^/gim, '');
+	}
 	return resultingText;
 }
 

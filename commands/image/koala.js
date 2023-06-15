@@ -13,7 +13,7 @@ function createEmbed(interaction, randomKoala) {
 	const image = randomKoala.image;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const koalaEmbed = new EmbedBuilder()
 		.setTitle(title)

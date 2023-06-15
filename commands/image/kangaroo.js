@@ -13,7 +13,7 @@ function createEmbed(interaction, randomKangaroo) {
 	const image = randomKangaroo.image;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const kangarooEmbed = new EmbedBuilder()
 		.setTitle(title)

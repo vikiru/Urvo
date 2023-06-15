@@ -14,7 +14,7 @@ function createEmbed(interaction, randomDog) {
 	const image = randomDog.image;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarUrl();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const dogEmbed = new EmbedBuilder()
 		.setTitle(title)
