@@ -1,5 +1,6 @@
 {
-	"extends": "eslint:recommended",
+	"extends": ["prettier"],
+	"plugins": ["prettier"],
 	"env": {
 		"node": true,
 		"es6": true
@@ -9,7 +10,6 @@
 	},
 	"rules": {
 		"arrow-spacing": ["warn", { "before": true, "after": true }],
-		"brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
 		"comma-dangle": ["error", "always-multiline"],
 		"comma-spacing": "error",
 		"comma-style": "error",
@@ -32,6 +32,12 @@
 		"no-var": "error",
 		"object-curly-spacing": ["error", "always"],
 		"prefer-const": "error",
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto"
+			}
+		],
 		"quotes": ["error", "single"],
 		"semi": ["error", "always"],
 		"space-before-blocks": "error",
