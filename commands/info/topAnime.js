@@ -44,7 +44,6 @@ function formatAnime(data) {
  */
 function createEmbed(interaction, status, topAnimeData) {
 	const title = status === 'airing' ? 'Airing' : 'All Time';
-	console.log(interaction.user);
 	const username = interaction.user.username;
 	const avatarURL = interaction.user.displayAvatarURL();
 
