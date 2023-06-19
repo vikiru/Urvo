@@ -1,9 +1,9 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Documentation](https://img.shields.io/badge/documentation-docs-orange)]()
+[![Documentation](https://img.shields.io/badge/documentation-docs-orange)](https://vikiru.github.io/Urvo/)
 
-<h1 align="center"> Zigor </h1>
+<h1 align="center"> Urvo </h1>
 
-Zigor is a multi-purpose Discord bot with several commands spanning across several categories such as `fun`, `image`, `minigames`, `moderation`, `music`, and `utility`.
+Urvo is a multi-purpose Discord bot with several commands spanning across several categories such as `fun`, `image`, `minigames`, `moderation`, `music`, and `utility`.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ Zigor is a multi-purpose Discord bot with several commands spanning across sever
 1. Clone this repository to your local machine.
 
 ```bash
-git clone https://github.com/vikiru/Zigor.git
+git clone https://github.com/vikiru/Urvo.git
 ```
 
 2. Download & install all dependencies.

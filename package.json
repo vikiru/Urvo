@@ -1,7 +1,12 @@
 {
-	"name": "zigor",
-	"version": "1.0.0",
-	"description": "A multi-purpose discord bot.",
+	"name": "urvo",
+	"version": "2.0.0",
+	"description": "A multi-purpose discord bot with over 60 commands spanning across 8 categories!",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vikiru/urvo.git"
+	},
 	"main": "main.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +14,7 @@
 		"start": "node ."
 	},
 	"keywords": [],
-	"author": "vikiru",
+	"author": "Visakan Kirubakaran",
 	"license": "MIT",
 	"dependencies": {
 		"discord.js": "^14.11.0",
@@ -19,5 +24,9 @@
 		"path": "^0.12.7",
 		"sequelize": "^6.32.0",
 		"sqlite3": "^5.1.6"
+	},
+	"devDependencies": {
+		"eslint": "^8.43.0",
+		"prettier": "^2.8.8"
 	}
 }
