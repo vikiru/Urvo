@@ -34,7 +34,7 @@ module.exports = {
 			score = manhuaResult.score.toString();
 		}
 
-		let synopsis = manhuaResult.synopsis ?? 'N/A';
+		const synopsis = manhuaResult.synopsis ?? 'N/A';
 		const trimmedSynopsis = trim(synopsis, 1024).toString();
 
 		const manhuaEmbed = new EmbedBuilder()

@@ -11,9 +11,9 @@ const trim = (str, max) => (str.length > max ? `${str.slice(0, max - 3)}...` : s
  */
 function findAnime(data, desiredAnime) {
 	let index = 0;
-	let animeTitle = desiredAnime.toLowerCase();
+	const animeTitle = desiredAnime.toLowerCase();
 	for (const currentData of data) {
-		let searchIndex = currentData.titles.findIndex(
+		const searchIndex = currentData.titles.findIndex(
 			(titleEntry) =>
 				titleEntry.title.toLowerCase() === animeTitle || titleEntry.title.toLowerCase().includes(animeTitle),
 		);

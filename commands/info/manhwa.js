@@ -16,13 +16,12 @@ module.exports = {
 		const query = new URLSearchParams([
 			['q', `${desiredManhwa}`],
 			['type', 'manhwa'],
-        ]);
-        
+		]);
 
 		const manhwaSearch = await fetch(`https://api.jikan.moe/v4/manga?${query}`).then((response) => response.json());
 		const manhwaResult = manhwaSearch.data[0];
-        console.log(manhwaSearch.data.length);
-        console.log(manhwaSearch);
+		console.log(manhwaSearch.data.length);
+		console.log(manhwaSearch);
 
 		const imageUrl = manhwaResult.images.jpg.image_url;
 
@@ -36,7 +35,7 @@ module.exports = {
 			score = manhwaResult.score.toString();
 		}
 
-		let synopsis = manhwaResult.synopsis ?? 'N/A';
+		const synopsis = manhwaResult.synopsis ?? 'N/A';
 		const trimmedSynopsis = trim(synopsis, 1024).toString();
 
 		const manhwaEmbed = new EmbedBuilder()

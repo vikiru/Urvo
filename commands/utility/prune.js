@@ -52,7 +52,7 @@ module.exports = {
 					components: [],
 				});
 			} else if (confirmId === 'cancel') {
-				await confirmation.update({ content: `Aborting command execution for deletion of messages`, components: [] });
+				await confirmation.update({ content: 'Aborting command execution for deletion of messages', components: [] });
 			}
 		} catch (error) {
 			await interaction.editReply({
