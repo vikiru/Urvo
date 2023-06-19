@@ -57,13 +57,13 @@ module.exports = {
 				});
 			} else if (confirmId === 'cancel') {
 				await confirmation.update({
-					content: `Aborting command execution for channel creation`,
+					content: 'Aborting command execution for channel creation',
 					components: [],
 				});
 			}
 		} catch (error) {
 			await interaction.editReply({
-				content: `Confirmation to create channel was not received within 1 minute. Aborting command execution.`,
+				content: 'Confirmation to create channel was not received within 1 minute. Aborting command execution.',
 				components: [],
 			});
 		}

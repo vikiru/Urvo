@@ -11,7 +11,7 @@ function returnMostVotedAnswer(results) {
 	let index = 0;
 	if (results.length > 1) {
 		for (let i = 0; i < results.length; i++) {
-			let thumbsUpCount = results[i].thumbs_up;
+			const thumbsUpCount = results[i].thumbs_up;
 			if (thumbsUpCount > max) {
 				max = thumbsUpCount;
 				index = i;

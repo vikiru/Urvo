@@ -29,7 +29,7 @@ module.exports = {
 		if (randomNumber === userGuess) {
 			interaction.reply('You guessed the number correctly!');
 		} else {
-			interaction.reply(`Sorry, you didn't guess the number correctly.`);
+			interaction.reply("Sorry, you didn't guess the number correctly.");
 		}
 	},
 };

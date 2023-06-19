@@ -8,7 +8,7 @@ const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
  */
 function createEmbed(interaction, user) {
 	const title = 'Minecraft Avatar!';
-	const description = `Here's your minecraft avatar as requested!`;
+	const description = "Here's your minecraft avatar as requested!";
 
 	const username = interaction.user.username;
 	const avatarURL = interaction.user.displayAvatarURL();

@@ -5,7 +5,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 function formatAnime(data) {
 	const title = data.title.replaceAll('"', '');
 	const malURL = data.url;
-	let trailerURL = data.trailer.url;
+	const trailerURL = data.trailer.url;
 	let score = data.score;
 	let episodeCount = data.episodes;
 
@@ -38,7 +38,7 @@ module.exports = {
 			option
 				.setName('status')
 				.setDescription('The airing status of the top 10 anime (airing or finished)')
-				.addChoices({ name: 'Airing', value: 'airing' }, { name: 'Finished', value: "''" }),
+				.addChoices({ name: 'Airing', value: 'airing' }, { name: 'Finished', value: '""' }),
 		),
 	guildOnly: true,
 	async execute(interaction) {
@@ -53,7 +53,7 @@ module.exports = {
 		const results = await fetch(`https://api.jikan.moe/v4/top/anime?${query}`).then((response) => response.json());
 		const topAnime = results.data;
 
-		let titleStatusText = status === 'airing' ? 'Airing' : 'All Time';
+		const titleStatusText = status === 'airing' ? 'Airing' : 'All Time';
 		const topAnimeEmbed = new EmbedBuilder()
 			.setTitle(`Top 10 ${titleStatusText} Anime!`)
 			.setColor(client.embedColour)

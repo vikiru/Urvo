@@ -33,7 +33,7 @@ module.exports = {
 			score = mangaResult.score.toString();
 		}
 
-		let synopsis = mangaResult.synopsis ?? 'N/A'
+		const synopsis = mangaResult.synopsis ?? 'N/A';
 		const trimmedSynopsis = trim(synopsis, 1024).toString();
 
 		const mangaEmbed = new EmbedBuilder()
