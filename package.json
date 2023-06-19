@@ -11,6 +11,8 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"deploy": "node deploy.js",
+		"lint": "eslint . *.js --fix",
+		"prettier": "prettier --write .",
 		"start": "node ."
 	},
 	"keywords": [],
