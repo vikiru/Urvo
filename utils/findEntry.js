@@ -20,7 +20,8 @@ function findEntry(data, title, type) {
 			}
 		}
 	}
-	const sortedIndexes = indexes.slice(0, 9).sort((a, b) => a.year - b.year);
+	let sortedIndexes = indexes.slice().sort((a, b) => a.year - b.year);
+	sortedIndexes = sortedIndexes.slice(0, 9);
 	return sortedIndexes;
 }
 
