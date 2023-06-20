@@ -1,4 +1,10 @@
-const { ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
+const {
+	ButtonBuilder,
+	ButtonStyle,
+	ActionRowBuilder,
+	StringSelectMenuBuilder,
+	StringSelectMenuOptionBuilder,
+} = require('discord.js');
 
 /**
  * Create a confirmation action row with numbers corresponding in ascending order until a given max count
@@ -19,4 +25,17 @@ function createConfirmationRow(maxCount) {
 	return row;
 }
 
-module.exports.createConfirmationRow = createConfirmationRow;
+function createSelectConfirmRow(maxCount) {
+	const options = [];
+	const select = new StringSelectMenuBuilder().setCustomId('confirm').setPlaceholder('Please select an entry');
+	for (let i = 0; i < maxCount; i++) {
+		const displayNum = i + 1;
+		const option = new StringSelectMenuOptionBuilder().setLabel(displayNum.toString()).setValue(i.toString());
+		options.push(option);
+	}
+	select.addOptions(options);
+	const row = new ActionRowBuilder().addComponents(select);
+	return row;
+}
+
+module.exports = { createConfirmationRow: createConfirmationRow, createSelectConfirmRow: createSelectConfirmRow };
