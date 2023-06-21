@@ -7,7 +7,6 @@
  */
 function findEntry(data, title, type) {
 	const indexes = [];
-	console.log(data);
 	for (const element of data) {
 		const entryType = element.type;
 		if (entryType === type) {
