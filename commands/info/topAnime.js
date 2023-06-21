@@ -76,7 +76,7 @@ module.exports = {
 			option
 				.setName('status')
 				.setDescription('The airing status of the top 10 anime (airing or finished)')
-				.addChoices({ name: 'Airing', value: 'airing' }, { name: 'Finished', value: '""' }),
+				.addChoices({ name: 'Airing', value: 'airing' }, { name: 'Finished', value: "''" }),
 		),
 	guildOnly: true,
 	async execute(interaction) {
@@ -87,6 +87,9 @@ module.exports = {
 			['type', 'tv'],
 			['limit', limit],
 		]);
+		if (status !== 'airing') {
+			query.delete('filter');
+		}
 		const results = await fetchData(`https://api.jikan.moe/v4/top/anime?${query}`);
 		const topAnime = results.data;
 		const topAnimeEmbed = createEmbed(interaction, status, topAnime);
