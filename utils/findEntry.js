@@ -11,7 +11,7 @@ function findEntry(data, title, type) {
 	for (const element of data) {
 		const entryType = element.type;
 		if (entryType === type) {
-			const titles = element.titles.map((titleEntry) => titleEntry.title.toLowerCase());
+			const titles = element.titles.map((titleEntry) => titleEntry.title.replace("'", '').toLowerCase());
 			const titleMatchExists = titles.find((titleEntry) => titleEntry === title || titleEntry.includes(title));
 			const titleIncluded = titles.includes(title.toLowerCase());
 			if (titleMatchExists || titleIncluded) {
