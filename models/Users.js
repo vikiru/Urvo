@@ -7,7 +7,7 @@ const sequelize = new Sequelize('database', DB_USER, DB_PASS, {
 	storage: 'database.sqlite',
 });
 
-const User = sequelize.define('User', {
+const User = sequelize.define('Users', {
 	id: {
 		type: DataTypes.STRING,
 		primaryKey: true,

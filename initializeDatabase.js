@@ -9,9 +9,11 @@ const sequelize = new Sequelize('database', DB_USER, DB_PASS, {
 	storage: 'database.sqlite',
 });
 
-try {
-	sequelize.sync();
-	console.log('All models were synchronized successfully.');
-} catch (error) {
-	console.log(error);
-}
+(async () => {
+	try {
+		await User.sync();
+		console.log('User sync successful');
+	} catch (error) {
+		console.error(error);
+	}
+})();
