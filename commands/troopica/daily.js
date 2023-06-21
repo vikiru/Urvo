@@ -22,7 +22,7 @@ module.exports = {
 			const currentTroops = user.dataValues.troops;
 			const newBalance = currentBalance + currencyAddition;
 			const newTroops = currentTroops + troopsAddition;
-			user.update({ balance: newBalance, troops: newTroops });
+			await user.update({ balance: newBalance, troops: newTroops });
 			interaction.reply(
 				`You received\n ${bold(currencyAddition)} 💰\n ${bold(troopsAddition)} ⚔️\n\nYour new balance is:\n${inlineCode(
 					'Balance',
