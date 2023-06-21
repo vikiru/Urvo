@@ -9,7 +9,7 @@ const { EmbedBuilder, inlineCode, hyperlink } = require('discord.js');
  * @returns An embed with all of the potential anime, manga, manhua or manhwa corresponding to a given search query
  */
 function createResultsEmbed(interaction, indexes, title, type) {
-	let description = `Please choose an ${type} from the following list of ${inlineCode(
+	let description = `Please choose a ${type} from the following list of ${inlineCode(
 		indexes.length,
 	)} ${type}, to see more information regarding it.\n`;
 
