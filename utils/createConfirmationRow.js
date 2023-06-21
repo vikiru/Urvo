@@ -25,6 +25,11 @@ function createConfirmationRow(maxCount) {
 	return row;
 }
 
+/**
+ * Create a confirmation action row with a select menu populated with numbers in ascending order until a given max count
+ * @param {*} maxCount
+ * @returns An ActionRowBuilder instance containing a StringSelectMenu filled with StringSelectMenuOptions
+ */
 function createSelectConfirmRow(maxCount) {
 	const options = [];
 	const select = new StringSelectMenuBuilder().setCustomId('confirm').setPlaceholder('Please select an entry');
