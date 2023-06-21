@@ -1,3 +1,9 @@
+/**
+ * Given an input string, return the formatted string such that all url characters are properly
+ * replaced with their equivalent characters
+ * @param {*} text
+ * @returns
+ */
 function parseText(text) {
 	const textReplacement = {
 		' ': '_',

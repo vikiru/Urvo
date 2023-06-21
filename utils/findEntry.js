@@ -10,17 +10,16 @@ function findEntry(data, title, type) {
 	for (const element of data) {
 		const entryType = element.type;
 		if (entryType === type) {
-			const titles = element.titles.map((titleEntry) => titleEntry.title.toLowerCase());
-			const titleMatchExists = titles.findIndex(
-				(titleEntry) => titleEntry.toLowerCase() === title || titleEntry.toLowerCase().includes(title),
-			);
+			const titles = element.titles.map((titleEntry) => titleEntry.title.replace("'", '').toLowerCase());
+			const titleMatchExists = titles.find((titleEntry) => titleEntry === title || titleEntry.includes(title));
 			const titleIncluded = titles.includes(title.toLowerCase());
 			if (titleMatchExists || titleIncluded) {
 				indexes.push(element);
 			}
 		}
 	}
-	const sortedIndexes = indexes.slice(0, 9).sort((a, b) => a.year - b.year);
+	let sortedIndexes = indexes.slice().sort((a, b) => a.year - b.year);
+	sortedIndexes = sortedIndexes.slice(0, 10);
 	return sortedIndexes;
 }
 

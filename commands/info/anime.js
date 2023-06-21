@@ -3,7 +3,7 @@ const { URLSearchParams } = require('url');
 const { fetchData } = require('../../utils/fetchData');
 const trim = (str, max) => (str.length > max ? `${str.slice(0, max - 3)}...` : str);
 const { findEntry } = require('../../utils/findEntry');
-const { createConfirmationRow } = require('../../utils/createConfirmationRow');
+const { createConfirmationRow, createSelectConfirmRow } = require('../../utils/createConfirmationRow');
 const { createResultsEmbed } = require('../../utils/createResultsEmbed');
 
 /**
@@ -85,9 +85,10 @@ module.exports = {
 				});
 			} else {
 				const indexes = findEntry(animeSearch.data, desiredAnime, 'TV');
-				if (indexes.length != 0) {
+				if (indexes.length != 0 && indexes.length > 1) {
 					const resultsEmbed = createResultsEmbed(interaction, indexes, 'Anime Search Results', 'anime');
-					const row = createConfirmationRow(indexes.length);
+					const row =
+						indexes.length <= 5 ? createConfirmationRow(indexes.length) : createSelectConfirmRow(indexes.length);
 					const response = await interaction.reply({
 						embeds: [resultsEmbed],
 						components: [row],
@@ -96,7 +97,7 @@ module.exports = {
 					try {
 						const confirmation = await response.awaitMessageComponent({ filter: filter, time: 60_000 });
 						const confirmId = confirmation.customId;
-						const index = parseInt(confirmId);
+						const index = isNaN(confirmId) ? parseInt(confirmation.values[0]) : parseInt(confirmId);
 						animeEmbed = createEmbed(interaction, indexes[index]);
 						await interaction.editReply({
 							embeds: [animeEmbed],
