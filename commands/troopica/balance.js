@@ -12,7 +12,7 @@ module.exports = {
 		let balance = 0;
 		let troops = 0;
 		if (!user) {
-			const newUser = await User.create({ id: id });
+			await User.create({ id: id });
 		} else {
 			balance = user.dataValues.balance;
 			troops = user.dataValues.troops;
