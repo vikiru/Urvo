@@ -3,7 +3,6 @@ const path = require('path');
 const { token, prefix } = require('./config.json');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
-
 global.client = new Client({
 	intents: [
 		GatewayIntentBits.Guilds,
