@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { token, prefix } = require('./config.json');
+const { token } = require('./config.json');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
 global.client = new Client({
@@ -12,14 +12,15 @@ global.client = new Client({
 	],
 });
 
-client.prefix = prefix;
 client.embedColour = '#b35843';
 client.commands = new Collection();
-client.commands.fun = new Collection();
 client.commands.image = new Collection();
+client.commands.info = new Collection();
+client.commands.meme = new Collection();
 client.commands.minigames = new Collection();
 client.commands.moderation = new Collection();
-client.commands.music = new Collection();
+client.commands.rand = new Collection();
+client.commands.troopica = new Collection();
 client.commands.utility = new Collection();
 
 // Accessing and loading the commands
@@ -31,15 +32,17 @@ for (const folder of commandFolders) {
 
 	for (const file of commandFiles) {
 		const command = require(`./commands/${folder}/${file}`);
-
 		client.commands.set(command.data.name, command);
 
 		switch (folder) {
-			case 'fun':
-				client.commands.fun.set(command.data.name, command);
-				break;
 			case 'image':
 				client.commands.image.set(command.data.name, command);
+				break;
+			case 'info':
+				client.commands.info.set(command.data.name, command);
+				break;
+			case 'meme':
+				client.commands.meme.set(command.data.name, command);
 				break;
 			case 'minigames':
 				client.commands.minigames.set(command.data.name, command);
@@ -47,8 +50,11 @@ for (const folder of commandFolders) {
 			case 'moderation':
 				client.commands.moderation.set(command.data.name, command);
 				break;
-			case 'music':
-				client.commands.music.set(command.data.name, command);
+			case 'random':
+				client.commands.rand.set(command.data.name, command);
+				break;
+			case 'troopica':
+				client.commands.troopica.set(command.data.name, command);
 				break;
 			case 'utility':
 				client.commands.utility.set(command.data.name, command);
