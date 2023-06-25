@@ -35,7 +35,6 @@ module.exports = {
 	async execute(interaction) {
 		const randomFact = await fetchData('https://uselessfacts.jsph.pl/api/v2/facts/random');
 		const factEmbed = createEmbed(interaction, randomFact);
-
 		interaction.reply({ embeds: [factEmbed] });
 	},
 };

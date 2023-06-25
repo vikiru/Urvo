@@ -38,7 +38,6 @@ module.exports = {
 			'https://v2.jokeapi.dev/joke/Pun?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single',
 		);
 		const punEmbed = createEmbed(interaction, randomPun);
-
 		interaction.reply({ embeds: [punEmbed] });
 	},
 };

@@ -9,7 +9,7 @@ const { EmbedBuilder, SlashCommandBuilder, quote, inlineCode } = require('discor
 function formatCommands(commandData) {
 	let commandStr = '';
 	let lineLength = 0;
-	const limit = 28;
+	const limit = 60;
 	for (const command of commandData) {
 		const commandName = command[0];
 		const nameLength = commandName.length;
@@ -35,7 +35,7 @@ function formatCommands(commandData) {
  */
 function createEmbed(interaction, fieldData) {
 	const title = 'All Possible Commands!';
-	const description = `Urvo is a multi-purpose bot with various commands spanning across several categories, please see below for the various commands that can be used. Enjoy!\n\n${inlineCode(
+	const description = `Urvo is a multi-purpose bot with various commands spanning across several categories, please see below for the various commands that can be used. Enjoy!\n${inlineCode(
 		'Total Commands',
 	)}: ${client.commands.size}`;
 	const img = 'http://www.clker.com/cliparts/P/t/7/o/9/W/help-hi.png';
@@ -57,7 +57,7 @@ function createEmbed(interaction, fieldData) {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Access a list of help commands relevant to this bot.'),
+		.setDescription('Access a list of commands that can be used with Urvo.'),
 	guildOnly: true,
 	/**
 	 * Send an embed with information about all the commands that the bot is able to execute.
@@ -68,40 +68,40 @@ module.exports = {
 
 		const imgDesc =
 			'Enhance your mood with a random image of an animal from the available options or an image of coffee to boost your energy!';
-		const imageStr = quote(imgDesc) + '\n\n' + formatCommands(image);
+		const imageStr = quote(imgDesc) + '\n' + formatCommands(image);
 
 		const infoDesc =
 			'Whether you’re a fan of anime or manga, digimon or disney, or just curious about a term, you’ll find everything you need here!';
-		const infoStr = quote(infoDesc) + '\n\n' + formatCommands(info);
+		const infoStr = quote(infoDesc) + '\n' + formatCommands(info);
 
 		const memeDesc = 'Generate memes to enjoy with your friends, using easy prompts!';
-		const memeStr = quote(memeDesc) + '\n\n' + formatCommands(meme);
+		const memeStr = quote(memeDesc) + '\n' + formatCommands(meme);
 
 		const miniDesc = 'The cure for boredom. Beat the bot and have a blast!';
-		const miniStr = quote(miniDesc) + '\n\n' + formatCommands(minigames);
+		const miniStr = quote(miniDesc) + '\n' + formatCommands(minigames);
 
 		const modDesc = 'Use these commands to manage the server effectively and efficiently!';
-		const modStr = quote(modDesc) + '\n\n' + formatCommands(moderation);
+		const modStr = quote(modDesc) + '\n' + formatCommands(moderation);
 
 		const randDesc =
 			'An assortment of commands that provide you with random pieces of information such as motivating you with a quote or making you laugh with a joke!';
-		const randStr = quote(randDesc) + '\n\n' + formatCommands(rand);
+		const randStr = quote(randDesc) + '\n' + formatCommands(rand);
 
 		const troopDesc = 'Rise to the top of your server by amassing wealth and troops!';
-		const troopStr = quote(troopDesc) + '\n\n' + formatCommands(troopica);
+		const troopStr = quote(troopDesc) + '\n' + formatCommands(troopica);
 
 		const utilDesc = 'Additional commands that can prove useful to yourself or the server!';
-		const utilStr = quote(utilDesc) + '\n\n' + formatCommands(utility);
+		const utilStr = quote(utilDesc) + '\n' + formatCommands(utility);
 
 		const fieldData = [
-			{ name: '📷 Images', value: imageStr },
-			{ name: '❓ Information', value: infoStr },
-			{ name: '😂  Memes', value: memeStr },
-			{ name: '🕹️ Minigames', value: miniStr },
-			{ name: '🛡️ Moderation', value: modStr },
-			{ name: '🎲 Random', value: randStr },
-			{ name: '⚔️ Troopica', value: troopStr },
-			{ name: '🛠️ Utility', value: utilStr },
+			{ name: '📷 Images', value: imageStr, inline: false },
+			{ name: '❓ Information', value: infoStr, inline: false },
+			{ name: '😂  Memes', value: memeStr, inline: false },
+			{ name: '🕹️ Minigames', value: miniStr, inline: false },
+			{ name: '🛡️ Moderation', value: modStr, inline: false },
+			{ name: '🎲 Random', value: randStr, inline: false },
+			{ name: '⚔️ Troopica', value: troopStr, inline: false },
+			{ name: '🛠️ Utility', value: utilStr, inline: false },
 		];
 		const helpEmbed = createEmbed(interaction, fieldData);
 		interaction.reply({ embeds: [helpEmbed] });

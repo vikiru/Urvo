@@ -35,7 +35,6 @@ module.exports = {
 	async execute(interaction) {
 		const randomAffirmation = await fetchData('https://www.affirmations.dev');
 		const affirmationEmbed = createEmbed(interaction, randomAffirmation);
-
 		interaction.reply({ embeds: [affirmationEmbed] });
 	},
 };

@@ -44,9 +44,7 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		const randomActivity = await fetchData('http://www.boredapi.com/api/activity/');
-
 		const activityEmbed = createEmbed(interaction, randomActivity);
-
 		interaction.reply({ embeds: [activityEmbed] });
 	},
 };

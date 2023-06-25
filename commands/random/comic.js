@@ -51,9 +51,7 @@ module.exports = {
 	async execute(interaction) {
 		const random = await generateRandom();
 		const randomComic = await fetchData(`https://xkcd.com/${random}/info.0.json`);
-
 		const comicEmbed = createEmbed(interaction, randomComic);
-
 		interaction.reply({ embeds: [comicEmbed] });
 	},
 };
