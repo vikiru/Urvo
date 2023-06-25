@@ -1,5 +1,4 @@
 const { EmbedBuilder, SlashCommandBuilder, quote, inlineCode } = require('discord.js');
-const { image, info, meme, minigames, moderation, rand, troopica, utility } = client.commands;
 
 /**
  * Given all the command data for a category, return a formmatted string to be used in the description of that
@@ -65,6 +64,8 @@ module.exports = {
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
+		const { image, info, meme, minigames, moderation, rand, troopica, utility } = client.commands;
+
 		const imgDesc =
 			'Enhance your mood with a random image of an animal from the available options or an image of coffee to boost your energy!';
 		const imageStr = quote(imgDesc) + '\n\n' + formatCommands(image);

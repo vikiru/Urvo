@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, inlineCode, bold } = require('discord.js');
 const User = require('../../models/Users');
+const { handleUser } = require('../../utils/handleUser');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -12,27 +13,22 @@ module.exports = {
 	async execute(interaction) {
 		const id = interaction.user.id;
 		const amount = interaction.options.getNumber('amount');
-		const user = await User.findOne({ where: { id: id } });
-		if (!user) {
-			await User.create({ id: id });
-			interaction.reply('Sorry, you do not have enough currency to purchase this number of troops');
+		const user = await handleUser(id);
+		const balance = user.dataValues.balance;
+		const troops = user.dataValues.troops;
+		if (balance >= amount) {
+			const newBalance = balance - amount;
+			const newTroops = troops + amount;
+			await user.update({ balance: newBalance, troops: newTroops });
+			interaction.reply(
+				`You have successfully purchased ${amount} troops. Your new balance is:\n\n${inlineCode(
+					'Balance',
+				)}: ${newBalance} 💰 (🔽 ${bold(amount.toString())})\n${inlineCode('Troops')}: ${newTroops} ⚔️ (🔼 ${bold(
+					amount.toString(),
+				)})`,
+			);
 		} else {
-			let balance = user.dataValues.balance;
-			let troops = user.dataValues.troops;
-			if (balance >= amount) {
-				const newBalance = balance - amount;
-				const newTroops = troops + amount;
-				await user.update({ balance: newBalance, troops: newTroops });
-				interaction.reply(
-					`You have successfully purchased ${amount} troops. Your new balance is:\n\n${inlineCode(
-						'Balance',
-					)}: ${newBalance} 💰 (🔽 ${bold(amount.toString())})\n${inlineCode('Troops')}: ${newTroops} ⚔️ (🔼 ${bold(
-						amount.toString(),
-					)})`,
-				);
-			} else {
-				interaction.reply('Sorry, you do not have enough currency to purchase this number of troops');
-			}
+			interaction.reply('Sorry, you do not have enough currency to purchase this number of troops');
 		}
 	},
 };

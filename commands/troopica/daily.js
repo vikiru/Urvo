@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, bold, inlineCode } = require('discord.js');
 const User = require('../../models/Users');
+const { handleUser } = require('../../utils/handleUser');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -11,23 +12,17 @@ module.exports = {
 		const id = interaction.user.id;
 		const currencyAddition = 1000;
 		const troopsAddition = 100;
-		const user = await User.findOne({ where: { id: id } });
-		if (!user) {
-			await User.create({ id: id, balance: currencyAddition, troops: troopsAddition });
-			interaction.reply(
-				`You currently have\n${inlineCode('Balance')}: ${balance} 💰\n${inlineCode('Troops')}: ${troops} ⚔️`,
-			);
-		} else {
-			const currentBalance = user.dataValues.balance;
-			const currentTroops = user.dataValues.troops;
-			const newBalance = currentBalance + currencyAddition;
-			const newTroops = currentTroops + troopsAddition;
-			await user.update({ balance: newBalance, troops: newTroops });
-			interaction.reply(
-				`You received\n ${bold(currencyAddition)} 💰\n ${bold(troopsAddition)} ⚔️\n\nYour new balance is:\n${inlineCode(
-					'Balance',
-				)}: ${newBalance} 💰\n${inlineCode('Troops')}: ${newTroops} ⚔️`,
-			);
-		}
+		const user = await handleUser(id);
+
+		const currentBalance = user.dataValues.balance;
+		const currentTroops = user.dataValues.troops;
+		const newBalance = currentBalance + currencyAddition;
+		const newTroops = currentTroops + troopsAddition;
+		await user.update({ balance: newBalance, troops: newTroops });
+		interaction.reply(
+			`You received\n ${bold(currencyAddition)} 💰\n ${bold(troopsAddition)} ⚔️\n\nYour new balance is:\n${inlineCode(
+				'Balance',
+			)}: ${newBalance} 💰\n${inlineCode('Troops')}: ${newTroops} ⚔️`,
+		);
 	},
 };
