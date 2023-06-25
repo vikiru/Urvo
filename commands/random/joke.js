@@ -29,6 +29,7 @@ function createEmbed(interaction, randomJoke) {
 module.exports = {
 	data: new SlashCommandBuilder().setName('joke').setDescription('Receive a random joke'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random joke and send into the chat via an embed
 	 * @param {*} interaction

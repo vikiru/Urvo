@@ -28,6 +28,7 @@ function createEmbed(interaction, randomFact) {
 module.exports = {
 	data: new SlashCommandBuilder().setName('fact').setDescription('Send a random fact'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random fact and send it as an embed into the chat.
 	 * @param {*} interaction

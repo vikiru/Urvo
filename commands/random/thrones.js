@@ -42,6 +42,7 @@ module.exports = {
 		.setName('thrones')
 		.setDescription('Get information about a random Game of Thrones character'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random GoT character and send it as an embed into the chat.
 	 * @param {*} interaction

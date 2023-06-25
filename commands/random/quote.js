@@ -31,6 +31,7 @@ function createEmbed(interaction, randomQuote) {
 module.exports = {
 	data: new SlashCommandBuilder().setName('quote').setDescription('Send a random quote'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random quote and send into the chat via an embed
 	 * @param {*} interaction

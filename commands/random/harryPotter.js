@@ -57,6 +57,7 @@ module.exports = {
 		.setName('potter')
 		.setDescription('Get information about a random Harry Potter character'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random Harry Potter character and send it as an embed into the chat.
 	 * @param {*} interaction

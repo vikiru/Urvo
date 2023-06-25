@@ -38,6 +38,7 @@ function createEmbed(interaction, randomActivity) {
 module.exports = {
 	data: new SlashCommandBuilder().setName('bored').setDescription('Suggest a random randomActivity to the user'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random activity and send it into the chat via an embed.
 	 * @param {*} interaction

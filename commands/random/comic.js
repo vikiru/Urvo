@@ -44,6 +44,7 @@ function createEmbed(interaction, randomComic) {
 module.exports = {
 	data: new SlashCommandBuilder().setName('comic').setDescription('Sends a random xkcd comic in the channel'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch the current xkcd comic and then fetch a random comic and send it into the chat via an embed.
 	 * @param {*} interaction
