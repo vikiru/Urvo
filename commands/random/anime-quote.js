@@ -34,9 +34,7 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		const quoteData = await fetchData();
-
 		const quoteEmbed = createEmbed(interaction, quoteData);
-
 		interaction.reply({ embeds: [quoteEmbed] });
 	},
 };
