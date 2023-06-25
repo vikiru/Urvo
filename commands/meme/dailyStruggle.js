@@ -43,6 +43,7 @@ module.exports = {
 			option.setName('right_button_text').setDescription('Text that appears on the right button').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Sends a Daily Struggle meme with the specified text
 	 * @param {*} interaction

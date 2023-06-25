@@ -31,6 +31,7 @@ module.exports = {
 			option.setName('query').setDescription('The name of the digimon you wish to search for').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Sends information about a requested digimon (name, level and an image) to the chat via an embed
 	 * @param {*} interaction

@@ -32,6 +32,7 @@ module.exports = {
 			option.setName('user').setDescription('The username or uid of the user').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	async execute(interaction) {
 		const user = interaction.options.getString('user');
 		const minecraftEmbed = createEmbed(interaction, user);

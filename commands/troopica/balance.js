@@ -7,6 +7,7 @@ module.exports = {
 		.setName('balance')
 		.setDescription('Retrieve your balance, including how many troops you posess'),
 	guildOnly: true,
+	cooldown: 10,
 	async execute(interaction) {
 		const id = interaction.user.id;
 		const user = await handleUser(id);

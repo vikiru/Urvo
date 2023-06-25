@@ -49,6 +49,7 @@ module.exports = {
 				.addChoices({ name: 'PNG', value: '.png' }, { name: 'GIF', value: '.gif' }),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Sends a Buzz Lightyear Everywhere with the specified text
 	 * @param {*} interaction

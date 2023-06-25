@@ -6,6 +6,7 @@ module.exports = {
 		.setName('leaderboard')
 		.setDescription('See the top 10 players within the leaderboards!'),
 	guildOnly: true,
+	cooldown: 10,
 	async execute(interaction) {
 		const allUsers = await User.findAll();
 		allUsers.sort((a, b) => b.troops - a.troops);

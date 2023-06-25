@@ -57,7 +57,7 @@ function createEmbed(interaction, fieldData) {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Access a list of commands that can be used with Urvo.'),
+		.setDescription('Access a list of commands that can be used with Urvo'),
 	guildOnly: true,
 	/**
 	 * Send an embed with information about all the commands that the bot is able to execute.

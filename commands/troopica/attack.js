@@ -77,7 +77,7 @@ module.exports = {
 		.setDescription('Deploy your troops against another user, may the odds be in your favor')
 		.addUserOption((option) => option.setName('user').setDescription('The user you wish to attack').setRequired(true)),
 	guildOnly: true,
-	cooldown: 600000,
+	cooldown: 600,
 	async execute(interaction) {
 		const attackingUser = interaction.user;
 		const targetUser = interaction.options.getUser('user');

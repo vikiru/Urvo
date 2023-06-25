@@ -43,6 +43,7 @@ module.exports = {
 			option.setName('bottom_text').setDescription('Text that appears on the bottom').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Sends a Tuxedo Winnie the Pooh meme with the specified text
 	 * @param {*} interaction

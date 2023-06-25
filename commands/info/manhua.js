@@ -60,6 +60,7 @@ module.exports = {
 			option.setName('query').setDescription('The name of the manhua you wish to search for').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	async execute(interaction) {
 		const desiredManhua = interaction.options.getString('query');
 		const query = new URLSearchParams([['q', `${desiredManhua}`]]);

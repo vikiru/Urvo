@@ -79,6 +79,7 @@ module.exports = {
 				.addChoices({ name: 'Airing', value: 'airing' }, { name: 'Finished', value: "''" }),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	async execute(interaction) {
 		const status = interaction.options.getString('status');
 		const limit = 10;

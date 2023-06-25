@@ -69,6 +69,7 @@ module.exports = {
 		.setDescription('Provides the definition for a given term from Urban Dictionary')
 		.addStringOption((option) => option.setName('term').setDescription('The term to define').setRequired(true)),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Provide the definition for a given term from Urban Dictionary
 	 * @param {*} interaction

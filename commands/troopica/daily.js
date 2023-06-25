@@ -7,7 +7,7 @@ module.exports = {
 		.setName('daily')
 		.setDescription('Retrieve your daily supplement of currency and troops'),
 	guildOnly: true,
-	cooldown: 86400000,
+	cooldown: 86400,
 	async execute(interaction) {
 		const id = interaction.user.id;
 		const currencyAddition = 1000;

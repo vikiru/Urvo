@@ -43,6 +43,7 @@ module.exports = {
 			option.setName('bottom_text').setDescription('Text that appears on the bottom').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Sends a But That's None Of Your Business Kermit Meme with the specified text
 	 * @param {*} interaction

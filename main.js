@@ -22,6 +22,7 @@ client.commands.moderation = new Collection();
 client.commands.rand = new Collection();
 client.commands.troopica = new Collection();
 client.commands.utility = new Collection();
+client.cooldowns = new Collection();
 
 // Accessing and loading the commands
 const commandFolders = fs.readdirSync('./commands');

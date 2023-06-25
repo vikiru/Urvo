@@ -61,6 +61,7 @@ module.exports = {
 			option.setName('query').setDescription('The name of the manhwa you wish to search for').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	async execute(interaction) {
 		const desiredManhwa = interaction.options.getString('query');
 		const query = new URLSearchParams([['q', `${desiredManhwa}`]]);
