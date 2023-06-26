@@ -10,6 +10,7 @@ module.exports = {
 			option.setName('amount').setDescription('The number of troops to purchase').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	async execute(interaction) {
 		const id = interaction.user.id;
 		const amount = interaction.options.getNumber('amount');

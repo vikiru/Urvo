@@ -30,6 +30,7 @@ function createEmbed(interaction, randomAdvice) {
 module.exports = {
 	data: new SlashCommandBuilder().setName('advice').setDescription('Send a random piece of advice'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch random advice and send it as an embed into the chat.
 	 * @param {*} interaction

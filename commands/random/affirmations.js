@@ -28,6 +28,7 @@ function createEmbed(interaction, randomAffirmation) {
 module.exports = {
 	data: new SlashCommandBuilder().setName('affirmation').setDescription('Send a random affirmation'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random affirmation and send it as an embed into the chat.
 	 * @param {*} interaction

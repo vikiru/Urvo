@@ -18,12 +18,13 @@ module.exports = {
 				.addChoices(
 					{ name: 'add', value: '+' },
 					{ name: 'subtract', value: '-' },
-					{ name: 'multiply', value: 'x' },
+					{ name: 'multiply', value: '*' },
 					{ name: 'divide', value: '/' },
 				),
 		),
 
 	guildOnly: true,
+	cooldown: 5,
 	/**
 	 * Allows for simple mathematical expression calculations
 	 * @param {*} interaction

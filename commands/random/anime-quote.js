@@ -27,13 +27,14 @@ function createEmbed(interaction, quoteData) {
 module.exports = {
 	data: new SlashCommandBuilder().setName('anime-quote').setDescription('Send a random quote from an anime'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random anime quote, then use the anime name from the random quote
 	 * to search for the MAL anime listing
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {
-		const quoteData = await fetchData();
+		const quoteData = await fetchData('https://animechan.xyz/api/random');
 		const quoteEmbed = createEmbed(interaction, quoteData);
 		interaction.reply({ embeds: [quoteEmbed] });
 	},

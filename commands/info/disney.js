@@ -97,6 +97,7 @@ module.exports = {
 			option.setName('name').setDescription('The name of the Disney character').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	async execute(interaction) {
 		const desiredCharacter = interaction.options.getString('name');
 		const query = new URLSearchParams([['name', desiredCharacter]]);

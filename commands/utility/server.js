@@ -3,6 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder().setName('server-info').setDescription('Retrieve information about the server'),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Send an embed with information about the server.
 	 * @param {*} interaction

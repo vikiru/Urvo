@@ -13,6 +13,7 @@ module.exports = {
 		.addChannelOption((option) => option.setName('channel').setDescription('The channel to delete').setRequired(true))
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Allows a user with the right permissions to delete a channel.
 	 * @param {*} interaction

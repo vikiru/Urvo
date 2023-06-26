@@ -23,6 +23,7 @@ module.exports = {
 		)
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 *
 	 * @param {*} interaction

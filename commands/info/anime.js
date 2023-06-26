@@ -61,6 +61,7 @@ module.exports = {
 			option.setName('query').setDescription('The name of the anime you wish to search for').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Fetch information pertaining to a queried anime and send the response back as an embed.
 	 * @param {*} interaction

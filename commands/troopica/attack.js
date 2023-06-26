@@ -17,7 +17,7 @@ async function handleBattle(interaction, attacker, defender) {
 	const defenderTroops = defender.dataValues.troops;
 
 	if (attackerTroops == 0 || defenderTroops == 0) {
-		interaction.replay('Sorry, this battle cannot occur as one of the users has 0 troops');
+		interaction.reply('Sorry, this battle cannot occur as one of the users has 0 troops');
 	}
 
 	const totalTroops = attackerTroops + defenderTroops;
@@ -77,7 +77,7 @@ module.exports = {
 		.setDescription('Deploy your troops against another user, may the odds be in your favor')
 		.addUserOption((option) => option.setName('user').setDescription('The user you wish to attack').setRequired(true)),
 	guildOnly: true,
-	cooldown: 600000,
+	cooldown: 600,
 	async execute(interaction) {
 		const attackingUser = interaction.user;
 		const targetUser = interaction.options.getUser('user');

@@ -28,6 +28,7 @@ module.exports = {
 		.setName('shakespeare')
 		.setDescription('Send a random sonnet written by William Shakespeare'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random sonnet written by William Shakespeare and send it as an embed into the chat.
 	 * @param {*} interaction

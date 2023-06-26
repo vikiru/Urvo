@@ -25,14 +25,14 @@ function createEmbed(interaction, randomThrone) {
 	const family = randomThrone.family;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.displayAvatarURL();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const throneEmbed = new EmbedBuilder()
 		.setTitle(name)
 		.setColor(client.embedColour)
 		.setImage(image)
 		.setTimestamp()
-		.addFields({ name: 'Title', value: title, inline: true }, { name: 'family', value: family, inline: true })
+		.addFields({ name: 'Title', value: title, inline: true }, { name: 'Family', value: family, inline: true })
 		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
 	return throneEmbed;
 }
@@ -42,6 +42,7 @@ module.exports = {
 		.setName('thrones')
 		.setDescription('Get information about a random Game of Thrones character'),
 	guildOnly: true,
+	cooldowns: 10,
 	/**
 	 * Fetch a random GoT character and send it as an embed into the chat.
 	 * @param {*} interaction

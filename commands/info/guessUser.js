@@ -65,6 +65,7 @@ module.exports = {
 			option.setName('name').setDescription('The name that you wish to provide').setRequired(true),
 		),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Determine the ageResult, genderResult, and nationality of a user based on provided name. Send result as an embed.
 	 * @param {*} interaction

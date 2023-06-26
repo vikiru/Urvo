@@ -26,6 +26,7 @@ function createEmbed(interaction, randomDuck) {
 module.exports = {
 	data: new SlashCommandBuilder().setName('duck').setDescription('Send a random image of a duck'),
 	guildOnly: true,
+	cooldown: 10,
 	/**
 	 * Fetch a random duck and send into the chat via an embed
 	 * @param {*} interaction
