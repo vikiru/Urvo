@@ -25,14 +25,14 @@ function createEmbed(interaction, randomThrone) {
 	const family = randomThrone.family;
 
 	const username = interaction.user.username;
-	const avatarURL = interaction.displayAvatarURL();
+	const avatarURL = interaction.user.displayAvatarURL();
 
 	const throneEmbed = new EmbedBuilder()
 		.setTitle(name)
 		.setColor(client.embedColour)
 		.setImage(image)
 		.setTimestamp()
-		.addFields({ name: 'Title', value: title, inline: true }, { name: 'family', value: family, inline: true })
+		.addFields({ name: 'Title', value: title, inline: true }, { name: 'Family', value: family, inline: true })
 		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
 	return throneEmbed;
 }

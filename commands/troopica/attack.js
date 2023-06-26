@@ -17,7 +17,7 @@ async function handleBattle(interaction, attacker, defender) {
 	const defenderTroops = defender.dataValues.troops;
 
 	if (attackerTroops == 0 || defenderTroops == 0) {
-		interaction.replay('Sorry, this battle cannot occur as one of the users has 0 troops');
+		interaction.reply('Sorry, this battle cannot occur as one of the users has 0 troops');
 	}
 
 	const totalTroops = attackerTroops + defenderTroops;

@@ -18,7 +18,7 @@ module.exports = {
 				.addChoices(
 					{ name: 'add', value: '+' },
 					{ name: 'subtract', value: '-' },
-					{ name: 'multiply', value: 'x' },
+					{ name: 'multiply', value: '*' },
 					{ name: 'divide', value: '/' },
 				),
 		),
