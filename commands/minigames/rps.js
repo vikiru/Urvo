@@ -3,6 +3,7 @@ const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 /**
  * Helper function to make the first character of a string uppercase
  * @param {*} str
+ * @returns The input string with the first character being uppercase
  */
 function properCase(str) {
 	str = str.charAt(0).toUpperCase() + str.slice(1);
@@ -53,6 +54,46 @@ function determineOutcome(playerChoice, botChoice) {
 	}
 }
 
+/**
+ * Create an embed containing information about the Rock-Paper-Scissors match between a user and the bot
+ * @param {*} interaction
+ * @param {*} data
+ * @returns An embed containing information about the Rock-Paper-Scissors match between a user and the bot
+ */
+function createEmbed(interaction, data) {
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
+	const botName = client.user.username;
+	const title = `Rock-Paper-Scissors Match between ${username} and ${botName}`;
+
+	const playerChoice = data.playerChoice;
+	const botChoice = data.botChoice;
+	const outcome = data.outcome;
+
+	const img = 'https://ausm.org.uk/wp-content/uploads/2015/02/rock-paper-scissors-hands.jpg';
+
+	const resultEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setThumbnail(img)
+		.addFields(
+			{
+				name: `${username}'s Choice: `,
+				value: properCase(playerChoice),
+				inline: true,
+			},
+			{
+				name: `${botName}'s Choice: `,
+				value: properCase(botChoice),
+				inline: true,
+			},
+			{ name: 'Outcome', value: outcome },
+		)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return resultEmbed;
+}
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('rps')
@@ -80,28 +121,9 @@ module.exports = {
 		const options = ['rock', 'paper', 'scissors'];
 		const botChoice = options[Math.floor(Math.random() * options.length)];
 		const playerChoice = interaction.options.getString('choice');
-
 		const outcome = determineOutcome(playerChoice, botChoice);
-		const resultEmbed = new EmbedBuilder()
-			.setTitle(`Rock-Paper-Scissors Match between ${interaction.user.username} and ${client.user.username}`)
-			.setColor('#b35843')
-			.setTimestamp()
-			.setThumbnail('https://ausm.org.uk/wp-content/uploads/2015/02/rock-paper-scissors-hands.jpg')
-			.addFields(
-				{
-					name: `${interaction.user.username}'s Choice: `,
-					value: properCase(playerChoice),
-					inline: true,
-				},
-				{
-					name: `${client.user.username}'s Choice: `,
-					value: properCase(botChoice),
-					inline: true,
-				},
-				{ name: 'Outcome', value: outcome },
-			)
-			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
-
+		const data = { playerChoice: playerChoice, botChoice: botChoice, outcome: outcome };
+		const resultEmbed = createEmbed(interaction, data);
 		interaction.reply({ embeds: [resultEmbed] });
 	},
 };
