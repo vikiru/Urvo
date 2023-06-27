@@ -5,13 +5,15 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/vikiru/Urvo/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-green"/>
-  </a>
-  <a href="https://vikiru.github.io/Urvo/">
-    <img src="https://img.shields.io/badge/documentation-docs-orange"/>
-  </a>
-  <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"/>
+	<a href="https://github.com/vikiru/Urvo/blob/main/LICENSE">
+		<img src="https://img.shields.io/badge/license-MIT-green"/>
+	</a>
+	<a href="https://vikiru.github.io/Urvo/">
+		<img src="https://img.shields.io/badge/documentation-docs-orange"/>
+	</a>
+	<a href="https://github.com/prettier/prettier">
+		<img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"/>
+	</a>
 </p>
 
 ---
