@@ -62,6 +62,10 @@ module.exports = {
 		),
 	guildOnly: true,
 	cooldown: 10,
+	/**
+	 * Allows a user to search for a manga and return information about that manga, if it exists.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const desiredManga = interaction.options.getString('query');
 		const query = new URLSearchParams([['q', `${desiredManga}`]]);

@@ -8,6 +8,10 @@ module.exports = {
 		.setDescription('Retrieve your daily supplement of currency and troops'),
 	guildOnly: true,
 	cooldown: 86400,
+	/**
+	 * Allows the user to receive their daily supplement of currency and troops within Troopica.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const id = interaction.user.id;
 		const currencyAddition = 1000;

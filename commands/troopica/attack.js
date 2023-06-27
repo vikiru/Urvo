@@ -78,6 +78,10 @@ module.exports = {
 		.addUserOption((option) => option.setName('user').setDescription('The user you wish to attack').setRequired(true)),
 	guildOnly: true,
 	cooldown: 600,
+	/**
+	 * Allows a user to attack another user with their troops within Troopica.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const attackingUser = interaction.user;
 		const targetUser = interaction.options.getUser('user');

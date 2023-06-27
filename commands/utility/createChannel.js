@@ -25,7 +25,7 @@ module.exports = {
 	guildOnly: true,
 	cooldown: 10,
 	/**
-	 *
+	 * Allows a user with the required permissions to create a channel of a given type.
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {

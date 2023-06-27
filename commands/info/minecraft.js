@@ -33,6 +33,10 @@ module.exports = {
 		),
 	guildOnly: true,
 	cooldown: 10,
+	/**
+	 * Allows a user to retrieve the Minecraft avatar of a given user from their username or uid.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const user = interaction.options.getString('user');
 		const minecraftEmbed = createEmbed(interaction, user);

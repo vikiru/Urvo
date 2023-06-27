@@ -26,7 +26,7 @@ module.exports = {
 	guildOnly: true,
 	cooldown: 5,
 	/**
-	 * Allows for simple mathematical expression calculations
+	 * Allows for simple mathematical expression calculations.
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {

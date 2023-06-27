@@ -7,6 +7,10 @@ module.exports = {
 		.setDescription('See the top 10 players within the leaderboards!'),
 	guildOnly: true,
 	cooldown: 10,
+	/**
+	 * Allows the user to see the top 10 players within Troopica sorted by their troop size.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const allUsers = await User.findAll();
 		allUsers.sort((a, b) => b.troops - a.troops);

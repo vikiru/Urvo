@@ -37,9 +37,7 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		const randomAdvice = await fetchData('https://api.adviceslip.com/advice');
-
 		const adviceEmbed = createEmbed(interaction, randomAdvice);
-
 		interaction.reply({ embeds: [adviceEmbed] });
 	},
 };
