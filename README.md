@@ -11,9 +11,11 @@
   <a href="https://vikiru.github.io/Urvo/">
     <img src="https://img.shields.io/badge/documentation-docs-orange"/>
   </a>
+  <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"/>
 </p>
 
 ---
+
 **Urvo** is a versatile Discord bot that offers over 65 commands across 8 categories to enhance your Discord experience!
 
 - **📷 Images**: Enhance your mood with a random image of an animal from the available options or an image of coffee to boost your energy!
@@ -56,10 +58,10 @@ npm install
 
 ```json
 {
-  "token": "your-token-goes-here",
-  "clientId": "your-client-id-here",
-  "DB_USER": "your-user-here",
-  "DB_PASS": "your-pass-here"
+	"token": "your-token-goes-here",
+	"clientId": "your-client-id-here",
+	"DB_USER": "your-user-here",
+	"DB_PASS": "your-pass-here"
 }
 ```
 
@@ -71,6 +73,8 @@ More detailed information regarding setting up the `config.json` file can be fou
 - [discord.js Guide](https://discordjs.guide/)
 - [Shields Badges](https://github.com/badges/shields)
 - [Sequelize Documentation](https://sequelize.org/docs/v6/)
+
+Additionally, the majority of the commands provided by this bot would not be possible without all of the various APIs that are being used, see [API Reference]().
 
 ## ©️ License
 
