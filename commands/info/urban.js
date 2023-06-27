@@ -71,7 +71,7 @@ module.exports = {
 	guildOnly: true,
 	cooldown: 10,
 	/**
-	 * Provide the definition for a given term from Urban Dictionary
+	 * Provide the definition for a given term from Urban Dictionary.
 	 * @param {*} interaction
 	 */
 	async execute(interaction) {

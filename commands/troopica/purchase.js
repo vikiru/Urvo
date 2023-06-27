@@ -11,6 +11,10 @@ module.exports = {
 		),
 	guildOnly: true,
 	cooldown: 10,
+	/**
+	 * Allows a user to purchase troops to add to their army within Troopica.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const id = interaction.user.id;
 		const amount = interaction.options.getNumber('amount');

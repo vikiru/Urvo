@@ -98,6 +98,10 @@ module.exports = {
 		),
 	guildOnly: true,
 	cooldown: 10,
+	/**
+	 * Allows a user to search for a Disney character and returns information about that character, if it exists.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const desiredCharacter = interaction.options.getString('name');
 		const query = new URLSearchParams([['name', desiredCharacter]]);

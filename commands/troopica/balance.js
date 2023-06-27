@@ -8,6 +8,10 @@ module.exports = {
 		.setDescription('Retrieve your balance, including how many troops you posess'),
 	guildOnly: true,
 	cooldown: 10,
+	/**
+	 * Retrieve the user's balance within Troopica.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const id = interaction.user.id;
 		const user = await handleUser(id);

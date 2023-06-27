@@ -80,6 +80,10 @@ module.exports = {
 		),
 	guildOnly: true,
 	cooldown: 10,
+	/**
+	 * Allows a user to see the top 10 anime (airing or finished) from MAL.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const status = interaction.options.getString('status');
 		const limit = 10;

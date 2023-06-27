@@ -61,6 +61,10 @@ module.exports = {
 		),
 	guildOnly: true,
 	cooldown: 10,
+	/**
+	 * Allows a user to search for a manhua and return information about that manhua, if it exists.
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const desiredManhua = interaction.options.getString('query');
 		const query = new URLSearchParams([['q', `${desiredManhua}`]]);

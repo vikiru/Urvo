@@ -22,6 +22,10 @@ module.exports = {
 				),
 		),
 	guildOnly: true,
+	/**
+	 * Allows a user to guess the number that the bot is thinking of (a number between 1 and 10).
+	 * @param {*} interaction
+	 */
 	async execute(interaction) {
 		const userGuess = interaction.options.getNumber('guess');
 		const randomNumber = Math.floor(Math.random() * 10);
