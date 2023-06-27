@@ -1,8 +1,10 @@
+const { Events } = require('discord.js');
+
 module.exports = {
-	name: 'ready',
+	name: Events.ClientReady,
 	once: true,
 	execute(client) {
 		console.log(`${client.user.tag} has logged in`);
-		client.user.setPresence({ activities: [{ name: 'Evolving...' }], status: 'online' });
+		client.user.setPresence({ activities: [{ name: '/help' }], status: 'online' });
 	},
 };
