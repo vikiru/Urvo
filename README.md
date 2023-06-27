@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/vikiru/Urvo">
-    <img src="https://github.com/vikiru/Urvo/assets/72267229/148dd33d-fdfc-4df4-9e29-f23795990e2f" alt="Urvo"/>
+    <img src="/logo.png" alt="Urvo"/>
   </a>
 </p>
 
