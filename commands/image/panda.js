@@ -1,24 +1,41 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about the random panda
+ * @param {*} interaction
+ * @param {*} randomPanda
+ * @returns An embed containing information about the random panda
+ */
+function createEmbed(interaction, randomPanda) {
+	const title = '🐼 Random Panda!';
+	const description = quote(randomPanda.fact);
+	const image = randomPanda.image;
 
-// Fetch a random panda and send into the chat via an embed
-async function randomPanda(message, args) {
-	try {
-		const { link } = await fetch('https://some-random-api.ml/img/panda').then((response) => response.json());
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
 
-		const pandaEmbed = new MessageEmbed().setTitle('Random Panda!').setColor('#EFFF00').setImage(link);
-		message.channel.send({ embeds: [pandaEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
+	const pandaEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return pandaEmbed;
 }
 
 module.exports = {
-	name: 'panda',
-	description: 'Sends the user a random picture of a panda',
+	data: new SlashCommandBuilder().setName('panda').setDescription('Send a random image of a panda'),
 	guildOnly: true,
-	execute(message, args) {
-		randomPanda(message, args);
+	cooldown: 10,
+	/**
+	 * Fetch a random panda and send into the chat via an embed
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const randomPanda = await fetchData('https://some-random-api.com/animal/panda');
+		const pandaEmbed = createEmbed(interaction, randomPanda);
+		interaction.reply({ embeds: [pandaEmbed] });
 	},
 };

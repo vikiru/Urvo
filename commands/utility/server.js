@@ -1,36 +1,40 @@
-const { MessageEmbed } = require('discord.js');
-
-function serverInfo(message, args) {
-	const roles = message.guild.roles.cache.map((role) => role);
-	const allRoles = [];
-
-	allRoles.push(roles);
-	console.log(allRoles);
-
-	const serverEmbed = new MessageEmbed()
-		.setTitle('Server Info!')
-		.setColor('#EFFF00')
-		.setThumbnail(message.guild.iconURL())
-		.addFields(
-			{ name: 'Server Name', value: message.guild.name, inline: true },
-			{ name: 'Server Owner', value: `<@${message.guild.ownerID}>`, inline: true },
-			{ name: 'Region', value: message.guild.region, inline: true },
-			{ name: 'Member Count', value: message.guild.memberCount, inline: true },
-			{
-				name: 'Roles',	
-				value: allRoles,
-				inline: true,
-			},
-		)
-		.setTimestamp();
-
-	message.channel.send(serverEmbed);
-}
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
-	name: 'server',
+	data: new SlashCommandBuilder().setName('server-info').setDescription('Retrieve information about the server'),
 	guildOnly: true,
-	execute(message, args) {
-		serverInfo(message, args);
+	cooldown: 10,
+	/**
+	 * Send an embed with information about the server.
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const roles = interaction.guild.roles.cache
+			.filter((role) => role.name != '@everyone')
+			.map((role) => '`' + role.name + '`')
+			.join(', ');
+		const allRoles = [];
+		allRoles.push(roles);
+
+		const date = new Date(interaction.guild.createdAt);
+
+		const serverEmbed = new EmbedBuilder()
+			.setTitle('Server Info!')
+			.setColor('#b35843')
+			.setTimestamp()
+			.setThumbnail(interaction.guild.iconURL())
+			.addFields(
+				{ name: 'Server Name', value: interaction.guild.name, inline: true },
+				{ name: 'Server Owner', value: `<@${interaction.guild.ownerId}>`, inline: true },
+				{ name: 'Date Created', value: date.toLocaleDateString(), inline: true },
+				{ name: 'Member Count', value: interaction.guild.memberCount.toString(), inline: true },
+				{
+					name: 'Roles',
+					value: allRoles.toString(),
+					inline: true,
+				},
+			)
+			.setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() });
+		interaction.reply({ embeds: [serverEmbed] });
 	},
 };

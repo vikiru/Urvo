@@ -1,24 +1,42 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData.js');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about a random bird
+ * @param {*} interaction
+ * @param {*} randomBird
+ * @returns An embed containing information about a random bird
+ */
+function createEmbed(interaction, randomBird) {
+	const title = '🐦 Random Bird!';
 
-// Fetch a random bird and send into the chat via an embed
-async function randomBird(message, args) {
-	try {
-		const { link } = await fetch('https://some-random-api.ml/img/birb').then((response) => response.json());
+	const image = randomBird.image;
+	const fact = quote(randomBird.fact);
 
-		const birdEmbed = new MessageEmbed().setTitle('Random Bird!').setColor('#EFFF00').setImage(link);
-		message.channel.send({ embeds: [birdEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
+
+	const birdEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(fact)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return birdEmbed;
 }
 
 module.exports = {
-	name: 'bird',
-	description: 'Sends the user a random picture of a bird',
+	data: new SlashCommandBuilder().setName('bird').setDescription('Send a random image of a bird'),
 	guildOnly: true,
-	execute(message, args) {
-		randomBird(message, args);
+	cooldown: 10,
+	/**
+	 * Fetch a random bird and send into the chat via an embed
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const randomBird = await fetchData('https://some-random-api.com/animal/bird');
+		const birdEmbed = createEmbed(interaction, randomBird);
+		interaction.reply({ embeds: [birdEmbed] });
 	},
 };

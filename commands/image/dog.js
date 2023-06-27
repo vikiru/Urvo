@@ -1,23 +1,42 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about a random dog
+ * @param {*} interaction
+ * @param {*} randomDog
+ * @returns An embed containing information about the random dog
+ */
+function createEmbed(interaction, randomDog) {
+	const title = '🐶 Random Dog!';
 
-// Fetch a random dog and send into the chat via an embed
-async function randomDog(message, args) {
-	try {
-		const { url } = await fetch('https://random.dog/woof.json').then((response) => response.json());
+	const description = quote(randomDog.fact);
+	const image = randomDog.image;
 
-		const dogEmbed = new MessageEmbed().setTitle('Random Dog!').setColor('#EFFF00').setImage(url);
-		message.channel.send({ embeds: [dogEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
+
+	const dogEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return dogEmbed;
 }
+
 module.exports = {
-	name: 'dog',
-	description: 'Sends the user a random picture of a dog',
+	data: new SlashCommandBuilder().setName('dog').setDescription('Send a random image of a dog'),
 	guildOnly: true,
-	execute(message, args) {
-		randomDog(message, args);
+	cooldown: 10,
+	/**
+	 * Fetch a random dog and send into the chat via an embed
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const randomDog = await fetchData('https://some-random-api.com/animal/dog');
+		const dogEmbed = createEmbed(interaction, randomDog);
+		interaction.reply({ embeds: [dogEmbed] });
 	},
 };

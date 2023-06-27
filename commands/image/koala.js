@@ -1,24 +1,41 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about the random koala
+ * @param {*} interaction
+ * @param {*} randomKoala
+ * @returns An embed containing information about the random koala
+ */
+function createEmbed(interaction, randomKoala) {
+	const title = '🐨 Random Koala!';
+	const description = quote(randomKoala.fact);
+	const image = randomKoala.image;
 
-// Fetch a random koala and send into the chat via an embed
-async function randomKoala(message, args) {
-	try {
-		const { link } = await fetch('https://some-random-api.ml/img/koala').then((response) => response.json());
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
 
-		const koalaEmbed = new MessageEmbed().setTitle('Random Koala!').setColor('#EFFF00').setImage(link);
-		message.channel.send({ embeds: [koalaEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
+	const koalaEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	return koalaEmbed;
 }
 
 module.exports = {
-	name: 'koala',
-	description: 'Sends the user a random picture of a koala',
+	data: new SlashCommandBuilder().setName('koala').setDescription('Send a random image of a koala'),
 	guildOnly: true,
-	execute(message, args) {
-		randomKoala(message, args);
+	cooldown: 10,
+	/**
+	 * Fetch a random koala and send into the chat via an embed
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const randomKoala = await fetchData('https://some-random-api.com/animal/koala');
+		const koalaEmbed = createEmbed(interaction, randomKoala);
+		interaction.reply({ embeds: [koalaEmbed] });
 	},
 };

@@ -1,53 +1,64 @@
 const fs = require('fs');
-const { Collection, Client } = require('discord.js');
-const { token, prefix } = require('./config.json');
+const path = require('path');
+const { token } = require('./config.json');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
-global.fetch = require('node-fetch');
+global.client = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMembers,
+	],
+});
 
-global.client = new Client();
-global.queue = new Map();
-
-client.prefix = prefix;
+client.embedColour = '#b35843';
 client.commands = new Collection();
-//-----------------------------------------//
-client.commands.fun = new Collection();
 client.commands.image = new Collection();
+client.commands.info = new Collection();
+client.commands.meme = new Collection();
 client.commands.minigames = new Collection();
 client.commands.moderation = new Collection();
-client.commands.music = new Collection();
+client.commands.rand = new Collection();
+client.commands.troopica = new Collection();
 client.commands.utility = new Collection();
-//-----------------------------------------//
+client.cooldowns = new Collection();
 
+// Accessing and loading the commands
 const commandFolders = fs.readdirSync('./commands');
 const eventFiles = fs.readdirSync('./events').filter((file) => file.endsWith('.js'));
 
-// Accessing and loading the commands
 for (const folder of commandFolders) {
 	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
 
 	for (const file of commandFiles) {
 		const command = require(`./commands/${folder}/${file}`);
-
-		client.commands.set(command.name, command);
+		client.commands.set(command.data.name, command);
 
 		switch (folder) {
-			case 'fun':
-				client.commands.fun.set(command.name, command);
-				break;
 			case 'image':
-				client.commands.image.set(command.name, command);
+				client.commands.image.set(command.data.name, command);
+				break;
+			case 'info':
+				client.commands.info.set(command.data.name, command);
+				break;
+			case 'meme':
+				client.commands.meme.set(command.data.name, command);
 				break;
 			case 'minigames':
-				client.commands.minigames.set(command.name, command);
+				client.commands.minigames.set(command.data.name, command);
 				break;
 			case 'moderation':
-				client.commands.moderation.set(command.name, command);
+				client.commands.moderation.set(command.data.name, command);
 				break;
-			case 'music':
-				client.commands.music.set(command.name, command);
+			case 'random':
+				client.commands.rand.set(command.data.name, command);
+				break;
+			case 'troopica':
+				client.commands.troopica.set(command.data.name, command);
 				break;
 			case 'utility':
-				client.commands.utility.set(command.name, command);
+				client.commands.utility.set(command.data.name, command);
 				break;
 		}
 	}

@@ -1,24 +1,42 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
+const { fetchData } = require('../../utils/fetchData');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+/**
+ * Create an embed containing information about a random fox
+ * @param {*} interaction
+ * @param {*} randomFox
+ * @returns An embed containing information about the random fox
+ */
+function createEmbed(interaction, randomFox) {
+	const title = '🦊 Random Fox!';
+	const description = quote(randomFox.fact);
+	const image = randomFox.image;
 
-// Fetch a random fox and send into the chat via an embed
-async function randomFox(message, args) {
-	try {
-		const { image } = await fetch('https://randomfox.ca/floof/').then((response) => response.json());
+	const username = interaction.user.username;
+	const avatarURL = interaction.user.displayAvatarURL();
 
-		const foxEmbed = new MessageEmbed().setTitle('Random Fox!').setColor('#EFFF00').setImage(image);
-		message.channel.send({ embeds: [foxEmbed] });
-	} catch (error) {
-		console.log(error);
-	}
+	const foxEmbed = new EmbedBuilder()
+		.setTitle(title)
+		.setDescription(description)
+		.setColor(client.embedColour)
+		.setTimestamp()
+		.setImage(image)
+		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+	interaction.reply({ embeds: [foxEmbed] });
+	return foxEmbed;
 }
 
 module.exports = {
-	name: 'fox',
-	description: 'Sends the user a random picture of a fox',
+	data: new SlashCommandBuilder().setName('fox').setDescription('Send a random picture of a fox'),
 	guildOnly: true,
-	execute(message, args) {
-		randomFox(message, args);
+	cooldown: 10,
+	/**
+	 * Fetch a random fox and send into the chat via an embed
+	 * @param {*} interaction
+	 */
+	async execute(interaction) {
+		const randomFox = await fetchData('https://some-random-api.com/animal/fox');
+		const foxEmbed = createEmbed(interaction, randomFox);
+		interaction.reply({ embeds: [foxEmbed] });
 	},
 };
