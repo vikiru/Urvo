@@ -4,21 +4,21 @@ id: intro
 title: 📖 Introduction
 ---
 
-<p align="center">
+<p align="center" id="logos">
   <a href="https://github.com/vikiru/Urvo">
-    <img src="img/logo.png" alt="Urvo"/>
+    <img src="/img/logo.png" alt="Urvo Logo" width="512"/>
   </a>
 </p>
 
-<p align="center">
+<p align="center" id="badges">
 	<a href="https://github.com/vikiru/Urvo/blob/main/LICENSE">
-		<img src="https://img.shields.io/badge/license-MIT-green"/>
+		<img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"/>
 	</a>
 	<a href="https://vikiru.github.io/Urvo/">
-		<img src="https://img.shields.io/badge/documentation-docs-orange"/>
+		<img src="https://img.shields.io/badge/documentation-docs-orange" alt="Documentation Link"/>
 	</a>
 	<a href="https://github.com/prettier/prettier">
-		<img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"/>
+		<img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Code Style Prettier"/>
 	</a>
 </p>
 
