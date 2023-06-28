@@ -15,7 +15,7 @@ const config = {
 	url: 'https://vikiru.github.io/',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
-	baseUrl: '/',
+	baseUrl: '/Urvo/',
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
@@ -74,8 +74,12 @@ const config = {
 				style: 'dark',
 				links: [
 					{
-						title: 'Docs',
+						title: 'Getting Started',
 						items: [
+							{
+								label: 'Introduction',
+								to: '/',
+							},
 							{
 								label: 'Prerequisites',
 								to: '/prerequisites',
@@ -84,9 +88,31 @@ const config = {
 								label: 'Setup',
 								to: '/setup',
 							},
+						],
+					},
+					{
+						title: 'Commands',
+						items: [
 							{
-								label: 'Command Categories',
-								to: 'commands/overview',
+								label: 'Category Overview',
+								to: '/commands/category-overview',
+							},
+							{
+								label: 'API References',
+								to: '/commands/api-references',
+							},
+						],
+					},
+					{
+						title: 'Conclusion',
+						items: [
+							{
+								label: 'Acknowledgements',
+								to: '/acknowledgements',
+							},
+							{
+								label: 'GitHub Repository',
+								to: 'https://github.com/vikiru/Urvo',
 							},
 						],
 					},
