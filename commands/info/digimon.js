@@ -41,7 +41,7 @@ module.exports = {
 		const digiSearch = await fetchData(`https://digimon-api.vercel.app/api/digimon/name/${name}`);
 		const digimonResult = digiSearch[0];
 
-		if (digimonResult.ErrorMsg) {
+		if (digiSearch.ErrorMsg) {
 			interaction.reply({
 				content: 'Sorry, that digimon is not available or does not exist. Please try again with a different name',
 				ephemeral: true,
