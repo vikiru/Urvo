@@ -73,10 +73,11 @@ More detailed information regarding setting up the `config.json` file can be fou
 
 - [discord.js Documentation](https://old.discordjs.dev/#/docs/discord.js/14.11.0/general/welcome)
 - [discord.js Guide](https://discordjs.guide/)
+- [Docusaurus](https://docusaurus.io/)
 - [Shields Badges](https://github.com/badges/shields)
 - [Sequelize Documentation](https://sequelize.org/docs/v6/)
 
-Additionally, the majority of the commands provided by this bot would not be possible without all of the various APIs that are being used, see [API Reference]().
+Additionally, the majority of the commands provided by this bot would not be possible without all of the various APIs that are being used, see [API Reference](https://vikiru.github.io/Urvo/commands/api-references).
 
 ## ©️ License
 
