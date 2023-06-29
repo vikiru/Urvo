@@ -106,7 +106,7 @@ Rise to the top of your server by amassing wealth and troops!
 - [Attack](troopica/attack) - Deploy your troops against another user, may the odds be in your favor.
 - [Balance](troopica/balance) - Retrieve your balance, including how many troops you posess.
 - [Daily](troopica/daily) - Retrieve your daily supplement of currency and troops.
-- [Leaderboard](troopica/leaderboard) - See the top 10 players within the leaderboards!.
+- [Leaderboard](troopica/leaderboard) - See the top 10 players within the leaderboards.
 - [Purchase](troopica/purchase) - Purchase troops to add to your army.
 
 ### 🛠️ Utility
