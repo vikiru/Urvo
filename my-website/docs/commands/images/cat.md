@@ -1,6 +1,6 @@
 ---
 id: cat
-title: cat
+title: Cat
 ---
 
 ## Overview
