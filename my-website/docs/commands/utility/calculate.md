@@ -7,7 +7,7 @@ title: Calculate
 
 Calculate a given mathematical expression.
 
-`Cooldown`: 10 minutes
+`Cooldown`: 5 seconds
 
 `Required User Permissions`: None
 
