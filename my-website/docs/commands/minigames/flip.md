@@ -11,6 +11,10 @@ Flip a coin and guess the outcome.
 | :-----------: | :-------------------------------------------: |
 |   `choice`    | The outcome of the coin flip (heads or tails) |
 
+`Cooldown`: 5 seconds
+
+`Required User Permissions`: None
+
 ## API Reference
 
 No external APIs were used for this command.

@@ -11,6 +11,10 @@ Guess the number that the bot is thinking of (1 - 10).
 | :-----------: | :------------------------------------------: |
 |    `guess`    | Guess the number that the bot is thinking of |
 
+`Cooldown`: 5 seconds
+
+`Required User Permissions`: None
+
 ## API Reference
 
 No external APIs were used for this command.
