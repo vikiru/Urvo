@@ -5,14 +5,14 @@ title: Category Overview
 
 ## 📖 Table of Contents
 
-- [📷 Images](category-overview#-images-category)
-- [❓ Information](category-overview#-information-category)
-- [😂 Memes](category-overview#-memes-category)
-- [🕹️ Minigames](category-overview#-minigames-category)
-- [🛡️ Moderation](category-overview#-moderation-category)
-- [🎲 Random](category-overview#-random-category)
-- [⚔️ Troopica](category-overview#-troopica-category)
-- [🛠️ Utility](category-overview#-utility-category)
+- [📷 Images](category-overview#-images)
+- [❓ Information](category-overview#-information)
+- [😂 Memes](category-overview#-memes)
+- [🕹️ Minigames](category-overview#%EF%B8%8F-minigames)
+- [🛡️ Moderation](category-overview#%EF%B8%8F-moderation)
+- [🎲 Random](category-overview#-random)
+- [⚔️ Troopica](category-overview#%EF%B8%8F-troopica)
+- [🛠️ Utility](category-overview#%EF%B8%8F-utility)
 
 ### 📷 Images
 
