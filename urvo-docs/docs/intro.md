@@ -6,7 +6,7 @@ title: 📖 Introduction
 
 <p align="center" id="logos">
   <a href="https://github.com/vikiru/Urvo">
-    <img src="./img/logo.png" alt="Urvo Logo" width="512"/>
+    <img src="logo.png" alt="Urvo Logo" width="512"/>
   </a>
 </p>
 
