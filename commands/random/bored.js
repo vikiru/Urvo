@@ -36,7 +36,7 @@ function createEmbed(interaction, randomActivity) {
 }
 
 module.exports = {
-	data: new SlashCommandBuilder().setName('bored').setDescription('Suggest a random randomActivity to the user'),
+	data: new SlashCommandBuilder().setName('bored').setDescription('Suggest a random activity to the user'),
 	guildOnly: true,
 	cooldowns: 10,
 	/**
