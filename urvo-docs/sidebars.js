@@ -23,11 +23,7 @@ const sidebars = {
 		{
 			type: 'category',
 			label: 'Commands',
-<<<<<<< Updated upstream
-			items: ['commands/images/overview'],
-=======
 			items: ['commands/category-overview'],
->>>>>>> Stashed changes
 		},
 	],
 

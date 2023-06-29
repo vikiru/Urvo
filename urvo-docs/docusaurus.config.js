@@ -33,11 +33,8 @@ const config = {
 		locales: ['en'],
 	},
 
-<<<<<<< Updated upstream
-=======
 	plugins: [require.resolve('@cmfcmf/docusaurus-search-local')],
 
->>>>>>> Stashed changes
 	presets: [
 		[
 			'classic',
@@ -59,10 +56,7 @@ const config = {
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
 			navbar: {
-<<<<<<< Updated upstream
-=======
 				hideOnScroll: true,
->>>>>>> Stashed changes
 				title: 'Urvo',
 				items: [
 					{
@@ -71,15 +65,12 @@ const config = {
 						position: 'left',
 						label: 'Home',
 					},
-<<<<<<< Updated upstream
-=======
 					{
 						href: 'https://github.com/vikiru/Urvo',
 						class: 'fa-brands fa-github',
 						position: 'right',
 						'aria-label': 'GitHub repository',
 					},
->>>>>>> Stashed changes
 				],
 			},
 			docs: {

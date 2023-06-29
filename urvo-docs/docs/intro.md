@@ -6,26 +6,11 @@ title: 📖 Introduction
 
 <p align="center" id="logos">
   <a href="https://github.com/vikiru/Urvo">
-<<<<<<< Updated upstream
-    <img src="/img/logo.png" alt="Urvo Logo" width="512"/>
-=======
     <img src="./img/logo.png" alt="Urvo Logo" width="512"/>
->>>>>>> Stashed changes
   </a>
 </p>
 
 <p align="center" id="badges">
-<<<<<<< Updated upstream
-	<a href="https://github.com/vikiru/Urvo/blob/main/LICENSE">
-		<img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"/>
-	</a>
-	<a href="https://vikiru.github.io/Urvo/">
-		<img src="https://img.shields.io/badge/documentation-docs-orange" alt="Documentation Link"/>
-	</a>
-	<a href="https://github.com/prettier/prettier">
-		<img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Code Style Prettier"/>
-	</a>
-=======
  <a href="https://github.com/vikiru/Urvo/blob/main/LICENSE">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"/>
  </a>
@@ -35,7 +20,6 @@ title: 📖 Introduction
  <a href="https://github.com/prettier/prettier">
   <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Code Style Prettier"/>
  </a>
->>>>>>> Stashed changes
 </p>
 
 ## Overview
