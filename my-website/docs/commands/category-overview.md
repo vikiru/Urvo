@@ -79,16 +79,16 @@ Use these commands to manage the server effectively and efficiently!
 - [Remove Timeout](moderation/remove-timeout) - Remove the timeout on the mentioned user.
 - [Create Role](moderation/create-role) - Creates a new role based on the inputted name and colour.
 - [Timeout](moderation/timeout) - Timeout the mentioned user from the server.
-- [Unban](moderation/unban) - Unban the mentioned user from the server
+- [Unban](moderation/unban) - Unban the mentioned user from the server.
 
 ### 🎲 Random
 
 An assortment of commands that provide you with random pieces of information such as motivating you with a quote or making you laugh with a joke!
 
-- [Advice](random/adice) - Send a random piece of advice.
+- [Advice](random/advice) - Send a random piece of advice.
 - [Affirmation](random/affirmation) - Send a random affirmation.
 - [Anime Quote](random/anime-quote) - Send a random quote from an anime.
-- [Bored](random/bored) - Suggest a random activity to the user
+- [Bored](random/bored) - Suggest a random activity to the user.
 - [Comic](random/comic) - Sends a random xkcd comic in the channel.
 - [Fact](random/fact) - Send a random fact.
 - [Harry Potter](random/harry-potter) - Get information about a random Harry Potter character.
