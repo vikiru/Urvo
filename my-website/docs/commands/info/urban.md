@@ -5,7 +5,7 @@ title: Urban
 
 ## Overview
 
-Sends the user information about a queried anime, obtained from MAL.
+Provides the definition for a given term from Urban Dictionary.
 
 | argument name |    description     |
 | :-----------: | :----------------: |
