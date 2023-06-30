@@ -56,7 +56,6 @@ module.exports = {
 			await interaction.editReply({
 				content: `An error has occured while executing this command`,
 				components: [],
-				ephemeral: true,
 			});
 		}
 	},
