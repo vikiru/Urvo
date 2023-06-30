@@ -71,10 +71,10 @@ module.exports = {
 			}
 		} catch (error) {
 			await interaction.editReply({
-				content: `Confirmation to timeout <@${targetUser.id}> was not received within 1 minute. Aborting command execution.`,
+				content: `An error has occured while executing this command`,
 				components: [],
+				ephemeral: true,
 			});
-			console.log(error);
 		}
 	},
 };
