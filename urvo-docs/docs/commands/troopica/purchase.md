@@ -7,6 +7,10 @@ title: Purchase
 
 Purchase troops to add to your army.
 
+| argument name |           description            |
+| :-----------: | :------------------------------: |
+|   `amount`    | The number of troops to purchase |
+
 `Cooldown`: 10 seconds
 
 `Required User Permissions`: None

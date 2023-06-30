@@ -7,6 +7,10 @@ title: Prune
 
 Deletes a specified number of messages in the given channel.
 
+| argument name |           description            |
+| :-----------: | :------------------------------: |
+|   `amount`    | The number of messages to delete |
+
 `Cooldown`: 10 seconds
 
 `Required User Permissions`: None
