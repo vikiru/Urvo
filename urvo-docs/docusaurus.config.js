@@ -67,7 +67,6 @@ const config = {
 					},
 					{
 						href: 'https://github.com/vikiru/Urvo',
-						class: 'fa-brands fa-github',
 						position: 'right',
 						'aria-label': 'GitHub repository',
 					},
@@ -121,7 +120,7 @@ const config = {
 							},
 							{
 								label: 'GitHub Repository',
-								to: 'https://github.com/vikiru/Urvo',
+								href: 'https://github.com/vikiru/Urvo',
 							},
 						],
 					},
