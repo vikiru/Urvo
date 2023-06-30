@@ -13,10 +13,9 @@ function createEmbed(interaction, options) {
 		'Here is your requested meme! \n\nGenerated via ' + hyperlink('Memegen.link', 'https://memegen.link/');
 
 	const topText = options.topText;
-	const bottomText = options.bottomText;
 	const format = options.format;
 
-	const image = `https://api.memegen.link/images/cmm/${topText}/${bottomText}${format}`;
+	const image = `https://api.memegen.link/images/cmm/${topText}${format}`;
 
 	const username = interaction.user.username;
 	const avatarURL = interaction.user.displayAvatarURL();
@@ -38,9 +37,6 @@ module.exports = {
 		.setDescription('Send a Change My Mind meme with your desired text')
 		.addStringOption((option) =>
 			option.setName('top_text').setDescription('Text that appears on the top').setRequired(true),
-		)
-		.addStringOption((option) =>
-			option.setName('bottom_text').setDescription('Text that appears on the bottom').setRequired(true),
 		),
 	guildOnly: true,
 	cooldown: 10,
@@ -50,9 +46,7 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		const topText = memeParser.parseText(interaction.options.getString('top_text'));
-		const bottomText = memeParser.parseText(interaction.options.getString('bottom_text'));
-
-		const options = { topText: topText, bottomText: bottomText, format: '.png' };
+		const options = { topText: topText, format: '.png' };
 		const mindEmbed = createEmbed(interaction, options);
 		interaction.reply({ embeds: [mindEmbed] });
 	},

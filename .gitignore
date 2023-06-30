@@ -1,6 +1,10 @@
 node_modules/
+.vscode/
+.docusaurus
+build/
+
 config.json
 .env
 database.sqlite
-.vscode/
 *.sql
+

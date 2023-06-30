@@ -20,8 +20,8 @@ function createEmbed(interaction, randomPun) {
 		.setTitle(title)
 		.setDescription(joke)
 		.setColor(client.embedColour)
-		.setTimestamp(image)
-		.setImage()
+		.setTimestamp()
+		.setImage(image)
 		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
 	return punEmbed;
 }

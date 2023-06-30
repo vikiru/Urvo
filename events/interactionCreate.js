@@ -45,10 +45,6 @@ module.exports = {
 			try {
 				await requestedCommand.execute(interaction);
 			} catch (error) {
-				await interaction.reply({
-					content: `An error occurred executing ${inlineCode(interaction.commandName)}`,
-					ephemeral: true,
-				});
 				console.log(error);
 			}
 		}
