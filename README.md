@@ -79,7 +79,7 @@ npm install
 }
 ```
 
-More detailed information regarding setting up the `config.json` file can be found within the [documentation](https://vikiru.github.io/Urvo/).
+More detailed information regarding setting up the `config.json` file can be found within the [documentation](https://vikiru.github.io/Urvo/setup).
 
 ## ✨ Acknowledgments
 
