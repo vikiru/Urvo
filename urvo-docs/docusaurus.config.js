@@ -87,11 +87,6 @@ const config = {
 						position: 'left',
 						label: 'Home',
 					},
-					{
-						href: 'https://github.com/vikiru/Urvo',
-						position: 'right',
-						'aria-label': 'GitHub repository',
-					},
 				],
 			},
 			docs: {
