@@ -38,5 +38,6 @@ p :not(#badges, #logo) {
 }
 
 #badges img {
-	padding-left: 2px;
+	padding-bottom: 0px;
+	padding-left: 4px;
 }

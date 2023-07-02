@@ -20,10 +20,10 @@ title: 📖 Introduction
  <a href="https://github.com/prettier/prettier">
   <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Code Style Prettier"/>
  </a>
-</p>
 
-<p align="center" id="badges">
- <a href="https://github.com/vikiru/Urvo/releases">
+<br></br>
+
+  <a href="https://github.com/vikiru/Urvo/releases">
   <img src="https://img.shields.io/github/v/release/vikiru/Urvo" alt="Release"/>
  </a>
  <a href="https://github.com/vikiru/Urvo/issues?q=is%3Aissue+is%3Aclosed">
@@ -32,6 +32,10 @@ title: 📖 Introduction
  <a href="https://github.com/vikiru/Urvo/pulls?q=is%3Apr+is%3Aclosed">
   <img src="https://img.shields.io/github/issues-pr-closed/vikiru/Urvo?label=closed%20prs" alt="Closed PRs"/>
  </a>
+</p>
+
+<p align="center" id="badges">
+
 </p>
 
 ## Overview
