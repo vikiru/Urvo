@@ -13,7 +13,9 @@ Sends a random xkcd comic in the channel.
 
 ## API Reference
 
-- XKCD Comics ([Website](https://xkcd.com/))
+This command was made possible by the following API:
+
+- xkcd Comics ([Website](https://xkcd.com/))
 
 ## Demo
 

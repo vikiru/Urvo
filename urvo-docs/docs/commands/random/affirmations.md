@@ -13,6 +13,8 @@ Send a random affirmation.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - Affirmations API ([API](https://www.affirmations.dev/))
 
 ## Demo

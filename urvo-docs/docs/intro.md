@@ -22,6 +22,18 @@ title: 📖 Introduction
  </a>
 </p>
 
+<p align="center" id="badges">
+ <a href="https://github.com/vikiru/Urvo/releases">
+  <img src="https://img.shields.io/github/v/release/vikiru/Urvo" alt="Release"/>
+ </a>
+ <a href="https://github.com/vikiru/Urvo/issues?q=is%3Aissue+is%3Aclosed">
+  <img src="https://img.shields.io/github/issues-closed/vikiru/Urvo" alt="Closed Issues"/>
+ </a>
+ <a href="https://github.com/vikiru/Urvo/pulls?q=is%3Apr+is%3Aclosed">
+  <img src="https://img.shields.io/github/issues-pr-closed/vikiru/Urvo?label=closed%20prs" alt="Closed PRs"/>
+ </a>
+</p>
+
 ## Overview
 
 **Urvo** is a versatile Discord bot that offers over 65 commands across 8 categories to enhance your Discord experience!

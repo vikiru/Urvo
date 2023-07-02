@@ -17,6 +17,8 @@ Return an image of the minecraft avatar for a specific username/uid.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - Minotar API ([Website](https://minotar.net/) | [GitHub Repo](https://github.com/minotar/imgd)
 
 ## Demo

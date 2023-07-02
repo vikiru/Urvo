@@ -13,6 +13,8 @@ Receive a random joke.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - Official JokeAPI ([Website](https://official-joke-api.appspot.com/))
 
 ## Demo

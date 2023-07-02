@@ -13,6 +13,8 @@ Suggest a random activity to the user.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - Advice Slip JSON API ([Documentation](https://api.adviceslip.com/))
 
 ## Demo

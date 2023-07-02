@@ -13,6 +13,8 @@ Send a random fact.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - Random Useless Facts API ([Documentation](https://uselessfacts.jsph.pl/))
 
 ## Demo

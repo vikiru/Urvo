@@ -17,6 +17,8 @@ Determine the age, gender, and nationality of a user based on their name.
 
 ## API Reference
 
+This command was made possible by the following APIs:
+
 - Agify.io API ([Website](https://agify.io/))
 - Genderize.io API ([Website](https://genderize.io/))
 - Nationalize.io API ([Website](https://nationalize.io))

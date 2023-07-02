@@ -17,6 +17,8 @@ Sends the user information about a queried manhua, obtained from MAL.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - JikanAPI ([Documentation](https://docs.api.jikan.moe/) | [GitHub Repo](https://github.com/jikan-me/jikan-rest)
 
 ## Demo

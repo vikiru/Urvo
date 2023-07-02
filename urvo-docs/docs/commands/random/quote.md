@@ -13,6 +13,8 @@ Send a random quote.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - Dummy JSON API ([Website](https://dummyjson.com/))
 
 ## Demo

@@ -17,6 +17,8 @@ Retrieve information about a specified disney character.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - Disney API ([Documentation](https://disneyapi.dev/docs/) | [GitHub Repo](https://github.com/ManuCastrillonM/disney-api))
 
 ## Demo

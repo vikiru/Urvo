@@ -13,6 +13,8 @@ Send a random sonnet written by William Shakespeare.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - PoetryDB API ([Website](https://poetrydb.org/index.html) | [GitHub Repo](https://github.com/thundercomb/poetrydb))
 
 ## Demo

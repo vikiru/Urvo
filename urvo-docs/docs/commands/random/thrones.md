@@ -13,6 +13,8 @@ Get information about a random Game of Thrones character.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - Game of Thrones API ([Website](https://thronesapi.com/))
 
 ## Demo

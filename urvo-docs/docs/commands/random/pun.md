@@ -13,6 +13,8 @@ Send a random pun.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - JokeAPI ([Documentation](https://v2.jokeapi.dev/) | [GitHub Repo](https://github.com/Sv443/JokeAPI))
 
 ## Demo

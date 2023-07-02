@@ -18,6 +18,8 @@ Send a One Does Not Simply Walk Into Mordor meme with your desired text.
 
 ## API Reference
 
+This command was made possible by the following API:
+
 - Memegen.link API ([Documentation](https://memegen.link/) | [GitHub Repo](https://github.com/jacebrowning/memegen))
 
 ## Demo

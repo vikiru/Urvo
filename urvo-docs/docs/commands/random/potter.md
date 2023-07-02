@@ -12,6 +12,8 @@ Get information about a random Harry Potter character.
 `Required User Permission`: None
 
 ## API Reference
+This command was made possible by the following API:
+
 
 - Harry Potter API ([Website](https://hp-api.onrender.com/) | [GitHub Repo](https://github.com/KostaSav/hp-api))
 
