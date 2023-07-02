@@ -36,3 +36,19 @@ npm install
 `DB_USER`: This is the username that will be used when connecting to the SQLite Database for all 'Troopica' commands, this can be set to anything such as 'username'.
 
 `DB_PASS`: This is the password that will be used when connecting to the SQLite Database for all 'Troopica' commands, this can be set to anything.
+
+Once you have finished properly setting up your `config.json` file, there are still two steps left until the bot and all its commands can be utilized.
+
+> 1. Register all commands by deploying them, this will bind them to the Discord Bot Application you have just created.
+
+```bash
+npm run deploy
+```
+
+> 2. Intialize the SQLite Database to ensure that 'Troopica' commands will work. This will create the User table within the database.
+
+```bash
+node initializeDatabase.js
+```
+
+Once the above has been completed, the Discord bot can be added to servers and all commands can be used.
