@@ -7,8 +7,8 @@ title: Unban
 
 Unban the mentioned user from the server.
 
-| argument name |                description                 |
-| :-----------: | :----------------------------------------: |
+| argument name |                 description                  |
+| :-----------: | :------------------------------------------: |
 |    `user`     |      The user to unban from the server       |
 |   `reason`    | The reason to unban the user from the server |
 

@@ -7,10 +7,10 @@ title: Create Role
 
 Creates a new role based on the inputted name and colour.
 
-| argument name | description |
+| argument name |           description            |
 | :-----------: | :------------------------------: |
-| `role_name` | The name of the role to create |
-| `colour` | The colour of the role to create |
+|  `role_name`  |  The name of the role to create  |
+|   `colour`    | The colour of the role to create |
 
 `Cooldown`: 5 seconds
 
