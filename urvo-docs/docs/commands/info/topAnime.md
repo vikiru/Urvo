@@ -19,7 +19,7 @@ Sends the user information about the top 10 anime (all time or airing), obtained
 
 This command was made possible by the following API:
 
-- JikanAPI ([Documentation](https://docs.api.jikan.moe/) | [GitHub Repo](https://github.com/jikan-me/jikan-rest)
+- JikanAPI ([Documentation](https://docs.api.jikan.moe/) | [GitHub Repo](https://github.com/jikan-me/jikan-rest))
 
 ## Demo
 

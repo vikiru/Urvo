@@ -19,7 +19,7 @@ Sends the user information about a queried digimon.
 
 This command was made possible by the following API:
 
-- Digimon API ([Website](https://digimon-api.vercel.app/) | [GitHub Repo](https://github.com/heyshadowsmith/digimon-api)
+- Digimon API ([Website](https://digimon-api.vercel.app/) | [GitHub Repo](https://github.com/heyshadowsmith/digimon-api))
 
 ## Demo
 

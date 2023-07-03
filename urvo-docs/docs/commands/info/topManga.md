@@ -19,7 +19,7 @@ Sends the user information about the top 10 manga (all time or publishing), obta
 
 This command was made possible by the following API:
 
-- JikanAPI ([Documentation](https://docs.api.jikan.moe/) | [GitHub Repo](https://github.com/jikan-me/jikan-rest)
+- JikanAPI ([Documentation](https://docs.api.jikan.moe/) | [GitHub Repo](https://github.com/jikan-me/jikan-rest))
 
 ## Demo
 
