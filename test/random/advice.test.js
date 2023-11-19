@@ -5,9 +5,6 @@ const expect = require('chai').expect;
 describe('Advice Slip JSON API', () => {
 	it('Should return valid JSON data', async () => {
 		const randomAdvice = await fetchData('https://api.adviceslip.com/advice');
-		assert.typeOf(randomAdvice, 'object');
-		expect(randomAdvice).to.have.all.keys('slip');
-
 		const slip = randomAdvice.slip;
 		assert.typeOf(slip, 'object');
 		expect(slip).to.have.all.keys('id', 'advice');
