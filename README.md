@@ -96,7 +96,27 @@ npm install
 }
 ```
 
-More detailed information regarding setting up the `config.json` file can be found within the **[documentation](https://vikiru.github.io/Urvo/setup)**.
+`token`: This is the token for your Discord bot, retrievable upon the creation of a new application via the [Discord Developer Portal](https://discord.com/developers/docs/intro).
+
+`clientId`: This is the ID associated with your Discord bot, also accessible via the [Discord Developer Portal](https://discord.com/developers/docs/intro) post-application creation.
+
+`DB_USER`: This is the username utilized when connecting to the SQLite Database for all 'Troopica' commands. This can be customized as per your preference.
+
+`DB_PASS`: This is the password used when connecting to the SQLite Database for all 'Troopica' commands. This can be set to any secure string.
+
+4. Deploy all commands, binding them to the Discord Bot application you've created previously.
+
+```bash
+npm run deploy
+```
+
+5. Ensure functionality of 'Troopica' commands by initializing the SQLite database.
+
+```bash
+node initializeDatabase.js
+```
+
+Upon completion of these steps, the Discord bot can be added to servers and all commands will be operational 🎉.
 
 ## 🔍 Testing
 
