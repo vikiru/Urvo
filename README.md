@@ -45,24 +45,32 @@
 - **⚔️ [Troopica](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-troopica)**: Rise to the top of your server by amassing wealth and troops!
 - **🛠️ [Utility](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-utility)**: Additional commands that can prove useful to yourself or the server!
 
-A comprehensive overview detailing all available commands can be located within the documentation under the **[Category Overview](https://vikiru.github.io/Urvo/commands/category-overview)** section. Each command has a dedicated page detailing its usage, including optional parameters, cooldowns (if any), required user permissions, any associated external APIs, and finally, a demonstration of the command is also provided for clarity.
+<p align="justify">
+	A comprehensive overview detailing all available commands can be located within the documentation under the <strong><a href="https://vikiru.github.io/Urvo/commands/category-overview">Category Overview</a></strong> section. Each command has a dedicated page detailing its usage, including optional parameters, cooldowns (if any), required user permissions, any associated external APIs, and finally, a demonstration of the command is also provided for clarity.
+</p>
 
 ## 📖 Table of Contents
 
 - [📖 Table of Contents](#-table-of-contents)
-- [📝 Prerequisites](#-prerequisites)
-- [⚡ Setup Instructions](#-setup-instructions)
+- [🏁 Getting Started](#-getting-started)
+	- [📝 Prerequisites](#-prerequisites)
+	- [⚡ Setup Instructions](#-setup-instructions)
 - [🔍 Testing](#-testing)
 - [✨ Acknowledgments](#-acknowledgments)
 - [©️ License](#️-license)
 
-## 📝 Prerequisites
+## 🏁 Getting Started
 
-- [Node.js v16.9.0+](https://nodejs.org/en/download)
-- [Sequelize v6](https://sequelize.org/)
-- [discord.js v14.0.0+](https://discord.js.org/)
+### 📝 Prerequisites
 
-## ⚡ Setup Instructions
+Ensure that the following dependencies are installed onto your machine by following the [Setup Instructions](#-setup-instructions).
+
+- [Node.js (v16.9.0+)](https://nodejs.org/en/download)
+- [Sequelize (v6.32.0+)](https://sequelize.org/)
+- [SQLite3 (v5.1.6+)](https://www.npmjs.com/package/sqlite3)
+- [discord.js (v14.11.0)](https://discord.js.org/)
+
+### ⚡ Setup Instructions
 
 1. Clone this repository to your local machine.
 
@@ -88,7 +96,7 @@ npm install
 }
 ```
 
-More detailed information regarding setting up the `config.json` file can be found within the [documentation](https://vikiru.github.io/Urvo/setup).
+More detailed information regarding setting up the `config.json` file can be found within the **[documentation](https://vikiru.github.io/Urvo/setup)**.
 
 ## 🔍 Testing
 
@@ -108,10 +116,10 @@ npm test
 - [Shields Badges](https://github.com/badges/shields)
 - [Sequelize Documentation](https://sequelize.org/docs/v6/)
 
-Additionally, the majority of the commands provided by this bot would not be possible without all of the various APIs that are being used, see [API Reference](https://vikiru.github.io/Urvo/commands/api-references).
+Additionally, the majority of the commands provided by this bot would not be possible without all of the various APIs that are being used, see **[API Reference](https://vikiru.github.io/Urvo/commands/api-references)**.
 
 ## ©️ License
 
-The contents of this repository are licensed under the terms and conditions of the [MIT](https://choosealicense.com/licenses/mit/) license.
+The contents of this repository are licensed under the terms and conditions of the **[MIT](https://choosealicense.com/licenses/mit/)** license.
 
-[MIT](LICENSE) © 2021-present Visakan Kirubakaran.
+**[MIT](LICENSE)** © 2021-present Visakan Kirubakaran.
