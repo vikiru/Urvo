@@ -30,23 +30,31 @@
 
 ---
 
+<a href="">
+	<img src="https://github.com/vikiru/Urvo/blob/docs/urvo-docs/public/utility/help.gif" alt="Urvo Help Command GIF">
+</a>
+
 **Urvo** is a versatile Discord bot that offers over 65 commands across 8 categories to enhance your Discord experience!
 
-- **📷 Images**: Enhance your mood with a random image of an animal from the available options or an image of coffee to boost your energy!
-- **❓ Information**: Whether you’re a fan of anime or manga, Digimon or Disney, or just curious about a term, you’ll find everything you need here!
-- **😂 Memes**: Generate memes to enjoy with your friends, using easy prompts!
-- **🕹️ Minigames**: The cure for boredom. Beat the bot and have a blast!
-- **🛡️ Moderation**: Use these commands to manage the server effectively and efficiently!
-- **🎲 Random**: An assortment of commands that provide you with random pieces of information such as motivating you with a quote or making you laugh with a joke!
-- **⚔️ Troopica**: Rise to the top of your server by amassing wealth and troops!
-- **🛠️ Utility**: Additional commands that can prove useful to yourself or the server!
+- **📷 [Images](https://vikiru.github.io/Urvo/commands/category-overview#-images)**: Enhance your mood with a random image of an animal from the available options or an image of coffee to boost your energy!
+- **❓ [Information](https://vikiru.github.io/Urvo/commands/category-overview#-information)**: Whether you’re a fan of anime or manga, Digimon or Disney, or just curious about a term, you’ll find everything you need here!
+- **😂 [Memes](https://vikiru.github.io/Urvo/commands/category-overview#-memes)**: Generate memes to enjoy with your friends, using easy prompts!
+- **🕹️ [Minigames](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-minigames)**: The cure for boredom. Beat the bot and have a blast!
+- **🛡️ [Moderation](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-moderation)**: Use these commands to manage the server effectively and efficiently!
+- **🎲 [Random](https://vikiru.github.io/Urvo/commands/category-overview#-random)**: An assortment of commands that provide you with random pieces of information such as motivating you with a quote or making you laugh with a joke!
+- **⚔️ [Troopica](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-troopica)**: Rise to the top of your server by amassing wealth and troops!
+- **🛠️ [Utility](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-utility)**: Additional commands that can prove useful to yourself or the server!
+
+A comprehensive overview detailing all available commands can be located within the documentation under the **[Category Overview](https://vikiru.github.io/Urvo/commands/category-overview)** section. Each command has a dedicated page detailing its usage, including optional parameters, cooldowns (if any), required user permissions, any associated external APIs, and finally, a demonstration of the command is also provided for clarity.
 
 ## 📖 Table of Contents
 
-- [📝 Prerequisites](#prerequisites)
-- [⚡ Setup Instructions](#setup-instructions)
-- [✨ Acknowledgments](#acknowledgments)
-- [©️ License](#license)
+- [📖 Table of Contents](#-table-of-contents)
+- [📝 Prerequisites](#-prerequisites)
+- [⚡ Setup Instructions](#-setup-instructions)
+- [🔍 Testing](#-testing)
+- [✨ Acknowledgments](#-acknowledgments)
+- [©️ License](#️-license)
 
 ## 📝 Prerequisites
 
@@ -56,19 +64,20 @@
 
 ## ⚡ Setup Instructions
 
-> 1. Clone this repository to your local machine.
+1. Clone this repository to your local machine.
 
 ```bash
 git clone https://github.com/vikiru/Urvo.git
+cd Urvo
 ```
 
-> 2. Download & install all dependencies.
+2. Download & install all dependencies.
 
 ```bash
 npm install
 ```
 
-> 3. Setup your `config.json` file with the required values
+3. Setup your `config.json` file with the required values.
 
 ```json
 {
@@ -80,6 +89,16 @@ npm install
 ```
 
 More detailed information regarding setting up the `config.json` file can be found within the [documentation](https://vikiru.github.io/Urvo/setup).
+
+## 🔍 Testing
+
+The comprehensive suite of tests for this project is housed within the **[test](./test/)** directory. These tests are primarily designed to verify the functionality and reliability of the external APIs.
+
+The tests can be run with the following command:
+
+```bash
+npm test
+```
 
 ## ✨ Acknowledgments
 
