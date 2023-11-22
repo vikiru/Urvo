@@ -7,7 +7,7 @@
 function parseText(text) {
 	const textReplacement = {
 		' ': '_',
-		'_': '__',
+		_: '__',
 		'-': '--',
 		'?': '~q',
 		'&': '~a',
