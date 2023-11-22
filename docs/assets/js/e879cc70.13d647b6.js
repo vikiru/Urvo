@@ -33,10 +33,10 @@
 								n(e, t, a[t]);
 						  })
 						: Object.getOwnPropertyDescriptors
-						? Object.defineProperties(e, Object.getOwnPropertyDescriptors(a))
-						: i(Object(a)).forEach(function (t) {
-								Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(a, t));
-						  });
+						  ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(a))
+						  : i(Object(a)).forEach(function (t) {
+									Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(a, t));
+						    });
 				}
 				return e;
 			}
