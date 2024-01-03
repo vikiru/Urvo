@@ -82,10 +82,22 @@ const config = {
 				title: 'Urvo',
 				items: [
 					{
-						type: 'docSidebar',
-						sidebarId: 'docs',
+						type: 'doc',
+						docId: 'setup',
 						position: 'left',
-						label: 'Home',
+						label: 'Setup',
+					},
+					{
+						type: 'doc',
+						docId: 'commands/category-overview',
+						position: 'left',
+						label: 'Commands',
+					},
+					{
+						type: 'doc',
+						docId: 'commands/api-references',
+						position: 'left',
+						label: 'API References',
 					},
 				],
 			},
@@ -102,7 +114,7 @@ const config = {
 						title: 'Getting Started',
 						items: [
 							{
-								label: 'Introduction',
+								label: 'Home',
 								to: '/',
 							},
 							{
@@ -136,7 +148,7 @@ const config = {
 								to: '/acknowledgements',
 							},
 							{
-								label: 'GitHub Repository',
+								label: 'GitHub',
 								href: 'https://github.com/vikiru/Urvo',
 							},
 						],
