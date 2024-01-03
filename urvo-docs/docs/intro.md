@@ -11,24 +11,24 @@ title: 📖 Introduction
 </div>
 
 <p align="center" id="badges">
- <a href="https://github.com/vikiru/Urvo/blob/main/LICENSE">
-  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"/>
- </a>
- <a href="https://vikiru.github.io/Urvo/">
-  <img src="https://img.shields.io/badge/documentation-docs-orange" alt="Documentation Link"/>
- </a>
- <a href="https://github.com/prettier/prettier">
-  <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Code Style Prettier"/>
- </a>
-  <a href="https://github.com/vikiru/Urvo/releases">
-    <img src="https://img.shields.io/github/v/release/vikiru/Urvo" alt="Release"/>
- </a>
- <a href="https://github.com/vikiru/Urvo/issues?q=is%3Aissue+is%3Aclosed">
-  <img src="https://img.shields.io/github/issues-closed/vikiru/Urvo" alt="Closed Issues"/>
- </a>
- <a href="https://github.com/vikiru/Urvo/pulls?q=is%3Apr+is%3Aclosed">
-  <img src="https://img.shields.io/github/issues-pr-closed/vikiru/Urvo?label=closed%20prs" alt="Closed PRs"/>
- </a>
+	<a href="https://github.com/vikiru/Urvo/blob/main/LICENSE">
+		<img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License Badge"/>
+	</a>
+	<a href="https://vikiru.github.io/Urvo/">
+		<img src="https://img.shields.io/badge/documentation-docs-orange" alt="Documentation"/>
+	</a>
+	<a href="https://github.com/prettier/prettier">
+		<img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Code Style - Prettier"/>
+	</a>
+	<a href="https://github.com/vikiru/Urvo/releases">
+		<img src="https://img.shields.io/github/v/release/vikiru/Urvo" alt="Release"/>
+	</a>
+	<a href="https://github.com/vikiru/Urvo/issues?q=is%3Aissue+is%3Aclosed">
+		<img src="https://img.shields.io/github/issues-closed/vikiru/Urvo" alt="Closed Issues"/>
+	</a>
+	<a href="https://github.com/vikiru/Urvo/pulls?q=is%3Apr+is%3Aclosed">
+		<img src="https://img.shields.io/github/issues-pr-closed/vikiru/Urvo?label=closed%20prs" alt="Closed PRs" />
+	</a>
 </p>
 
 ## Overview

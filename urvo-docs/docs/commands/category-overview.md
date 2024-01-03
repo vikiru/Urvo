@@ -5,16 +5,17 @@ title: Category Overview
 
 ## 📖 Table of Contents
 
-- [📷 Images](category-overview#images)
-- [❓ Information](category-overview#information)
-- [😂 Memes](category-overview#-memes)
-- [🕹️ Minigames](category-overview#minigames)
-- [🛡️ Moderation](category-overview#moderation)
-- [🎲 Random](category-overview#random)
-- [⚔️ Troopica](category-overview#troopica)
-- [🛠️ Utility](category-overview#utility)
+- [📖 Table of Contents](#-table-of-contents)
+  - [📷 Images](#-images)
+  - [❓ Information](#-information)
+  - [😂 Memes](#-memes)
+  - [🕹️ Minigames](#️-minigames)
+  - [🛡️ Moderation](#️-moderation)
+  - [🎲 Random](#-random)
+  - [⚔️ Troopica](#️-troopica)
+  - [🛠️ Utility](#️-utility)
 
-### 📷 Images {#images}
+### 📷 Images
 
 Enhance your mood with a random image of an animal from the available options or an image of coffee to boost your energy!
 
@@ -31,7 +32,7 @@ Enhance your mood with a random image of an animal from the available options or
 - [Red Panda](images/red-panda) - Send a random fact and image of a red panda.
 - [Whale](images/whale) - Send a random image of a whale.
 
-### ❓ Information {#info}
+### ❓ Information
 
 Whether you’re a fan of anime or manga, Digimon or Disney, or just curious about a term, you’ll find everything you need here!
 
@@ -47,7 +48,7 @@ Whether you’re a fan of anime or manga, Digimon or Disney, or just curious abo
 - [Top Manga](info/top-manga) - Sends the user information about the top 10 manga (all time or publishing), obtained from MAL.
 - [Urban](info/urban) - Provides the definition for a given term from Urban Dictionary.
 
-### 😂 Memes {#memes}
+### 😂 Memes
 
 Generate memes to enjoy with your friends, using easy prompts!
 
@@ -62,7 +63,7 @@ Generate memes to enjoy with your friends, using easy prompts!
 - [Spongebob](memes/spongebob) - Send a Mocking Spongebob meme with your desired text.
 - [Winnie](memes/winnie) - Send a Tuxedo Winnie the Pooh meme with your desired text.
 
-### 🕹️ Minigames {#minigames}
+### 🕹️ Minigames
 
 The cure for boredom. Beat the bot and have a blast!
 
@@ -70,7 +71,7 @@ The cure for boredom. Beat the bot and have a blast!
 - [Guess Number](minigames/guess-number) - Guess the number that the bot is thinking of (1 - 10).
 - [Rock-Paper-Scissors](minigames/rps) - Play Rock-Paper-Scissors with the bot.
 
-### 🛡️ Moderation {#moderation}
+### 🛡️ Moderation
 
 Use these commands to manage the server effectively and efficiently!
 
@@ -81,7 +82,7 @@ Use these commands to manage the server effectively and efficiently!
 - [Timeout](moderation/timeout) - Timeout the mentioned user from the server.
 - [Unban](moderation/unban) - Unban the mentioned user from the server.
 
-### 🎲 Random {#random}
+### 🎲 Random
 
 An assortment of commands that provide you with random pieces of information such as motivating you with a quote or making you laugh with a joke!
 
@@ -99,7 +100,7 @@ An assortment of commands that provide you with random pieces of information suc
 - [Shakespeare](random/shakespeare) - Send a random sonnet written by William Shakespeare.
 - [Thrones](random/thrones) - Get information about a random Game of Thrones character.
 
-### ⚔️ Troopica {#troopica}
+### ⚔️ Troopica
 
 Rise to the top of your server by amassing wealth and troops!
 
@@ -109,7 +110,7 @@ Rise to the top of your server by amassing wealth and troops!
 - [Leaderboard](troopica/leaderboard) - See the top 10 players within the leaderboards.
 - [Purchase](troopica/purchase) - Purchase troops to add to your army.
 
-### 🛠️ Utility {#utility}
+### 🛠️ Utility
 
 Additional commands that can prove useful to yourself or the server!
 
