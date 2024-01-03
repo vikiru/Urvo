@@ -14,9 +14,7 @@
 	<a href="https://github.com/prettier/prettier">
 		<img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Code Style - Prettier"/>
 	</a>
-</p>
-
-<p align="center">
+	<br>
 	<a href="https://github.com/vikiru/Urvo/releases">
 		<img src="https://img.shields.io/github/v/release/vikiru/Urvo" alt="Release"/>
 	</a>
@@ -31,19 +29,19 @@
 ---
 
 <a href="">
-	<img src="https://github.com/vikiru/Urvo/blob/docs/urvo-docs/public/utility/help.gif" alt="Urvo Help Command GIF">
+	<img src="https://github.com/vikiru/Urvo/blob/docs/urvo-docs/public/utility/help.gif" alt="Urvo Demo GIF">
 </a>
 
 **Urvo** is a versatile Discord bot that offers over 65 commands across 8 categories to enhance your Discord experience!
 
-- **📷 [Images](https://vikiru.github.io/Urvo/commands/category-overview#-images)**: Enhance your mood with a random image of an animal from the available options or an image of coffee to boost your energy!
-- **❓ [Information](https://vikiru.github.io/Urvo/commands/category-overview#-information)**: Whether you’re a fan of anime or manga, Digimon or Disney, or just curious about a term, you’ll find everything you need here!
-- **😂 [Memes](https://vikiru.github.io/Urvo/commands/category-overview#-memes)**: Generate memes to enjoy with your friends, using easy prompts!
-- **🕹️ [Minigames](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-minigames)**: The cure for boredom. Beat the bot and have a blast!
-- **🛡️ [Moderation](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-moderation)**: Use these commands to manage the server effectively and efficiently!
-- **🎲 [Random](https://vikiru.github.io/Urvo/commands/category-overview#-random)**: An assortment of commands that provide you with random pieces of information such as motivating you with a quote or making you laugh with a joke!
-- **⚔️ [Troopica](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-troopica)**: Rise to the top of your server by amassing wealth and troops!
-- **🛠️ [Utility](https://vikiru.github.io/Urvo/commands/category-overview#%EF%B8%8F-utility)**: Additional commands that can prove useful to yourself or the server!
+- **📷 [Images](https://vikiru.github.io/Urvo/commands/images/bird)**: Enhance your mood with a random image of an animal from the available options or an image of coffee to boost your energy!
+- **❓ [Information](https://vikiru.github.io/Urvo/commands/info/anime)**: Whether you’re a fan of anime or manga, Digimon or Disney, or just curious about a term, you’ll find everything you need here!
+- **😂 [Memes](https://vikiru.github.io/Urvo/commands/memes/buzz)**: Generate memes to enjoy with your friends, using easy prompts!
+- **🕹️ [Minigames](https://vikiru.github.io/Urvo/commands/minigames/flip)**: The cure for boredom. Beat the bot and have a blast!
+- **🛡️ [Moderation](https://vikiru.github.io/Urvo/commands/moderation/ban)**: Use these commands to manage the server effectively and efficiently!
+- **🎲 [Random](https://vikiru.github.io/Urvo/commands/random/advice)**: An assortment of commands that provide you with random pieces of information such as motivating you with a quote or making you laugh with a joke!
+- **⚔️ [Troopica](https://vikiru.github.io/Urvo/commands/troopica/attack)**: Rise to the top of your server by amassing wealth and troops!
+- **🛠️ [Utility](https://vikiru.github.io/Urvo/commands/utility/calculate)**: Additional commands that can prove useful to yourself or the server!
 
 <p align="justify">
 	A comprehensive overview detailing all available commands can be located within the documentation under the <strong><a href="https://vikiru.github.io/Urvo/commands/category-overview">Category Overview</a></strong> section. Each command has a dedicated page detailing its usage, including optional parameters, cooldowns (if any), required user permissions, any associated external APIs, and finally, a demonstration of the command is also provided for clarity.
@@ -52,16 +50,14 @@
 ## 📖 Table of Contents
 
 - [📖 Table of Contents](#-table-of-contents)
-- [🏁 Getting Started](#-getting-started)
-	- [📝 Prerequisites](#-prerequisites)
-	- [⚡ Setup Instructions](#-setup-instructions)
+- [📝 Prerequisites](#-prerequisites)
+- [⚡ Setup Instructions](#-setup-instructions)
 - [🔍 Testing](#-testing)
 - [✨ Acknowledgments](#-acknowledgments)
 - [©️ License](#️-license)
 
-## 🏁 Getting Started
 
-### 📝 Prerequisites
+## 📝 Prerequisites
 
 Ensure that the following dependencies are installed onto your machine by following the [Setup Instructions](#-setup-instructions).
 
@@ -70,7 +66,7 @@ Ensure that the following dependencies are installed onto your machine by follow
 - [SQLite3 (v5.1.6+)](https://www.npmjs.com/package/sqlite3)
 - [discord.js (v14.11.0)](https://discord.js.org/)
 
-### ⚡ Setup Instructions
+## ⚡ Setup Instructions
 
 1. Clone this repository to your local machine.
 
@@ -116,7 +112,7 @@ npm run deploy
 node initializeDatabase.js
 ```
 
-Upon completion of these steps, the Discord bot can be added to servers and all commands will be operational 🎉.
+Upon completion of these steps, the Discord bot can be added to servers and all commands will be operational 🎉
 
 ## 🔍 Testing
 
@@ -133,6 +129,9 @@ npm test
 - [discord.js Documentation](https://old.discordjs.dev/#/docs/discord.js/14.11.0/general/welcome)
 - [discord.js Guide](https://discordjs.guide/)
 - [Docusaurus](https://docusaurus.io/)
+- [GitHub Pages](https://pages.github.com/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 - [Shields Badges](https://github.com/badges/shields)
 - [Sequelize Documentation](https://sequelize.org/docs/v6/)
 
