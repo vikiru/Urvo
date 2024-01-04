@@ -31,10 +31,10 @@
 								(l.current
 									? (l.current = !1)
 									: a >= r
-										? (c(), o(!1))
-										: a < t
-											? o(!1)
-											: a + window.innerHeight < document.documentElement.scrollHeight && o(!0));
+									? (c(), o(!1))
+									: a < t
+									? o(!1)
+									: a + window.innerHeight < document.documentElement.scrollHeight && o(!0));
 						}),
 						(0, p.S)((e) => {
 							e.location.hash && ((l.current = !0), o(!1));
@@ -191,10 +191,10 @@
 										onClick: b
 											? (e) => {
 													n?.(t), h ? T(!1) : (e.preventDefault(), T());
-												}
+											  }
 											: () => {
 													n?.(t);
-												},
+											  },
 										'aria-current': g ? 'page' : void 0,
 										'aria-expanded': b ? !_ : void 0,
 										href: b ? f ?? '#' : f,

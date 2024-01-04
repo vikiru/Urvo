@@ -31,12 +31,12 @@
 					t % 2
 						? o(Object(n), !0).forEach(function (t) {
 								i(e, t, n[t]);
-							})
+						  })
 						: Object.getOwnPropertyDescriptors
-							? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
-							: o(Object(n)).forEach(function (t) {
-									Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(n, t));
-								});
+						? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
+						: o(Object(n)).forEach(function (t) {
+								Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(n, t));
+						  });
 				}
 				return e;
 			}

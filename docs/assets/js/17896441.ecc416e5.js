@@ -31,12 +31,12 @@
 					t % 2
 						? r(Object(n), !0).forEach(function (t) {
 								o(e, t, n[t]);
-							})
+						  })
 						: Object.getOwnPropertyDescriptors
-							? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
-							: r(Object(n)).forEach(function (t) {
-									Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(n, t));
-								});
+						? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
+						: r(Object(n)).forEach(function (t) {
+								Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(n, t));
+						  });
 				}
 				return e;
 			}
@@ -315,7 +315,7 @@
 								{ id: 'theme.docs.versionBadge.label', values: { versionLabel: n.label } },
 								'Version: {versionLabel}',
 							),
-						)
+					  )
 					: null;
 			}
 			function x(e) {
@@ -477,7 +477,7 @@
 							{ className: (0, d.Z)(y.k.docs.docFooter, 'docusaurus-mt-lg') },
 							c && a.createElement(z, { tags: l }),
 							i && a.createElement(V, { editUrl: t, lastUpdatedAt: n, lastUpdatedBy: r, formattedLastUpdatedAt: o }),
-						)
+					  )
 					: null;
 			}
 			var R = n(4639),
@@ -598,7 +598,7 @@
 									a.createElement(Q, { isChild: !0, toc: e.children, className: n, linkClassName: o }),
 								),
 							),
-						)
+					  )
 					: null;
 			}
 			const X = a.memo(Q);
@@ -839,8 +839,8 @@
 					i[t]
 						? (s[i[t]].range += `${p},`)
 						: d[t]
-							? (s[d[t]].start = p)
-							: m[t] && (s[m[t]].range += `${s[m[t]].start}-${p - 1},`),
+						? (s[d[t]].start = p)
+						: m[t] && (s[m[t]].range += `${s[m[t]].start}-${p - 1},`),
 						c.splice(p, 1);
 				}
 				n = c.join('\n');
@@ -1017,7 +1017,7 @@
 												);
 											}, a);
 										return (o.root = n), (o.plain = je({}, n, { backgroundColor: null })), o;
-									})(e.theme, e.language)
+								  })(e.theme, e.language)
 								: void 0;
 							return (t.themeDict = n);
 						}),
@@ -1143,7 +1143,7 @@
 								null,
 								a.createElement('span', { className: Ve.codeLineNumber }),
 								a.createElement('span', { className: Ve.codeLineContent }, s),
-							)
+						  )
 						: s,
 					a.createElement('br', null),
 				);
@@ -1215,12 +1215,12 @@
 										id: 'theme.CodeBlock.copied',
 										message: 'Copied',
 										description: 'The copied button label on code blocks',
-									})
+								  })
 								: (0, p.I)({
 										id: 'theme.CodeBlock.copyButtonAriaLabel',
 										message: 'Copy code to clipboard',
 										description: 'The ARIA label for copy code blocks button',
-									}),
+								  }),
 							title: (0, p.I)({
 								id: 'theme.CodeBlock.copy',
 								message: 'Copy',
@@ -1557,7 +1557,7 @@
 										return a.createElement(e.props.originalType, o);
 									}
 									return e;
-								})(e)
+							  })(e)
 							: e,
 					);
 					return a.createElement(fe.Z, e, t);
@@ -1734,12 +1734,12 @@
 				return o
 					? a.createElement('span', { className: r, itemProp: 'name' }, t)
 					: n
-						? a.createElement(
-								f.Z,
-								{ className: r, href: n, itemProp: 'item' },
-								a.createElement('span', { itemProp: 'name' }, t),
-							)
-						: a.createElement('span', { className: r }, t);
+					? a.createElement(
+							f.Z,
+							{ className: r, href: n, itemProp: 'item' },
+							a.createElement('span', { itemProp: 'name' }, t),
+					  )
+					: a.createElement('span', { className: r }, t);
 			}
 			function _t(e) {
 				let { children: t, active: n, index: o, addMicrodata: r } = e;
@@ -1779,7 +1779,7 @@
 									);
 								}),
 							),
-						)
+					  )
 					: null;
 			}
 			const Zt = { docItemContainer: 'docItemContainer_Djhp', docItemCol: 'docItemCol_VOVn' };
