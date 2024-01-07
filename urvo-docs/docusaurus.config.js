@@ -10,6 +10,7 @@ const config = {
 	tagline: 'Multi-purpose Discord Bot',
 	favicon: 'img/favicon.ico',
 	staticDirectories: ['public', 'static'],
+	trailingSlash: true,
 
 	// Set the production url of your site here
 	url: 'https://vikiru.github.io/',
