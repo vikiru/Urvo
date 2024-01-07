@@ -70,6 +70,7 @@ const config = {
 				},
 				gtag: {
 					trackingID: 'G-NHZE168ET0',
+					anonymizeIP: true,
 				},
 				blog: false,
 				theme: {
