@@ -127,7 +127,7 @@ const sidebars = {
 		{
 			type: 'category',
 			label: 'Conclusion',
-			items: ['acknowledgements', 'commands/api-references'],
+			items: ['acknowledgments', 'commands/api-references'],
 		},
 	],
 };

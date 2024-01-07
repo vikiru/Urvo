@@ -66,6 +66,7 @@ const config = {
 				docs: {
 					routeBasePath: '/',
 					sidebarPath: require.resolve('./sidebars.js'),
+					breadcrumbs: true,
 				},
 				blog: false,
 				theme: {
@@ -145,8 +146,8 @@ const config = {
 						title: 'Conclusion',
 						items: [
 							{
-								label: 'Acknowledgements',
-								to: '/acknowledgements',
+								label: 'Acknowledgments',
+								to: '/acknowledgments',
 							},
 							{
 								label: 'GitHub',

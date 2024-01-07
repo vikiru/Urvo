@@ -1,6 +1,6 @@
 ---
-id: acknowledgements
-title: Acknowledgements
+id: acknowledgments
+title: Acknowledgment
 ---
 
 ## ✨ Acknowledgments
