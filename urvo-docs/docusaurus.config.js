@@ -68,6 +68,9 @@ const config = {
 					sidebarPath: require.resolve('./sidebars.js'),
 					breadcrumbs: true,
 				},
+				gtag: {
+					trackingID: 'G-NHZE168ET0',
+				},
 				blog: false,
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
