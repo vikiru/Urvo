@@ -9,7 +9,7 @@
         <priority>1</priority>
     </url>
     <url>
-        <loc>https://vikiru.github.io/Urvo/acknowledgements/</loc>
+        <loc>https://vikiru.github.io/Urvo/acknowledgments/</loc>
         <priority>0.5</priority>
     </url>
     <url>
@@ -91,207 +91,205 @@
     <url>
         <loc>https://vikiru.github.io/Urvo/commands/info/manhua/</loc>
         <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/info/manhwa/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/info/minecraft/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/info/top-anime/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/info/top-manga/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/info/urban/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/buzz/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/change-my-mind/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/daily-struggle/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/drake/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/kermit/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/knuckles/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/mordor/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/philosoraptor/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/spongebob/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/memes/winnie/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/minigames/flip/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/minigames/guess-number/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/minigames/rps/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/moderation/ban/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/moderation/create-role/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/moderation/kick/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/moderation/remove-timeout/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/moderation/timeout/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/moderation/unban/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/advice/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/affirmation/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/anime-quote/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/bored/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/comic/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/fact/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/harry-potter/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/joke/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/programming-joke/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/pun/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/quote/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/shakespeare/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/random/thrones/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/troopica/attack/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/troopica/balance/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/troopica/daily/</loc>
-
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/troopica/leaderboard/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/troopica/purchase/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/utility/calculate/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/utility/create-channel/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/utility/delete-channel/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/utility/help/</loc>
-
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/utility/prune/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/commands/utility/server-info/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/prerequisites/</loc>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://vikiru.github.io/Urvo/setup/</loc>
-    <priority>0.5</priority>
-</url>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/info/manhwa/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/info/minecraft/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/info/top-anime/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/info/top-manga/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/info/urban/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/buzz/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/change-my-mind/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/daily-struggle/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/drake/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/kermit/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/knuckles/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/mordor/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/philosoraptor/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/spongebob/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/memes/winnie/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/minigames/flip/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/minigames/guess-number/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/minigames/rps/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/moderation/ban/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/moderation/create-role/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/moderation/kick/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/moderation/remove-timeout/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/moderation/timeout/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/moderation/unban/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/advice/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/affirmation/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/anime-quote/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/bored/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/comic/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/fact/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/harry-potter/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/joke/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/programming-joke/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/pun/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/quote/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/shakespeare/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/random/thrones/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/troopica/attack/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/troopica/balance/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/troopica/daily/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/troopica/leaderboard/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/troopica/purchase/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/utility/calculate/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/utility/create-channel/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/utility/delete-channel/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/utility/help/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/utility/prune/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/commands/utility/server-info/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/prerequisites/</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vikiru.github.io/Urvo/setup/</loc>
+        <priority>0.5</priority>
+    </url>
 </urlset>
