@@ -1,16 +1,26 @@
 {
 	"name": "urvo",
-	"version": "2.0.0",
 	"description": "A multi-purpose discord bot with over 65 commands spanning across 8 categories!",
-	"private": true,
 	"author": "Visakan Kirubakaran",
-	"license": "MIT",
+	"version": "2.0.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/vikiru/urvo.git"
+		"url": "https://github.com/vikiru/urvo"
 	},
-	"keywords": [],
+	"keywords": [
+		"Urvo",
+		"discord",
+		"bot",
+		"discord.js",
+		"sqlite",
+		"sequelize"
+	],
 	"main": "main.js",
+	"bugs": {
+		"url": "https://github.com/vikiru/urvo/issues"
+	},
+	"license": "MIT",
+	"private": true,
 	"scripts": {
 		"test": "mocha test/test.js",
 		"deploy": "node deploy.js",
