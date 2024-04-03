@@ -23,10 +23,10 @@ npm install
 
 ```json
 {
-"token": "your-token-goes-here",
-"clientId": "your-client-id-here",
-"DB_USER": "your-user-here",
-"DB_PASS": "your-pass-here"
+	"token": "your-token-goes-here",
+	"clientId": "your-client-id-here",
+	"DB_USER": "your-user-here",
+	"DB_PASS": "your-pass-here"
 }
 ```
 

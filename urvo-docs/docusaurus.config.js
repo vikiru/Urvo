@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: 'Urvo Documentationn',
+	title: 'Urvo',
 	tagline: 'Multi-purpose Discord Bot',
 	favicon: 'img/favicon.ico',
 	staticDirectories: ['public', 'static'],
@@ -76,6 +76,11 @@ const config = {
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
 				},
+				sitemap: {
+					priority: 0.5,
+					ignorePatterns: [],
+					filename: 'sitemap.xml',
+				},
 			}),
 		],
 	],
@@ -83,6 +88,20 @@ const config = {
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
+			metadata: [
+				{
+					name: 'author',
+					content: 'Visakan Kirubakaran',
+				},
+				{
+					name: 'keywords',
+					content: 'Urvo, discord, bot, node.js, discord.js, sqlite, sequelize',
+				},
+				{
+					name: 'description',
+					content: 'Urvo is a multi-purpose discord bot with over 65 commands spanning across 8 categories.',
+				},
+			],
 			navbar: {
 				hideOnScroll: true,
 				title: 'Urvo',
