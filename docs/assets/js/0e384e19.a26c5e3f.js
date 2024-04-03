@@ -180,6 +180,7 @@
 								alt: 'Code Style - Prettier',
 							}),
 						),
+						(0, n.kt)('br', null),
 						(0, n.kt)(
 							'a',
 							{ href: 'https://github.com/vikiru/Urvo/releases' },

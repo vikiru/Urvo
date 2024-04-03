@@ -178,7 +178,7 @@
 						(0, o.kt)(
 							'code',
 							{ parentName: 'pre', className: 'language-json' },
-							'{\n"token": "your-token-goes-here",\n"clientId": "your-client-id-here",\n"DB_USER": "your-user-here",\n"DB_PASS": "your-pass-here"\n}\n',
+							'{\n    "token": "your-token-goes-here",\n    "clientId": "your-client-id-here",\n    "DB_USER": "your-user-here",\n    "DB_PASS": "your-pass-here"\n}\n',
 						),
 					),
 					(0, o.kt)(
