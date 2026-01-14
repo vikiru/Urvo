@@ -1,21 +1,17 @@
 {
-    "$schema": "https://unpkg.com/knip@5/schema.json",
-    "project": [
-        "tsconfig.json"
-    ],
-    "entry": [
-        "*.{js,mjs,cjs,ts}",
-        "commands/**/*.{js,mjs,cjs,ts}",
-        "events/**/*.{js,mjs,cjs,ts}",
-        "models/**/*.{js,mjs,cjs,ts}",
-        "utils/**/*.{js,mjs,cjs,ts}",
-        "test/**/*.{js,mjs,cjs,ts}"
-    ],
-    "ignoreExportsUsedInFile": {
-        "interface": true,
-        "type": true
-    },
-    "tags": [
-        "-lintignore"
-    ]
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "project": ["tsconfig.json"],
+  "entry": [
+    "*.{js,mjs,cjs,ts}",
+    "commands/**/*.{js,mjs,cjs,ts}",
+    "events/**/*.{js,mjs,cjs,ts}",
+    "models/**/*.{js,mjs,cjs,ts}",
+    "utils/**/*.{js,mjs,cjs,ts}",
+    "test/**/*.{js,mjs,cjs,ts}"
+  ],
+  "ignoreExportsUsedInFile": {
+    "interface": true,
+    "type": true
+  },
+  "tags": ["-lintignore"]
 }

@@ -106,7 +106,7 @@ pnpm run deploy
 5. Ensure functionality of 'Troopica' commands by initializing the SQLite database.
 
 ```bash
-node initializeDatabase.js
+pnpm init-db
 ```
 
 Upon completion of these steps, the Discord bot can be added to servers and all commands will be operational 🎉
@@ -121,6 +121,11 @@ pnpm start
 Deploy Discord bot commands.
 ```bash
 pnpm deploy
+```
+
+Initialize SQLite database for Troopica commands.
+```bash
+pnpm init-db
 ```
 
 Run tests using [Mocha](https://mochajs.org/).
