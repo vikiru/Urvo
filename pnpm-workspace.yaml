@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - esbuild
+  - lefthook
+  - sqlite3
+
+overrides:
+  undici@<6.23.0: '>=6.23.0'

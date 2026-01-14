@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "lib": [
+            "ESNext"
+        ],
+        "types": [
+            "node"
+        ],
+        "allowJs": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "incremental": true,
+        "declaration": false,
+        "strict": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "forceConsistentCasingInFileNames": true,
+        "removeComments": false,
+        "verbatimModuleSyntax": false,
+        "plugins": []
+    },
+    "include": [
+        "**/*.js",
+        "**/*.mjs",
+        "**/*.cjs",
+        "*.config.js",
+        "*.config.mjs",
+        "*.config.cjs"
+    ],
+    "exclude": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build"
+    ]
+}
