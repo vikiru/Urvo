@@ -80,20 +80,18 @@ cd Urvo
 pnpm install
 ```
 
-3. Setup your `config.json` file with the required values.
+3. Setup your `.env` file with the required values.
 
-```json
-{
-	"token": "your-token-goes-here",
-	"clientId": "your-client-id-here",
-	"DB_USER": "your-user-here",
-	"DB_PASS": "your-pass-here"
-}
+```env
+TOKEN=your-token-goes-here
+CLIENT_ID=your-client-id-here
+DB_USER=your-user-here
+DB_PASS=your-pass-here
 ```
 
-`token`: This is the token for your Discord bot, retrievable upon the creation of a new application via the [Discord Developer Portal](https://discord.com/developers/docs/intro).
+`TOKEN`: This is the token for your Discord bot, retrievable upon the creation of a new application via the [Discord Developer Portal](https://discord.com/developers/docs/intro).
 
-`clientId`: This is the ID associated with your Discord bot, also accessible via the [Discord Developer Portal](https://discord.com/developers/docs/intro) post-application creation.
+`CLIENT_ID`: This is the ID associated with your Discord bot, also accessible via the [Discord Developer Portal](https://discord.com/developers/docs/intro) post-application creation.
 
 `DB_USER`: This is the username utilized when connecting to the SQLite Database for all 'Troopica' commands. This can be customized as per your preference.
 
