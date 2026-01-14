@@ -1,5 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder, quote } = require('discord.js');
-const { fetchData } = require('../../utils/fetchData');
+const { fetchData } = require('../../utils/fetchData.js');
 
 /**
  * Create an embed containing information about the random red panda
@@ -8,34 +8,34 @@ const { fetchData } = require('../../utils/fetchData');
  * @returns An embed containing information about the random red panda
  */
 function createEmbed(interaction, randomRedPanda) {
-	const title = 'Random Red Panda!';
-	const description = quote(randomRedPanda.fact);
-	const image = randomRedPanda.image;
+  const title = 'Random Red Panda!';
+  const description = quote(randomRedPanda.fact);
+  const image = randomRedPanda.image;
 
-	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarURL();
+  const username = interaction.user.username;
+  const avatarURL = interaction.user.displayAvatarURL();
 
-	const redPandaEmbed = new EmbedBuilder()
-		.setTitle(title)
-		.setDescription(description)
-		.setColor(client.embedColour)
-		.setTimestamp()
-		.setImage(image)
-		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
-	return redPandaEmbed;
+  const redPandaEmbed = new EmbedBuilder()
+    .setTitle(title)
+    .setDescription(description)
+    .setColor(client.embedColour)
+    .setTimestamp()
+    .setImage(image)
+    .setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+  return redPandaEmbed;
 }
 
 module.exports = {
-	data: new SlashCommandBuilder().setName('red_panda').setDescription('Send a random image of a red panda'),
-	guildOnly: true,
-	cooldown: 10,
-	/**
-	 * Fetch a random red panda and send into the chat via an embed
-	 * @param {*} interaction
-	 */
-	async execute(interaction) {
-		const randomRedPanda = await fetchData('https://some-random-api.com/animal/red_panda');
-		const redPandaEmbed = createEmbed(interaction, randomRedPanda);
-		interaction.reply({ embeds: [redPandaEmbed] });
-	},
+  data: new SlashCommandBuilder().setName('red_panda').setDescription('Send a random image of a red panda'),
+  guildOnly: true,
+  cooldown: 10,
+  /**
+   * Fetch a random red panda and send into the chat via an embed
+   * @param {*} interaction
+   */
+  async execute(interaction) {
+    const randomRedPanda = await fetchData('https://some-random-api.com/animal/red_panda');
+    const redPandaEmbed = createEmbed(interaction, randomRedPanda);
+    interaction.reply({ embeds: [redPandaEmbed] });
+  },
 };

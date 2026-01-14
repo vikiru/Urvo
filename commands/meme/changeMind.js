@@ -1,5 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder, hyperlink } = require('discord.js');
-const memeParser = require('../../utils/memeParser');
+const memeParser = require('../../utils/memeParser.js');
 
 /**
  * Create an embed containing information about the Change My Mind Meme
@@ -8,46 +8,46 @@ const memeParser = require('../../utils/memeParser');
  * @returns An embed containing information about the Change My Mind Meme
  */
 function createEmbed(interaction, options) {
-	const title = 'Change My Mind Meme';
-	const description =
-		'Here is your requested meme! \n\nGenerated via ' + hyperlink('Memegen.link', 'https://memegen.link/');
+  const title = 'Change My Mind Meme';
+  const description =
+    'Here is your requested meme! \n\nGenerated via ' + hyperlink('Memegen.link', 'https://memegen.link/');
 
-	const topText = options.topText;
-	const format = options.format;
+  const topText = options.topText;
+  const format = options.format;
 
-	const image = `https://api.memegen.link/images/cmm/${topText}${format}`;
+  const image = `https://api.memegen.link/images/cmm/${topText}${format}`;
 
-	const username = interaction.user.username;
-	const avatarURL = interaction.user.displayAvatarURL();
+  const username = interaction.user.username;
+  const avatarURL = interaction.user.displayAvatarURL();
 
-	const mindEmbed = new EmbedBuilder()
-		.setTitle(title)
-		.setDescription(description)
-		.setColor(client.embedColour)
-		.setTimestamp()
-		.setImage(image)
-		.setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
+  const mindEmbed = new EmbedBuilder()
+    .setTitle(title)
+    .setDescription(description)
+    .setColor(client.embedColour)
+    .setTimestamp()
+    .setImage(image)
+    .setFooter({ text: `Requested by ${username}`, iconURL: avatarURL });
 
-	return mindEmbed;
+  return mindEmbed;
 }
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('change_my_mind')
-		.setDescription('Send a Change My Mind meme with your desired text')
-		.addStringOption((option) =>
-			option.setName('top_text').setDescription('Text that appears on the top').setRequired(true),
-		),
-	guildOnly: true,
-	cooldown: 10,
-	/**
-	 * Sends a Change My Mind meme with the specified text
-	 * @param {*} interaction
-	 */
-	async execute(interaction) {
-		const topText = memeParser.parseText(interaction.options.getString('top_text'));
-		const options = { topText: topText, format: '.png' };
-		const mindEmbed = createEmbed(interaction, options);
-		interaction.reply({ embeds: [mindEmbed] });
-	},
+  data: new SlashCommandBuilder()
+    .setName('change_my_mind')
+    .setDescription('Send a Change My Mind meme with your desired text')
+    .addStringOption((option) =>
+      option.setName('top_text').setDescription('Text that appears on the top').setRequired(true),
+    ),
+  guildOnly: true,
+  cooldown: 10,
+  /**
+   * Sends a Change My Mind meme with the specified text
+   * @param {*} interaction
+   */
+  async execute(interaction) {
+    const topText = memeParser.parseText(interaction.options.getString('top_text'));
+    const options = { topText: topText, format: '.png' };
+    const mindEmbed = createEmbed(interaction, options);
+    interaction.reply({ embeds: [mindEmbed] });
+  },
 };
