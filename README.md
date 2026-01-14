@@ -11,10 +11,8 @@
 	<a href="https://vikiru.github.io/Urvo/">
 		<img src="https://img.shields.io/badge/documentation-docs-orange" alt="Documentation"/>
 	</a>
-	<a href="https://github.com/prettier/prettier">
-		<img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Code Style - Prettier"/>
+	<a href="https://biomejs.dev"><img alt="Static Badge" src="https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome">
 	</a>
-	<br>
 	<a href="https://github.com/vikiru/Urvo/releases">
 		<img src="https://img.shields.io/github/v/release/vikiru/Urvo" alt="Release"/>
 	</a>
@@ -52,6 +50,7 @@
 - [📖 Table of Contents](#-table-of-contents)
 - [📝 Prerequisites](#-prerequisites)
 - [⚡ Setup Instructions](#-setup-instructions)
+- [📜 Available Scripts](#-available-scripts)
 - [🔍 Testing](#-testing)
 - [✨ Acknowledgments](#-acknowledgments)
 - [©️ License](#️-license)
@@ -63,7 +62,7 @@ Ensure that the following dependencies are installed onto your machine by follow
 
 - [Node.js (v16.9.0+)](https://nodejs.org/en/download)
 - [Sequelize (v6.32.0+)](https://sequelize.org/)
-- [SQLite3 (v5.1.6+)](https://www.npmjs.com/package/sqlite3)
+- [SQLite3 (v5.1.6+)](https://github.com/TryGhost/node-sqlite3)
 - [discord.js (v14.11.0)](https://discord.js.org/)
 
 ## ⚡ Setup Instructions
@@ -78,7 +77,7 @@ cd Urvo
 2. Download & install all dependencies.
 
 ```bash
-npm install
+pnpm install
 ```
 
 3. Setup your `config.json` file with the required values.
@@ -103,7 +102,7 @@ npm install
 4. Deploy all commands, binding them to the Discord Bot application you've created previously.
 
 ```bash
-npm run deploy
+pnpm run deploy
 ```
 
 5. Ensure functionality of 'Troopica' commands by initializing the SQLite database.
@@ -113,6 +112,48 @@ node initializeDatabase.js
 ```
 
 Upon completion of these steps, the Discord bot can be added to servers and all commands will be operational 🎉
+
+## 📜 Available Scripts
+
+Start the Discord bot.
+```bash
+pnpm start
+```
+
+Deploy Discord bot commands.
+```bash
+pnpm deploy
+```
+
+Run tests using [Mocha](https://mochajs.org/).
+```bash
+pnpm test
+```
+
+Lint files using [Biome](https://biomejs.dev/).
+```bash
+pnpm lint
+```
+
+Format files using [Biome](https://biomejs.dev/).
+```bash
+pnpm format
+```
+
+Run TypeScript type checks without emitting files.
+```bash
+pnpm typecheck
+```
+
+Check unused dependencies and files with [Knip](https://github.com/webpro-nl/knip).
+```bash
+pnpm unused
+```
+
+Prepare Git hooks via [Lefthook](https://github.com/evilmartians/lefthook).
+```bash
+pnpm postinstall
+```
 
 ## 🔍 Testing
 
@@ -128,12 +169,19 @@ npm test
 
 - [discord.js Documentation](https://old.discordjs.dev/#/docs/discord.js/14.11.0/general/welcome)
 - [discord.js Guide](https://discordjs.guide/)
+- [Sequelize Documentation](https://sequelize.org/docs/v6/)
+- [Starlight](https://starlight.astro.build/)
+- [Astro](https://astro.build/)
+- [starlight-links-validator](https://github.com/HiDeoo/starlight-links-validator)
+- [starlight-theme-rapide](https://github.com/HiDeoo/starlight-theme-rapide)
 - [Docusaurus](https://docusaurus.io/)
 - [GitHub Pages](https://pages.github.com/)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [Shields Badges](https://github.com/badges/shields)
-- [Sequelize Documentation](https://sequelize.org/docs/v6/)
+- [Semantic Release](https://github.com/semantic-release/semantic-release)
+- [Lefthook](https://github.com/evilmartians/lefthook)
+- [Knip](https://github.com/webpro-nl/knip)
 
 Additionally, the majority of the commands provided by this bot would not be possible without all of the various APIs that are being used, see **[API Reference](https://vikiru.github.io/Urvo/commands/api-references)**.
 
