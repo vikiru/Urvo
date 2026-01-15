@@ -7,10 +7,10 @@
   "author": "Visakan Kirubakaran",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vikiru/urvo"
+    "url": "https://github.com/vikiru/Urvo.git"
   },
   "bugs": {
-    "url": "https://github.com/vikiru/urvo/issues"
+    "url": "https://github.com/vikiru/Urvo/issues"
   },
   "keywords": ["Urvo", "discord", "bot", "discord.js", "sqlite", "sequelize"],
   "main": "main.js",

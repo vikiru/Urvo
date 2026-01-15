@@ -165,7 +165,7 @@ The comprehensive suite of tests for this project is housed within the **[test](
 The tests can be run with the following command:
 
 ```bash
-npm test
+pnpm test
 ```
 
 ## ✨ Acknowledgments
