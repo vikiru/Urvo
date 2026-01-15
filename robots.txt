@@ -1,13 +1,13 @@
 User-agent: *
-Disallow: /urvo/images/
-Disallow: /urvo/info/
-Disallow: /urvo/memes/
-Disallow: /urvo/minigames/
-Disallow: /urvo/moderation/
-Disallow: /urvo/random/
-Disallow: /urvo/troopica/
-Disallow: /urvo/utility/
+Disallow: /Urvo/images/
+Disallow: /Urvo/info/
+Disallow: /Urvo/memes/
+Disallow: /Urvo/minigames/
+Disallow: /Urvo/moderation/
+Disallow: /Urvo/random/
+Disallow: /Urvo/troopica/
+Disallow: /Urvo/utility/
 
 Allow: /
 
-Sitemap: https://vikiru.github.io/urvo/sitemap-index.xml
+Sitemap: https://vikiru.github.io/Urvo/sitemap-index.xml
