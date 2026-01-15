@@ -21,4 +21,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of role command](/urvo/moderation/role.gif)
+![Demo of role command](/Urvo/moderation/role.gif)

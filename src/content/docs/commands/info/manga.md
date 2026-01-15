@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of manga command](/urvo/info/manga.gif)
+![Demo of manga command](/Urvo/info/manga.gif)

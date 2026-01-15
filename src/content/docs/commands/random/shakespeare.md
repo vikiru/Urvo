@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of shakespeare command](/urvo/random/shakespeare.gif)
+![Demo of shakespeare command](/Urvo/random/shakespeare.gif)

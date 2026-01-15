@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of disney command](/urvo/info/disney.gif)
+![Demo of disney command](/Urvo/info/disney.gif)

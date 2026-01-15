@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of dog command](/urvo/images/dog.gif)
+![Demo of dog command](/Urvo/images/dog.gif)

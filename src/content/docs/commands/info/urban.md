@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of urban command](/urvo/info/urban.gif)
+![Demo of urban command](/Urvo/info/urban.gif)

@@ -20,4 +20,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of flip command](/urvo/minigames/flip.gif)
+![Demo of flip command](/Urvo/minigames/flip.gif)

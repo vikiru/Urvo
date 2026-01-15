@@ -23,4 +23,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of daily-struggle command](/urvo/memes/daily-struggle.gif)
+![Demo of daily-struggle command](/Urvo/memes/daily-struggle.gif)

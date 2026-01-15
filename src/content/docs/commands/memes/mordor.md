@@ -23,4 +23,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of mordor command](/urvo/memes/mordor.gif)
+![Demo of mordor command](/Urvo/memes/mordor.gif)

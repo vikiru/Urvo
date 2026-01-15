@@ -23,4 +23,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of winnie command](/urvo/memes/winnie.gif)
+![Demo of winnie command](/Urvo/memes/winnie.gif)

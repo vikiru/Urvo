@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of pun command](/urvo/random/pun.gif)
+![Demo of pun command](/Urvo/random/pun.gif)

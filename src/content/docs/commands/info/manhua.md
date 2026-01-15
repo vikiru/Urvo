@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of manhua command](/urvo/info/manhua.gif)
+![Demo of manhua command](/Urvo/info/manhua.gif)

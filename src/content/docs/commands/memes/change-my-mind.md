@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of change-my-mind command](/urvo/memes/change-my-mind.gif)
+![Demo of change-my-mind command](/Urvo/memes/change-my-mind.gif)

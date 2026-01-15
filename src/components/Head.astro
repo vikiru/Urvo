@@ -33,8 +33,10 @@ const entryId =
 let entry = await getEntry("docs", entryId);
 
 const isHome = normalizedPath === base;
+const isApiRoute =
+    pathname.startsWith(`${base}/api/`) || pathname === `${base}/api`;
 const isDocs = entry !== undefined && !isHome;
-const is404 = !isDocs && !isHome;
+const is404 = !isDocs && !isHome && !isApiRoute;
 
 let title = is404 ? "404 | Page Not Found" : entry?.data.title;
 let description = is404
@@ -98,56 +100,10 @@ let graphLd: Graph = {
 <meta name="theme-color" content={themeColor} />
 <meta name="keywords" content={keywordsString} />
 
-<!-- Favicons -->
 <link
-	rel="icon"
-	type="image/x-icon"
-	href={`${documentationUrl}/favicon-light.ico`}
-/>
-<link
-	rel="icon"
-	type="image/png"
-	sizes="32x32"
-	href={`${documentationUrl}/favicon-32x32-light.png`}
-/>
-<link
-	rel="icon"
-	type="image/png"
-	sizes="16x16"
-	href={`${documentationUrl}/favicon-16x16-light.png`}
-/>
-<link
-	rel="apple-touch-icon"
-	sizes="180x180"
-	href={`${documentationUrl}/apple-touch-icon-light.png`}
-/>
-<link rel="manifest" href={`${documentationUrl}/manifest.json`} />
-
-<link
-	rel="icon"
-	type="image/png"
-	sizes="32x32"
-	media="(prefers-color-scheme: dark)"
-	href={`${documentationUrl}/favicon-32x32-dark.png`}
-/>
-<link
-	rel="icon"
-	type="image/png"
-	sizes="16x16"
-	media="(prefers-color-scheme: dark)"
-	href={`${documentationUrl}/favicon-16x16-dark.png`}
-/>
-<link
-	rel="apple-touch-icon"
-	sizes="180x180"
-	media="(prefers-color-scheme: dark)"
-	href={`${documentationUrl}/apple-touch-icon-dark.png`}
-/>
-<link
-	rel="icon"
-	type="image/x-icon"
-	media="(prefers-color-scheme: dark)"
-	href={`${documentationUrl}/favicon-dark.ico`}
+    rel="icon"
+    type="image/x-icon"
+    href={`${documentationUrl}/${faviconFileName}`}
 />
 
 <meta property="og:title" content={title} />

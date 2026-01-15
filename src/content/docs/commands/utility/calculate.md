@@ -22,4 +22,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of calculate command](/urvo/utility/calculate.gif)
+![Demo of calculate command](/Urvo/utility/calculate.gif)

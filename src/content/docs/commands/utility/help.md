@@ -16,4 +16,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of help command](/urvo/utility/help.gif)
+![Demo of help command](/Urvo/utility/help.gif)

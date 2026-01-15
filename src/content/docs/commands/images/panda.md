@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of panda command](/urvo/images/panda.gif)
+![Demo of panda command](/Urvo/images/panda.gif)

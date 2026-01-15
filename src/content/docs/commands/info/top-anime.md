@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of top-anime command](/urvo/info/top-anime.gif)
+![Demo of top-anime command](/Urvo/info/top-anime.gif)

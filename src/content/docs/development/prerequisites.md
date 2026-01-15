@@ -3,7 +3,7 @@ title: 📝 Prerequisites
 description: Ensure that the following dependencies are installed onto your machine.
 ---
 
-Ensure that the following dependencies are installed onto your machine by following the [Setup](/urvo/development/setup) instructions.
+Ensure that the following dependencies are installed onto your machine by following the [Setup](/Urvo/development/setup) instructions.
 
 - [Node.js (v16.9.0+)](https://nodejs.org/en/download)
 - [Sequelize (v6.32.0+)](https://sequelize.org/)

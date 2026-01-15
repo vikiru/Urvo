@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of anime-quote command](/urvo/random/anime-quote.gif)
+![Demo of anime-quote command](/Urvo/random/anime-quote.gif)

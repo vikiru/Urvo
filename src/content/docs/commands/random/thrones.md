@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of thrones command](/urvo/random/thrones.gif)
+![Demo of thrones command](/Urvo/random/thrones.gif)

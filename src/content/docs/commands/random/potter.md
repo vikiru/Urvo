@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of potter command](/urvo/random/potter.gif)
+![Demo of potter command](/Urvo/random/potter.gif)

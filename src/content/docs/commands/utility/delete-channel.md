@@ -20,4 +20,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of delete-channel command](/urvo/utility/delete-channel.gif)
+![Demo of delete-channel command](/Urvo/utility/delete-channel.gif)

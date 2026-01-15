@@ -20,4 +20,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of attack command](/urvo/troopica/attack.gif)
+![Demo of attack command](/Urvo/troopica/attack.gif)

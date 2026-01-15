@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of anime command](/urvo/info/anime.gif)
+![Demo of anime command](/Urvo/info/anime.gif)

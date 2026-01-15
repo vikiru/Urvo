@@ -21,4 +21,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of create-channel command](/urvo/utility/create-channel.gif)
+![Demo of create-channel command](/Urvo/utility/create-channel.gif)

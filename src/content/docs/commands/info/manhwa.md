@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of manhwa command](/urvo/info/manhwa.gif)
+![Demo of manhwa command](/Urvo/info/manhwa.gif)

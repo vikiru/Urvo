@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of programming-joke command](/urvo/random/programming-joke.gif)
+![Demo of programming-joke command](/Urvo/random/programming-joke.gif)

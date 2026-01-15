@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of affirmations command](/urvo/random/affirmations.gif)
+![Demo of affirmations command](/Urvo/random/affirmations.gif)

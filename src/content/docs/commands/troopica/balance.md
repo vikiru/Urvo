@@ -16,4 +16,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of balance command](/urvo/troopica/balance.gif)
+![Demo of balance command](/Urvo/troopica/balance.gif)

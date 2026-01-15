@@ -23,4 +23,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of philosoraptor command](/urvo/memes/philosoraptor.gif)
+![Demo of philosoraptor command](/Urvo/memes/philosoraptor.gif)

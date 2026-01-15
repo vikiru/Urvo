@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of minecraft command](/urvo/info/minecraft.gif)
+![Demo of minecraft command](/Urvo/info/minecraft.gif)

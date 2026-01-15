@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of fact command](/urvo/random/fact.gif)
+![Demo of fact command](/Urvo/random/fact.gif)

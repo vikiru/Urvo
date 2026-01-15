@@ -16,4 +16,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of daily command](/urvo/troopica/daily.gif)
+![Demo of daily command](/Urvo/troopica/daily.gif)

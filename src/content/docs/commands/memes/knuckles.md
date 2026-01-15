@@ -23,4 +23,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of knuckles command](/urvo/memes/knuckles.gif)
+![Demo of knuckles command](/Urvo/memes/knuckles.gif)

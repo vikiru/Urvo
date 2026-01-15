@@ -16,4 +16,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of leaderboard command](/urvo/troopica/leaderboard.gif)
+![Demo of leaderboard command](/Urvo/troopica/leaderboard.gif)

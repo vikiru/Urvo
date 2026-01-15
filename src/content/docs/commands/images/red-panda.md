@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of red-panda command](/urvo/images/red-panda.gif)
+![Demo of red-panda command](/Urvo/images/red-panda.gif)

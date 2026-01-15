@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of duck command](/urvo/images/duck.gif)
+![Demo of duck command](/Urvo/images/duck.gif)

@@ -24,4 +24,4 @@ This command was made possible by the following APIs:
 
 ## Demo
 
-![Demo of guess-user command](/urvo/info/guess-user.gif)
+![Demo of guess-user command](/Urvo/info/guess-user.gif)

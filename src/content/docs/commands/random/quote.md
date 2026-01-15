@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of quote command](/urvo/random/quote.gif)
+![Demo of quote command](/Urvo/random/quote.gif)

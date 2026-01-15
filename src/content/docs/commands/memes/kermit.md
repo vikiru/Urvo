@@ -23,4 +23,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of kermit command](/urvo/memes/kermit.gif)
+![Demo of kermit command](/Urvo/memes/kermit.gif)

@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of bored command](/urvo/random/bored.gif)
+![Demo of bored command](/Urvo/random/bored.gif)

@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of koala command](/urvo/images/koala.gif)
+![Demo of koala command](/Urvo/images/koala.gif)

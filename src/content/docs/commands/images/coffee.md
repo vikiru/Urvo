@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of coffee command](/urvo/images/coffee.gif)
+![Demo of coffee command](/Urvo/images/coffee.gif)

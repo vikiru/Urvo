@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of raccoon command](/urvo/images/raccoon.gif)
+![Demo of raccoon command](/Urvo/images/raccoon.gif)

@@ -20,4 +20,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of purchase command](/urvo/troopica/purchase.gif)
+![Demo of purchase command](/Urvo/troopica/purchase.gif)

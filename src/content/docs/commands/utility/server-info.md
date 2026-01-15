@@ -16,4 +16,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of server-info command](/urvo/utility/server-info.gif)
+![Demo of server-info command](/Urvo/utility/server-info.gif)

@@ -20,4 +20,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of prune command](/urvo/utility/prune.gif)
+![Demo of prune command](/Urvo/utility/prune.gif)

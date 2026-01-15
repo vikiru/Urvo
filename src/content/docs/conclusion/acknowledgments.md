@@ -19,4 +19,4 @@ description: Credits and acknowledgments for the libraries and resources used.
 - [Lefthook](https://github.com/evilmartians/lefthook)
 - [Knip](https://github.com/webpro-nl/knip)
 
-Additionally, the majority of the commands provided by this bot would not be possible without all of the various APIs that are being used, see **[API Reference](/urvo/conclusion/api-references)**.
+Additionally, the majority of the commands provided by this bot would not be possible without all of the various APIs that are being used, see **[API Reference](/Urvo/conclusion/api-references)**.

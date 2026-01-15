@@ -8,8 +8,8 @@ export const documentationConfig: DocumentationConfig = {
     projectDescription:
       'A multi-purpose discord bot with over 65 commands spanning across 8 categories!',
     siteUrl: 'https://vikiru.github.io',
-    base: '/urvo',
-    documentationUrl: 'https://vikiru.github.io/urvo',
+    base: '/Urvo',
+    documentationUrl: 'https://vikiru.github.io/Urvo',
     websiteLastModified: new Date(),
   },
   author: {

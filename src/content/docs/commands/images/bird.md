@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of bird command](/urvo/images/bird.gif)
+![Demo of bird command](/Urvo/images/bird.gif)

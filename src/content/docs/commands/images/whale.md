@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of whale command](/urvo/images/whale.gif)
+![Demo of whale command](/Urvo/images/whale.gif)

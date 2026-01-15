@@ -18,4 +18,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of kangaroo command](/urvo/images/kangaroo.gif)
+![Demo of kangaroo command](/Urvo/images/kangaroo.gif)

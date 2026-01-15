@@ -20,4 +20,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of guess-number command](/urvo/minigames/guess-number.gif)
+![Demo of guess-number command](/Urvo/minigames/guess-number.gif)

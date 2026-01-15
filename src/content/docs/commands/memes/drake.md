@@ -23,4 +23,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of drake command](/urvo/memes/drake.gif)
+![Demo of drake command](/Urvo/memes/drake.gif)

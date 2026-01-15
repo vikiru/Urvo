@@ -24,4 +24,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of buzz command](/urvo/memes/buzz.gif)
+![Demo of buzz command](/Urvo/memes/buzz.gif)

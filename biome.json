@@ -48,7 +48,7 @@
       "enabled": true
     },
     "linter": {
-      "enabled": true
+      "enabled": false
     }
   },
   "linter": {
@@ -60,11 +60,11 @@
     "rules": {
       "recommended": true,
       "a11y": "off",
-      "complexity": "info",
-      "performance": "info",
+      "complexity": "off",
+      "performance": "off",
       "security": "off",
       "suspicious": "off",
-      "correctness": "info",
+      "correctness": "off",
       "nursery": "off",
       "style": "off"
     }

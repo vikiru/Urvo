@@ -22,4 +22,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of digimon command](/urvo/info/digimon.gif)
+![Demo of digimon command](/Urvo/info/digimon.gif)

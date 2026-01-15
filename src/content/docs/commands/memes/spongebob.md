@@ -23,4 +23,4 @@ This command was made possible by the following API:
 
 ## Demo
 
-![Demo of spongebob command](/urvo/memes/spongebob.gif)
+![Demo of spongebob command](/Urvo/memes/spongebob.gif)

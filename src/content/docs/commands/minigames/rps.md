@@ -20,4 +20,4 @@ No external APIs were used for this command.
 
 ## Demo
 
-![Demo of rps command](/urvo/minigames/rps.gif)
+![Demo of rps command](/Urvo/minigames/rps.gif)
