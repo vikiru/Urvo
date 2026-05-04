@@ -12,14 +12,7 @@
   "bugs": {
     "url": "https://github.com/vikiru/Urvo/issues"
   },
-  "keywords": [
-    "Urvo",
-    "discord",
-    "bot",
-    "discord.js",
-    "sqlite",
-    "sequelize"
-  ],
+  "keywords": ["Urvo", "discord", "bot", "discord.js", "sqlite", "sequelize"],
   "main": "main.js",
   "scripts": {
     "start": "node .",
