@@ -12,7 +12,14 @@
   "bugs": {
     "url": "https://github.com/vikiru/Urvo/issues"
   },
-  "keywords": ["Urvo", "discord", "bot", "discord.js", "sqlite", "sequelize"],
+  "keywords": [
+    "Urvo",
+    "discord",
+    "bot",
+    "discord.js",
+    "sqlite",
+    "sequelize"
+  ],
   "main": "main.js",
   "scripts": {
     "start": "node .",
@@ -28,32 +35,32 @@
   "dependencies": {
     "discord.js": "14.11.0",
     "ms": "^2.1.3",
-    "node-fetch": "^3.3.1",
+    "node-fetch": "^3.3.2",
     "path": "^0.12.7",
-    "sequelize": "^6.35.2",
+    "sequelize": "^6.37.8",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.11",
-    "@commitlint/cli": "^20.3.1",
-    "@commitlint/config-conventional": "^20.3.1",
+    "@biomejs/biome": "^2.4.14",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "~5.2.3",
     "@types/mocha": "~10.0.10",
     "@types/ms": "~2.1.0",
-    "@types/node": "^25.0.8",
+    "@types/node": "^25.6.0",
     "@typescript/native-preview": "7.0.0-dev.20260114.1",
     "chai": "^6.2.2",
     "chai-http": "^5.1.2",
-    "dotenv": "^16.4.0",
-    "knip": "^5.81.0",
-    "lefthook": "^2.0.15",
+    "dotenv": "^16.6.1",
+    "knip": "^5.88.1",
+    "lefthook": "^2.1.6",
     "mocha": "^11.7.5",
-    "semantic-release": "^25.0.2",
+    "semantic-release": "^25.0.3",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.17",
-    "zod": "^4.3.5"
+    "vitest": "^4.1.5",
+    "zod": "^4.4.2"
   },
   "engines": {
     "node": ">=16.9"
